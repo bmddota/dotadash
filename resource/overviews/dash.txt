@@ -1,0 +1,9 @@
+dash
+{
+	material overviews/dash
+	pos_x -8704
+	pos_y 8704	scale 17.100
+	rotate 0
+	zoom 1.0000
+}
+

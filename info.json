@@ -1,0 +1,16 @@
+{
+  "name": "dotadash",
+  "fullname": "Dota Dash",
+  "version": "0.00.01",
+  "author": "BMD",
+  "authorimage": "",
+  "thumbnail": "http://i.imgur.com/s9gHtPn.png",
+  "spreadimage": "",
+  "website": "https://github.com/bmddota/dotadash",
+  "subtitle": "Gotta go Fast!",
+  "description": "",
+  "features": ["Zoom Zoom"],
+  "playable": true,
+  "spreadvideo": "https://s3-us-west-2.amazonaws.com/d2mpimages/reflex.webm",
+  "isPublic": true
+}

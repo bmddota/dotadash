@@ -1,0 +1,13 @@
+"AddonInfo"
+{
+     addonSteamAppID         816
+     addontitle              "Dota Dash"
+     addonversion            0.00.01
+     addontagline            "Gotta go fast!"
+     addonauthor             "BMD"
+     addonSteamGroupName     ""                                                 
+     addonauthorSteamID "
+     addonContent_Campaign   0
+     addonURL0               "https://github.com/bmddota/dotadash/"
+     addonDescription        "Dota Dash"
+}
