@@ -1,7 +1,7 @@
 print ('[DOTADASH] dotadash.lua' )
 
-USE_LOBBY=false
-DEBUG=true
+USE_LOBBY=true
+DEBUG=false
 THINK_TIME = 0.1
 
 DOTADASH_VERSION = "0.01.00"
