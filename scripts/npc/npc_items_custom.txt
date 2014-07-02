@@ -252,6 +252,75 @@
 		}
 	}
   
+  "item_banana_peel"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1707"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		//"Model"							"models/props_gameplay/salve_blue.mdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_banana_peel"
+		"ItemKillable"					"0"
+		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1000"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.4"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+		
+		"precache"
+		{
+			"particlefile"				"particles/frostivus_gameplay.pcf"
+			//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
+			"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
+		}
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"ItemCost"						"100"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"				"0"
+    "ItemPermanent"					"0"
+		"ItemInitialCharges"			"3"
+		"ItemDisplayCharges"			"1"
+		"SecretShop"						"1"
+
+		"OnSpellStart"
+		{
+      "SpendCharge"
+      {}
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/abilities.lua"
+				"Function"				"bananaPeel"
+			}
+      "FireSound"
+      {
+        "EffectName"      "DotaDash.Banana"
+        "Target"          "CASTER"
+      }
+		}
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"1500"
+			}
+		}
+	}
+  
   "item_blue_turtle_shell"
 	{
 		// General

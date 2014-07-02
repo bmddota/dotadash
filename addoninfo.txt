@@ -2,7 +2,7 @@
 {
      addonSteamAppID         816
      addontitle              "Dota Dash"
-     addonversion            0.00.01
+     addonversion            0.01.00
      addontagline            "Gotta go fast!"
      addonauthor             "BMD"
      addonSteamGroupName     ""                                                 

@@ -8,6 +8,63 @@
 //	CHAN_STATIC		= 6,		// allocate channel from the static area 
 // these can be set with "channel" "2" or "channel" "chan_voice"
 
+"Hero_Puck.Phase_Shift"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"0.0"
+	"soundlevel"  	"SNDLVL_81dB"
+	"pitch"			"95,105"
+	"wave"	"weapons/hero/puck/phase_shift.wav"
+
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"import_stack" "dota_update_default"
+
+			"volume_fade_out"
+			{
+				"input_max" "1"
+			}
+		}
+	}
+}
+
+"DotaDash.Banana"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"0.6"
+	"soundlevel"  	"SNDLVL_78dB"
+	"pitch"			"95,105"
+	"rndwave"
+	{
+		"wave"			")physics/damage/npc/spatter01.wav"
+		"wave"			")physics/damage/npc/spatter02.wav"
+		"wave"			")physics/damage/npc/spatter03.wav"
+		"wave"			")physics/damage/npc/spatter04.wav"
+	}
+	"operator_stacks"
+	{
+		"start_stack"
+		{
+			"import_stack" "dota_preattack_block_dist"
+			"import_stack" "dota_poly_limiting_start"
+			"limit_sound"
+			{
+				"input_max_entries" "3.000000" //A sound will not stop itself from playing.
+				"match_entity" "false"	
+				"match_substring" "true"
+				"match_entry" "Damage_Melee.Gore"
+				"match_channel" "false"
+			}
+			"mixer"
+			{
+				"mixgroup" "Physics"
+			}
+		}
+	}
+}
+
 "DotaDash.RaceStart"
 {
 	"channel"		"CHAN_STATIC"
@@ -142,6 +199,15 @@
 			}
 		}
 	}
+}
+
+
+"dotadash.slip"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"1.0"
+	"pitch"			"95, 105"
+	"wave"			"ui\ui_add_to_inventory_01.wav"
 }
 
 "crowd.lv_01"

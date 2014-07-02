@@ -1,16 +1,16 @@
 {
   "name": "dotadash",
   "fullname": "Dota Dash",
-  "version": "0.00.01",
+  "version": "0.01.00",
   "author": "BMD",
   "authorimage": "",
-  "thumbnail": "http://i.imgur.com/s9gHtPn.png",
+  "thumbnail": "http://i.imgur.com/OT1SA5u.jpg",
   "spreadimage": "",
   "website": "https://github.com/bmddota/dotadash",
   "subtitle": "Gotta go Fast!",
   "description": "",
-  "features": ["Zoom Zoom"],
+  "features": ["High-speed Physics-based Carnage", "Race against your friends!"],
   "playable": true,
-  "spreadvideo": "https://s3-us-west-2.amazonaws.com/d2mpimages/reflex.webm",
+  "spreadvideo": "http://i.imgur.com/OT1SA5u.jpg",
   "isPublic": true
 }

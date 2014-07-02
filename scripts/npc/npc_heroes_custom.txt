@@ -6,8 +6,8 @@
 		"override_hero"			"npc_dota_hero_ancient_apparition"
 		"SoundSet"					"0"	
 		"Ability1"				"dota_dash_hop" //"reflex_small_dagger"
-		"Ability2"				"debug_point"//"reflex_empty2" //"reflex_meat_hook"
-		"Ability3"				"debug_line"//"reflex_empty3" //"reflex_wraith_blast"
+		"Ability2"				"reflex_empty2" // "debug_point"// //"reflex_meat_hook"
+		"Ability3"				"reflex_empty3" // "debug_line" //"reflex_wraith_blast"
 		"Ability4"				"reflex_empty4"
 		"Ability5"				"dota_unstick"
 		"Ability6"				"dota_dash_back_to_waypoint"
@@ -44,7 +44,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -100,7 +100,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -156,7 +156,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -212,7 +212,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -268,7 +268,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -324,7 +324,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -380,7 +380,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -436,7 +436,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -492,7 +492,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -548,7 +548,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -604,7 +604,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -660,7 +660,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -716,7 +716,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -772,7 +772,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -828,7 +828,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -884,7 +884,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -940,7 +940,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -996,7 +996,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1052,7 +1052,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1108,7 +1108,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1164,7 +1164,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1220,7 +1220,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1276,7 +1276,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1332,7 +1332,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1388,7 +1388,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1444,7 +1444,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1500,7 +1500,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1556,7 +1556,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1612,7 +1612,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1668,7 +1668,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1725,7 +1725,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1781,7 +1781,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1837,7 +1837,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1893,7 +1893,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -1949,7 +1949,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2005,7 +2005,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2061,7 +2061,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2117,7 +2117,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2173,7 +2173,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2229,7 +2229,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2285,7 +2285,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2341,7 +2341,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2397,7 +2397,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2453,7 +2453,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2509,7 +2509,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2565,7 +2565,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2621,7 +2621,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2677,7 +2677,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2733,7 +2733,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2789,7 +2789,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2845,7 +2845,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2901,7 +2901,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -2957,7 +2957,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3013,7 +3013,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3069,7 +3069,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3125,7 +3125,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3181,7 +3181,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3237,7 +3237,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3293,7 +3293,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3349,7 +3349,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3406,7 +3406,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3462,7 +3462,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3518,7 +3518,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3574,7 +3574,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3630,7 +3630,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3686,7 +3686,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3742,7 +3742,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3798,7 +3798,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3854,7 +3854,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3910,7 +3910,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -3966,7 +3966,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4022,7 +4022,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4078,7 +4078,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4134,7 +4134,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4190,7 +4190,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4246,7 +4246,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4302,7 +4302,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4358,7 +4358,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4414,7 +4414,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4470,7 +4470,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4526,7 +4526,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4582,7 +4582,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4638,7 +4638,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4694,7 +4694,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4750,7 +4750,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4806,7 +4806,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4862,7 +4862,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4918,7 +4918,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -4974,7 +4974,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5030,7 +5030,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5086,7 +5086,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5142,7 +5142,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5198,7 +5198,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5254,7 +5254,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5310,7 +5310,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5366,7 +5366,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5422,7 +5422,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5478,7 +5478,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5534,7 +5534,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5590,7 +5590,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5646,7 +5646,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5702,7 +5702,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5758,7 +5758,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5814,7 +5814,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5870,7 +5870,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5926,7 +5926,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
@@ -5982,7 +5982,7 @@
 		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 		//"RingRadius"				"70"
 
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 

@@ -4,7 +4,7 @@ USE_LOBBY=false
 DEBUG=true
 THINK_TIME = 0.1
 
-DOTADASH_VERSION = "0.00.01"
+DOTADASH_VERSION = "0.01.00"
 
 GRAVITY_AMOUNT = -15
 SLIDE_MULTIPLIER = 0.20
@@ -45,11 +45,12 @@ end
 ITEMS_TABLE = {
   "item_rocket_boots",
   "item_green_turtle_shell",
-  "item_red_turtle_shell"
+  "item_red_turtle_shell",
+  "item_banana_peel"
 }
 
 ITEMS_NOT_FIRST = {
-  "item_blue_turtle_shell",
+  "item_blue_turtle_shell"
 }
 
 -- FILL MAP_DATA
@@ -419,7 +420,7 @@ function DotaDashGameMode:CaptureGameMode()
                     end)
                     
                     EmitSoundOnClient("Item.PickUpGemShop", PlayerResource:GetPlayer(unit:GetPlayerID()))
-                    local blueShellPerc = (position - 1) * 2
+                    local blueShellPerc = ((position - 1) * 2) * (10 / #self.vPlayers)
                     if RollPercentage(blueShellPerc) then
                       item = CreateItem(ITEMS_NOT_FIRST[RandomInt(1,#ITEMS_NOT_FIRST)], unit, unit)
                     else
@@ -1526,6 +1527,14 @@ function DotaDashGameMode:InitializeRound()
         unit.bBlockActive = true
       end
     end
+    
+    GameRules:SendCustomMessage("USE <font color='#FF3333'>dota_camera_lock 1</font> FOR THIS GAME", 0, 0)
+    Say(nil, "USE dota_camera_lock 1 FOR THIS GAME", false)
+    local msg = {
+      message = "USE dota_camera_lock 1",
+      duration = 0.9
+    }
+    FireGameEvent("show_center_message",msg)
     
     self:CreateTimer('reflexDetail', {
       endTime = GameRules:GetGameTime() + 5,

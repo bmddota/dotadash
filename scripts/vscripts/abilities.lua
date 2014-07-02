@@ -127,13 +127,125 @@ function hop(keys)
   forward.z = 0
   forward = forward:Normalized() * 100
   if caster.AddPhysicsVelocity ~=nil then
-    caster:AddPhysicsVelocity(Vector(forward.x,forward.y,325) + caster.vSlideVelocity)
+    caster:AddPhysicsVelocity(Vector(forward.x,forward.y,775) + caster.vSlideVelocity)
+    caster:AddPhysicsAcceleration(Vector(0,0,-20))
     DotaDashGameMode.vPlayers[caster:GetPlayerID()].bFlying = true
     DotaDashGameMode.vPlayers[caster:GetPlayerID()].fLastFriction = caster:GetPhysicsFriction()
     caster:PreventDI(true)
     caster:SetPhysicsFriction(0)
     caster:AddNewModifier(caster, nil, "modifier_pudge_meat_hook", {})
+    
+    DotaDashGameMode:CreateTimer(DoUniqueString('hop'), {
+      useGameTime = true,
+      endTime = GameRules:GetGameTime() + 2,
+      callback = function(reflex, args)
+        caster:AddPhysicsAcceleration(Vector(0,0,20))
+      end
+    })
   end
+end
+
+function bananaPeel(keys)
+  local caster = keys.caster
+  local backward = caster:GetForwardVector() * -1
+  
+  local banana = CreateUnitByName("npc_banana_peel", caster:GetAbsOrigin() + 75 * backward, false, caster, caster, caster:GetTeamNumber())
+  banana:AddNewModifier(unit, nil, "modifier_invulnerable", {})
+  banana:AddNewModifier(unit, nil, "modifier_phased", {})
+  local ability = banana:FindAbilityByName("reflex_dummy_unit")
+  ability:SetLevel(1)
+  
+  Physics:Unit(banana)
+  
+  banana:SetForwardVector(backward)
+  
+  banana:AddPhysicsVelocity(backward * 300)
+  banana:SetNavCollisionType(PHYSICS_NAV_BOUNCE)
+  banana:SetPhysicsAcceleration(Vector(0,0,GRAVITY_AMOUNT))
+  banana:SetPhysicsVelocityMax(1000)
+  banana:Slide(false)
+  banana:SetPhysicsFriction(FRICTION_MULTIPLIER)
+  banana:Hibernate(false)
+  
+  local timer = DoUniqueString('banana')
+  local timer2 = DoUniqueString('banana2')
+  local startTime = GameRules:GetGameTime() + 0.5
+  
+  banana:OnPhysicsFrame(function(unit)
+    --print('FIND')
+    -- Find
+    local pos = unit:GetAbsOrigin()
+    local ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", pos, 125)
+    local ent = nil
+    local dist = 1000
+    local gt = GameRules:GetGameTime()
+    local distance = nil
+    for k,v in pairs(ents) do
+      if gt > startTime or v ~= caster then
+        local diff = v:GetAbsOrigin() - pos
+        local l = diff:Length()
+        if l < dist then
+          dist = l
+          ent = v
+          distance = diff
+        end
+      end
+    end
+    
+    if ent ~= nil and ent.GetPhysicsVelocity ~= nil then
+      
+      -- Stop if reached the unit
+      if distance:Length() < 125 and distance.z < 40 then
+        ent:EmitSound("dotadash.slip")
+        
+        --[[local particle = ParticleManager:CreateParticle("nian_roar_prj_gasexplode_shockwave", PATTACH_POINT, ent)
+        ParticleManager:SetParticleControl(particle, 0, Vector(0,0,0))
+        ParticleManager:SetParticleControl(particle, 1, Vector(50,5,1)) -- radius, thickness, speed
+        ParticleManager:SetParticleControl(particle, 3, ent:GetAbsOrigin()) -- position]]
+        
+        
+        ent:PreventDI(true)
+        ent:AddNewModifier(ent, nil, "modifier_silence", {duration = 2.0})
+        ent:AddNewModifier(ent, nil, "modifier_pudge_meat_hook", {duration = 2.0})
+        ent:AddPhysicsVelocity(ent:GetPhysicsVelocity() * (-1/3))
+        local fric = ent:GetPhysicsFriction()
+        DotaDashGameMode.fLastFriction = fric
+        ent:SetPhysicsFriction(.01)
+        
+        local done = GameRules:GetGameTime() + 2.0
+        DotaDashGameMode:CreateTimer(timer2, {
+          useGameTime = true,
+          endTime = GameRules:GetGameTime() + .1,
+          callback = function(reflex, args)
+            if GameRules:GetGameTime() > done then
+              ent:PreventDI(false)
+              ent:SetPhysicsFriction(DotaDashGameMode.fLastFriction)
+              return
+            end
+            if IsValidEntity(banana) then
+              ent:PreventDI(true)
+            end
+            return GameRules:GetGameTime() + .1
+          end
+        })
+        
+        DotaDashGameMode:RemoveTimer(timer)
+        banana:StopPhysicsSimulation()
+        banana:Destroy()
+      end
+    end
+  end)
+  
+  DotaDashGameMode:CreateTimer(timer, {
+    useGameTime = true,
+    endTime = GameRules:GetGameTime() + 100,
+    callback = function(reflex, args)
+      if IsValidEntity(banana) then
+        banana:StopPhysicsSimulation()
+        banana:Destroy()
+      end
+    end
+  })
 end
 
 function redTurtleShell(keys)
