@@ -289,7 +289,7 @@
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemPurchasable"				"0"
     "ItemPermanent"					"0"
-		"ItemInitialCharges"			"3"
+		"ItemInitialCharges"			"2"
 		"ItemDisplayCharges"			"1"
 		"SecretShop"						"1"
 
