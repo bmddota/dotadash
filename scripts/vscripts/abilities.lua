@@ -234,6 +234,90 @@ function redTurtleShell(keys)
   })
 end
 
+function blueTurtleShell(keys)
+  local caster = keys.caster
+  local forward = caster:GetForwardVector()
+  
+  local shell = CreateUnitByName("npc_blue_turtle_shell", caster:GetAbsOrigin() + 75 * forward, false, caster, caster, caster:GetTeamNumber())
+  shell:AddNewModifier(unit, nil, "modifier_invulnerable", {})
+  shell:AddNewModifier(unit, nil, "modifier_phased", {})
+  local ability = shell:FindAbilityByName("reflex_dummy_unit")
+  ability:SetLevel(1)
+  
+  Physics:Unit(shell)
+  --shell:SetBaseMoveSpeed(BASE_MOVESPEED)
+  shell:FollowNavMesh(false)
+  shell:SetAutoUnstuck(false)
+  shell:SetNavCollisionType(PHYSICS_NAV_NOTHING)
+  shell:SetPhysicsAcceleration(Vector(0,0,0))
+  shell:SetPhysicsVelocityMax(2000)
+  shell:Slide(false)
+  shell:SetPhysicsFriction(0)
+  
+  local timer = DoUniqueString('bluehsell')
+  
+  local first = nil
+  local maxPos = -1
+  local points = #MAP_DATA[GetMapName()].waypoints
+  
+  DotaDashGameMode:LoopOverPlayers(function(ply, plyID)
+    local pos = (ply.nLap - 1) * points + (ply.nCurWaypoint - 1)
+    if pos > maxPos then
+      first = ply.hero
+      maxPos = pos
+    end
+  end)
+  
+  shell:AddPhysicsVelocity(1000 * forward)
+  
+  shell:OnPhysicsFrame(function(unit)
+    local forward = unit:GetForwardVector()
+    
+    unit:SetForwardVector(RotatePosition( Vector(0,0,0), QAngle(0, 720 / 30, 0), forward ))
+    
+    local ent = first
+    
+    if ent ~= nil and ent.GetPhysicsVelocity ~= nil then
+      local distance = ent:GetAbsOrigin() - shell:GetAbsOrigin()
+      local direction = distance:Normalized()
+      direction.z = 0
+      shell:SetPhysicsAcceleration(direction * 300 + Vector(0,0,0))
+      
+      local dist = distance:Length()
+      if dist < 2000 or shell:GetAbsOrigin().z >= 700 then
+        shell:AddPhysicsVelocity(Vector(0,0,-1 * math.abs(distance.z)))
+      else
+        shell:AddPhysicsVelocity(Vector(0,0,10))
+      end
+      
+      -- Stop if reached the unit
+      if distance:Length() < 150 then
+        ent:EmitSound("Hero_Alchemist.UnstableConcoction.Stun")
+
+        local particle = ParticleManager:CreateParticle("nian_roar_prj_gasexplode_shockwave", PATTACH_POINT, ent)
+        ParticleManager:SetParticleControl(particle, 0, Vector(0,0,0))
+        ParticleManager:SetParticleControl(particle, 1, Vector(50,5,1)) -- radius, thickness, speed
+        ParticleManager:SetParticleControl(particle, 3, ent:GetAbsOrigin()) -- position
+        
+        
+        ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", shell:GetAbsOrigin(), 450)
+        for k,v in pairs(ents) do
+          if v.AddPhysicsVelocity ~= nil and IsValidEntity(v) then
+            local vel = v:GetPhysicsVelocity()
+            v:AddPhysicsVelocity(vel * (-2/3) + Vector(0,0,600) + direction * 150)
+            v:AddNewModifier(v, nil, "modifier_silence", {duration = 2.5})
+          end
+        end
+        
+        shell:StopPhysicsSimulation()
+        shell:Destroy()
+      end
+    end
+  end)
+end
+  
+
+
 function rocketBoots(keys)
   local caster = keys.caster
   local forward = caster:GetForwardVector()
@@ -273,12 +357,9 @@ end
 
 function printPoint(keys)
   local point = keys.target_points[1]
-  local navX = GridNav:WorldToGridPosX(point.x) + #MAP_DATA[GetMapName()].anggrid / 2
-  local navY = GridNav:WorldToGridPosY(point.y) + #MAP_DATA[GetMapName()].anggrid / 2
+  local navX = #MAP_DATA[GetMapName()].anggrid - (GridNav:WorldToGridPosX(point.x) + #MAP_DATA[GetMapName()].anggrid / 2)
+  local navY = #MAP_DATA[GetMapName()].anggrid - (GridNav:WorldToGridPosY(point.y) + #MAP_DATA[GetMapName()].anggrid / 2)
   
-  print(MAP_DATA[GetMapName()])
-  print(#MAP_DATA[GetMapName()].anggrid)
-  print(#MAP_DATA[GetMapName()].anggrid[1])
   print(navX)
   print(navY)
   print('X=' .. tostring(navX) .. ", Y=" .. tostring(navY) .. ", ang=" .. tostring(MAP_DATA[GetMapName()].anggrid[navX][navY]))

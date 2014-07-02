@@ -26,6 +26,7 @@ function Physics:start()
   self.reflectGroups = {}
   self.blockGroups = {}
   self.projectiles = {}
+  self.anggrid = nil
   
   local wspawn = Entities:FindByClassname(nil, 'worldspawn')
   wspawn:SetContextThink("PhysicsThink", Dynamic_Wrap( Physics, 'Think' ), PHYSICS_THINK )
@@ -144,6 +145,11 @@ end
       SPLIT
       "TBD"
 ]]
+
+function Physics:AngleGrid( anggrid )
+  self.anggrid = anggrid
+  print('[PHYSICS] Angle Grid Set')
+end
 
 function Physics:Unit(unit)
   function unit:StopPhysicsSimulation ()
@@ -521,120 +527,126 @@ function Physics:Unit(unit)
             local navPos = Vector(GridNav:GridPosToWorldCenterX(navX), GridNav:GridPosToWorldCenterY(navY), 0)
             unit.nRebounceFrames = unit.nMaxRebounce
             
-            --local face = navPos - position
-            --print("face: " .. tostring(face)) 
-            local dir = navPos - position
-            dir.z = 0
-            dir = dir:Normalized()
-            local normal = Vector(1,0,0)
-            -- Nav bounce checks
-            --local angx = (math.acos(dir.x)/ math.pi * 180)
-            --local angy = (math.acos(dir.y)/ math.pi * 180)
-            print(tostring(dir:Length()) .. " -- " .. tostring(dir))
-            print(dir:Dot(Vector(1,0,0)))
-            print(dir:Dot(Vector(-1,0,0)))
-            print(dir:Dot(Vector(0,1,0)))
-            print(dir:Dot(Vector(0,-1,0)))
-            print('---------------')
-            local vVelocity = unit.vVelocity
-            if dir:Dot(Vector(1,0,0)) > .707 then
-              normal = Vector(1,0,0)
-              local navPos2 = navPos + Vector(-64,0,0)
-              local navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-              if navConnect2 then
-                if vVelocity.y > 0 then
-                  normal = Vector(0,1,0)
-                  navPos2 = navPos + Vector(0,-64,0)
-                  navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-                  if navConnect2 then
-                    normal = diff * -1
-                  end
-                else
-                  normal = Vector(0,-1,0)
-                  navPos2 = navPos + Vector(0,64,0)
-                  navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-                  if navConnect2 then
-                    normal = diff * -1
-                  end
-                end
-              end
-            elseif dir:Dot(Vector(-1,0,0)) > .707 then
-              normal = Vector(-1,0,0)
-              local navPos2 = navPos + Vector(64,0,0)
-              local navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-              if navConnect2 then
-                if vVelocity.y > 0 then
-                  normal = Vector(0,1,0)
-                  navPos2 = navPos + Vector(0,-64,0)
-                  navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-                  if navConnect2 then
-                    normal = diff * -1
-                  end
-                else
-                  normal = Vector(0,-1,0)
-                  navPos2 = navPos + Vector(0,64,0)
-                  navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-                  if navConnect2 then
-                    normal = diff * -1
-                  end
-                end
-              end
-            elseif dir:Dot(Vector(0,1,0)) > .707 then
-              normal = Vector(0,1,0)
-              local navPos2 = navPos + Vector(0,-64,0)
-              local navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-              if navConnect2 then
-                if vVelocity.x > 0 then
-                  normal = Vector(1,0,0)
-                  navPos2 = navPos + Vector(-64,0,0)
-                  navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-                  if navConnect2 then
-                    normal = diff * -1
-                  end
-                else
-                  normal = Vector(-1,0,0)
-                  navPos2 = navPos + Vector(64,0,0)
-                  navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-                  if navConnect2 then
-                    normal = diff * -1
-                  end
-                end
-              end
-            elseif dir:Dot(Vector(0,-1,0)) > .707 then
-              normal = Vector(0,-1,0)
-              local navPos2 = navPos + Vector(0,64,0)
-              local navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-              if navConnect2 then
-                if vVelocity.x > 0 then
-                  normal = Vector(-1,0,0)
-                  navPos2 = navPos + Vector(-64,0,0)
-                  navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-                  if navConnect2 then
-                    normal = diff * -1
-                  end
-                else
-                  normal = Vector(0,-1,0)
-                  navPos2 = navPos + Vector(64,0,0)
-                  navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
-                  if navConnect2 then
-                    normal = diff * -1
-                  end
-                end
+            local normal = nil
+            local anggrid = self.anggrid
+            if anggrid then
+              local angSize = #anggrid
+              local angX = #anggrid / 2 - navX
+              local angY = #anggrid / 2 - navY
+              
+              local angle = anggrid[angX][angY]
+              if angle ~= -1 then
+                angle = angle + 90
+                normal = RotatePosition(Vector(0,0,0), QAngle(0,angle,0), Vector(0,-1,0))
+                --print(normal)
+                --print('----------')
               end
             end
             
-            --[[if face.x > 0 and math.abs(face.x) > math.abs(face.y) then
-              normal = Vector(1,0,0)
-            elseif face.x < 0 and math.abs(face.x) > math.abs(face.y) then
-              normal = Vector(-1,0,0)
-            elseif face.y > 0 and math.abs(face.y) > math.abs(face.x) then
-              normal = Vector(0,1,0)
-            elseif face.y < 0 and math.abs(face.y) > math.abs(face.x) then
-              normal = Vector(0,-1,0)
-            end]]
-            
-            --FindClearSpaceForUnit(unit, newPos, true)
-            --print(tostring(unit:GetAbsOrigin()) .. " -- " .. tostring(navPos))
+            if normal == nil then
+              --local face = navPos - position
+              --print("face: " .. tostring(face)) 
+              local dir = navPos - position
+              dir.z = 0
+              dir = dir:Normalized()
+              -- Nav bounce checks
+              --local angx = (math.acos(dir.x)/ math.pi * 180)
+              --local angy = (math.acos(dir.y)/ math.pi * 180)
+              --print(tostring(dir:Length()) .. " -- " .. tostring(dir))
+              --print(dir:Dot(Vector(1,0,0)))
+              --print(dir:Dot(Vector(-1,0,0)))
+              --print(dir:Dot(Vector(0,1,0)))
+              --print(dir:Dot(Vector(0,-1,0)))
+              --print('---------------')
+              local vVelocity = unit.vVelocity
+              if dir:Dot(Vector(1,0,0)) > .707 then
+                normal = Vector(1,0,0)
+                local navPos2 = navPos + Vector(-64,0,0)
+                local navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                if navConnect2 then
+                  if vVelocity.y > 0 then
+                    normal = Vector(0,1,0)
+                    navPos2 = navPos + Vector(0,-64,0)
+                    navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                    if navConnect2 then
+                      normal = diff * -1
+                    end
+                  else
+                    normal = Vector(0,-1,0)
+                    navPos2 = navPos + Vector(0,64,0)
+                    navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                    if navConnect2 then
+                      normal = diff * -1
+                    end
+                  end
+                end
+              elseif dir:Dot(Vector(-1,0,0)) > .707 then
+                normal = Vector(-1,0,0)
+                local navPos2 = navPos + Vector(64,0,0)
+                local navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                if navConnect2 then
+                  if vVelocity.y > 0 then
+                    normal = Vector(0,1,0)
+                    navPos2 = navPos + Vector(0,-64,0)
+                    navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                    if navConnect2 then
+                      normal = diff * -1
+                    end
+                  else
+                    normal = Vector(0,-1,0)
+                    navPos2 = navPos + Vector(0,64,0)
+                    navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                    if navConnect2 then
+                      normal = diff * -1
+                    end
+                  end
+                end
+              elseif dir:Dot(Vector(0,1,0)) > .707 then
+                normal = Vector(0,1,0)
+                local navPos2 = navPos + Vector(0,-64,0)
+                local navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                if navConnect2 then
+                  if vVelocity.x > 0 then
+                    normal = Vector(1,0,0)
+                    navPos2 = navPos + Vector(-64,0,0)
+                    navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                    if navConnect2 then
+                      normal = diff * -1
+                    end
+                  else
+                    normal = Vector(-1,0,0)
+                    navPos2 = navPos + Vector(64,0,0)
+                    navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                    if navConnect2 then
+                      normal = diff * -1
+                    end
+                  end
+                end
+              elseif dir:Dot(Vector(0,-1,0)) > .707 then
+                normal = Vector(0,-1,0)
+                local navPos2 = navPos + Vector(0,64,0)
+                local navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                if navConnect2 then
+                  if vVelocity.x > 0 then
+                    normal = Vector(-1,0,0)
+                    navPos2 = navPos + Vector(-64,0,0)
+                    navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                    if navConnect2 then
+                      normal = diff * -1
+                    end
+                  else
+                    normal = Vector(0,-1,0)
+                    navPos2 = navPos + Vector(64,0,0)
+                    navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
+                    if navConnect2 then
+                      normal = diff * -1
+                    end
+                  end
+                end
+              end
+              --FindClearSpaceForUnit(unit, newPos, true)
+              --print(tostring(unit:GetAbsOrigin()) .. " -- " .. tostring(navPos))
+            end
             newVelocity = (-2 * newVelocity:Dot(normal) * normal) + newVelocity
           end
         else

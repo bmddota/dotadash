@@ -10,7 +10,7 @@ GRAVITY_AMOUNT = -15
 SLIDE_MULTIPLIER = 0.20
 FRICTION_MULTIPLIER = 0.04
 BASE_MOVESPEED = 250
-VELOCITY_MAX = 1500
+VELOCITY_MAX = 2000
 VELOCITY_CLAMP = 10
 TAKEOFF_VELOCITY = 500 / 30
 LAPS_TO_WIN = 3
@@ -49,13 +49,14 @@ ITEMS_TABLE = {
 }
 
 ITEMS_NOT_FIRST = {
-  "item_rocket_boots",
-  "item_green_turtle_shell",
-  "item_red_turtle_shell"
+  "item_blue_turtle_shell",
 }
 
 -- FILL MAP_DATA
 require("map_" .. GetMapName())
+if MAP_DATA[GetMapName()].anggrid then
+  Physics:AngleGrid(MAP_DATA[GetMapName()].anggrid)
+end
 
 --[[MAP_DATA = {
   dash = {
@@ -276,6 +277,7 @@ function DotaDashGameMode:InitGameMode()
   self.nCurrentRound = 1
   self.nCurrentLap = 1
   self.nFinishLineCrossed = 0
+  self.vPositions = {}
 
   -- Timers
   self.timers = {}
@@ -399,11 +401,32 @@ function DotaDashGameMode:CaptureGameMode()
                 useGameTime = true,
                 endTime = GameRules:GetGameTime() + 3,
                 callback = function(reflex, args)
-                  item:Destroy()
-                  
-                  EmitSoundOnClient("Item.PickUpGemShop", PlayerResource:GetPlayer(unit:GetPlayerID()))
-                  item = CreateItem(ITEMS_TABLE[RandomInt(1,#ITEMS_TABLE)], unit, unit)
-                  unit:AddItem(item)
+                  if IsValidEntity(item) then
+                    item:Destroy()
+                    
+                    local points = #MAP_DATA[GetMapName()].waypoints
+                    local player = self.vPlayers[unit:GetPlayerID()]
+                    local myPos = (player.nLap -1) * points + (player.nCurWaypoint - 1)
+                    
+                    local position = 1
+                    
+                    
+                    DotaDashGameMode:LoopOverPlayers(function(ply, plyID)
+                      local pos = (ply.nLap - 1) * points + (ply.nCurWaypoint - 1)
+                      if pos > myPos then
+                        position = position + 1
+                      end
+                    end)
+                    
+                    EmitSoundOnClient("Item.PickUpGemShop", PlayerResource:GetPlayer(unit:GetPlayerID()))
+                    local blueShellPerc = (position - 1) * 2
+                    if RollPercentage(blueShellPerc) then
+                      item = CreateItem(ITEMS_NOT_FIRST[RandomInt(1,#ITEMS_NOT_FIRST)], unit, unit)
+                    else
+                      item = CreateItem(ITEMS_TABLE[RandomInt(1,#ITEMS_TABLE)], unit, unit)
+                    end
+                    unit:AddItem(item)
+                  end
                 end
               })
             end
@@ -968,6 +991,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
         }
         print ('[DOTADASH] playerID: ' .. playerID)
         self.vPlayers[playerID] = heroTable
+        self.vPositions[#self.vPositions] = heroTable
 
         print ( "[DOTADASH] setting stuff for player"  .. playerID)
         --heroEntity:__KeyValueFromInt('StatusManaRegen', 100)
@@ -1054,7 +1078,12 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
             heroTable.bFlying = true
           elseif heroTable.bFlying and pos.z <= groundPos.z then
             unit:PreventDI(false)
-            unit:SetPhysicsFriction(heroTable.fLastFriction)
+            if heroTable.fLastFriction == 0 then
+              unit:SetPhysicsFriction(FRICTION_MULTIPLIER)
+              heroTable.fLastFriction = FRICTION_MULTIPLIER
+            else
+              unit:SetPhysicsFriction(heroTable.fLastFriction)
+            end
             heroTable.bFlying = false
             unit:RemoveModifierByName("modifier_pudge_meat_hook")
           end
@@ -1079,6 +1108,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
             unit.lastWaypoint = waypoint.middle
             curWaypoint = curWaypoint + 1
             heroTable.nCurWaypoint = curWaypoint
+            
             if curWaypoint > #waypoints then
               heroTable.nLap = heroTable.nLap + 1
               
@@ -1912,6 +1942,11 @@ function hasPowerup(unit)
   end
   for i=1,#ITEMS_TABLE do
     if unit:HasItemInInventory(ITEMS_TABLE[i]) then
+      return true
+    end
+  end
+  for i=1,#ITEMS_NOT_FIRST do
+    if unit:HasItemInInventory(ITEMS_NOT_FIRST[i]) then
       return true
     end
   end
