@@ -219,7 +219,7 @@ function bananaPeel(keys)
           callback = function(reflex, args)
             if GameRules:GetGameTime() > done then
               ent:PreventDI(false)
-              ent:SetPhysicsFriction(DotaDashGameMode.fLastFriction)
+              ent:SetPhysicsFriction(FRICTION_MULTIPLIER)
               return
             end
             if IsValidEntity(banana) then
