@@ -48,7 +48,16 @@ ITEMS_TABLE = {
   "item_red_turtle_shell"
 }
 
-MAP_DATA = {
+ITEMS_NOT_FIRST = {
+  "item_rocket_boots",
+  "item_green_turtle_shell",
+  "item_red_turtle_shell"
+}
+
+-- FILL MAP_DATA
+require("map_" .. GetMapName())
+
+--[[MAP_DATA = {
   dash = {
     waypoints = {
       {from = Vector(-6145,-36,256), to = Vector(-6149,-638,256)},
@@ -94,7 +103,7 @@ MAP_DATA = {
       {from = Vector(0,0,128), to = Vector(0,300,128)},
       {from = Vector(0,0,128), to = Vector(300,0,128)},
       {from = Vector(0,0,128), to = Vector(0,-300,128)},
-      {from = Vector(0,0,128), to = Vector(-300,0,128)--[[, particle = "ref_dark_seer_wall_of_replica"]]},
+      {from = Vector(0,0,128), to = Vector(-300,0,128)},--, particle = "ref_dark_seer_wall_of_replica"},
       {from = Vector(-1000,-500,0), to = Vector(-1000,500,0), particle = "ref_dark_seer_wall_of_replica"}
     },
     powerups = {
@@ -106,13 +115,15 @@ MAP_DATA = {
       {from = Vector(0,0,0), to = Vector(0,0,0)},
       {from = Vector(0,0,0), to = Vector(0,0,0)},
       {from = Vector(0,0,0), to = Vector(0,0,0)},
-      {from = Vector(0,0,0), to = Vector(0,0,0)--[[, particle = "ref_dark_seer_wall_of_replica"]]},
+      {from = Vector(0,0,0), to = Vector(0,0,0)},--, particle = "ref_dark_seer_wall_of_replica"},
     },
     powerups = {
       {origin = Vector(0,1000,140)}
     }
   }
-}
+}]]
+
+
 
 bInPreRound = true
 roundOne = true
@@ -688,6 +699,7 @@ function DotaDashGameMode:PlayerSay(keys)
   
   if DEBUG and string.find(text, "^-phys") then
     --PlayerResource:SetCameraTarget(plyID, player.hero)
+    --player.hero:AddNewModifier(player.hero, nil, "modifier_camera_follow", {})
   end
   
   local vel1,vel2,vel3 = string.match(text, "^-vel%s+(-?%d+)%s+(-?%d+)%s+(-?%d+)")
@@ -942,6 +954,9 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
           nTotalScore = 0,
           nRoundPosition = 0,
           nLap = 1,
+          nCurWaypoint = 1,
+          oNextWayPointEntity = nil,
+          fLastFriction = FRICTION_MULTIPLIER,
           vAbilities = {
             "reflex_empty1",
             "reflex_empty2",
@@ -986,17 +1001,15 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
         unit:SetPhysicsVelocityMax(VELOCITY_MAX)
         local mapdata = MAP_DATA[GetMapName()]
         local waypoints = mapdata.waypoints
-        local curWaypoint = 1
-        local lap = 1
         local frameCount = 0
         unit.lastWaypoint = unit:GetAbsOrigin()
-        local nextWaypointEntity = CreateUnitByName("npc_firefly_dummy", waypoints[1].middle + Vector(0,0,160), false, unit, unit, unit:GetTeamNumber())
-        nextWaypointEntity:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-        nextWaypointEntity:AddNewModifier(unit, nil, "modifier_phased", {})
-        local ability = nextWaypointEntity:FindAbilityByName("reflex_dummy_unit")
+        heroTable.oNextWayPointEntity = CreateUnitByName("npc_firefly_dummy", waypoints[1].middle + Vector(0,0,160), false, unit, unit, unit:GetTeamNumber())
+        heroTable.oNextWayPointEntity:AddNewModifier(unit, nil, "modifier_invulnerable", {})
+        heroTable.oNextWayPointEntity:AddNewModifier(unit, nil, "modifier_phased", {})
+        local ability = heroTable.oNextWayPointEntity:FindAbilityByName("reflex_dummy_unit")
         ability:SetLevel(1)
         --bloodseeker_rupture
-        local particle = ParticleManager:CreateParticleForPlayer("keeper_of_the_light_recall", PATTACH_OVERHEAD_FOLLOW, nextWaypointEntity, ply)--cmdPlayer:GetAssignedHero())
+        local particle = ParticleManager:CreateParticleForPlayer("keeper_of_the_light_recall", PATTACH_OVERHEAD_FOLLOW, heroTable.oNextWayPointEntity, ply)--cmdPlayer:GetAssignedHero())
         --ParticleManager:SetParticleControl(particle, 0, Vector(0,0,0)) -- something
         --ParticleManager:SetParticleControl(particle, 1, Vector(radius,1,1)) -- endpoint
         --ParticleManager:SetParticleControl(particle, 2, Vector(0,0,0)) -- something
@@ -1009,9 +1022,13 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
         if ability ~= nil then
           ability:SetLevel(1)
         end
+        ability = unit:FindAbilityByName("dota_dash_hop")
+        if ability ~= nil then
+          ability:SetLevel(1)
+        end
         
-        local lastFriction = 0.05
         unit:OnPhysicsFrame(function(unit)
+          
           frameCount = (frameCount + 1) % 30
           --Fix acceleration
           local accel = unit:GetPhysicsAcceleration()
@@ -1031,17 +1048,18 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
           if not heroTable.bFlying and pos.z > groundPos.z and unit.vVelocity:Length() > TAKEOFF_VELOCITY then
             unit:PreventDI(true)
             unit:AddPhysicsVelocity(unit.vSlideVelocity)
-            lastFriction = unit:GetPhysicsFriction()
+            heroTable.fLastFriction = unit:GetPhysicsFriction()
             unit:SetPhysicsFriction(0)
             unit:AddNewModifier(unit, nil, "modifier_pudge_meat_hook", {})
             heroTable.bFlying = true
           elseif heroTable.bFlying and pos.z <= groundPos.z then
             unit:PreventDI(false)
-            unit:SetPhysicsFriction(lastFriction)
+            unit:SetPhysicsFriction(heroTable.fLastFriction)
             heroTable.bFlying = false
             unit:RemoveModifierByName("modifier_pudge_meat_hook")
           end
           
+          local curWaypoint = heroTable.nCurWaypoint
           -- Collision for waypoints
           local waypoint = waypoints[curWaypoint]
           pos.z = 0
@@ -1060,6 +1078,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
             print('hit waypoint: ' .. curWaypoint)
             unit.lastWaypoint = waypoint.middle
             curWaypoint = curWaypoint + 1
+            heroTable.nCurWaypoint = curWaypoint
             if curWaypoint > #waypoints then
               heroTable.nLap = heroTable.nLap + 1
               
@@ -1097,6 +1116,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
               end
               
               curWaypoint = 1
+              heroTable.nCurWaypoint = 1
               --print('hit last waypoint, New Lap: ' .. tostring(heroTable.nLap))
               if heroTable.nLap > LAPS_TO_WIN then
                 GameRules:SendCustomMessage("<font color='#44FF44'>" .. name .. "</font> has finished the race!", 0, 0)
@@ -1114,7 +1134,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
               EmitSoundOnClient("Bottle.Cork", ply)
             end
             
-            nextWaypointEntity:SetAbsOrigin(waypoints[curWaypoint].middle + Vector(0,0,160))
+            heroTable.oNextWayPointEntity:SetAbsOrigin(waypoints[curWaypoint].middle + Vector(0,0,160))
           end
           
           
@@ -1177,6 +1197,9 @@ function DotaDashGameMode:CompletedRace(unit)
   Say(nil, player.name .. " came in " .. tostring(self.nFinishLineCrossed) .. suffix .. "! -- Points: " .. score, false)
   
   player.nTotalScore = player.nTotalScore + score
+  for i=1,score do
+    PlayerResource:IncrementKills(plyID, 1)
+  end
   player.nRoundPosition = nFinishLineCrossed
   
   if self.nFinishLineCrossed == #self.vPlayers + 1 then
@@ -1344,6 +1367,7 @@ function DotaDashGameMode:InitializeRound()
   self.nCurrentRound = self.nCurrentRound + 1
   self.nCurrentLap = 1
   self.nFinishLineCrossed = 0
+  local mapdata = MAP_DATA[GetMapName()]
   
   --cancelTimer = false
   --Init Round (give level ups/points/gold back)
@@ -1360,7 +1384,7 @@ function DotaDashGameMode:InitializeRound()
         player.bRoundInit = true
         player.hero:SkipSlide(30)
         player.hero:RespawnHero(false, false, false)
-        SendToConsole("dota_camera_lock 1")
+        --SendToConsole("dota_camera_lock 1")
         player.hero:SetPhysicsVelocity(Vector(0,0,0))
         --player.hero:RespawnUnit()
         player.nKillsThisRound = 0
@@ -1373,6 +1397,13 @@ function DotaDashGameMode:InitializeRound()
         
         player.nLap = 1
         player.nRoundPosition = 0
+        if mapdata == nil then
+          print('[DOTADASH] ERROR: NO MAP DATA FOR THIS RACE')
+        else
+          local waypoints = mapdata.waypoints
+          player.nCurWaypoint = 1
+          player.oNextWayPointEntity:SetAbsOrigin(waypoints[1].middle + Vector(0,0,160))
+        end
 
         for i=0,11 do
           local item = player.hero:GetItemInSlot( i )
@@ -1400,7 +1431,6 @@ function DotaDashGameMode:InitializeRound()
   
   if roundOne then
     --Create Waypoints
-    local mapdata = MAP_DATA[GetMapName()]
     if mapdata == nil then
       print('[DOTADASH] ERROR: NO MAP DATA FOR THIS RACE')
     else

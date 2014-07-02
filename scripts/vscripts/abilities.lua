@@ -65,38 +65,49 @@ function greenTurtleShell(keys)
     
     unit:SetForwardVector(RotatePosition( Vector(0,0,0), QAngle(0, 720 / 30, 0), forward ))
     
-    -- Find if we hit anyone
-    local ent = Entities:FindByClassnameWithin(nil, "npc_dota_hero*", unit:GetAbsOrigin(), 150)
-    if ent == caster then
-      ent = Entities:FindByClassnameWithin(ent, "npc_dota_hero*", unit:GetAbsOrigin(), 150)
+    local pos = unit:GetAbsOrigin()
+    local ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", pos, 125)
+    local ent = nil
+    local dist = 1000
+    for k,v in pairs(ents) do
+      if v ~= caster then
+        local diff = v:GetAbsOrigin() - pos
+        local l = diff:Length()
+        if l < dist then
+          dist = l
+          ent = v
+        end
+      end
     end
     
     if ent ~= nil and ent.GetPhysicsVelocity ~= nil then
       local distance = ent:GetAbsOrigin() - shell:GetAbsOrigin()
-      local direction = distance:Normalized()
-      
-      ent:EmitSound("Hero_Alchemist.UnstableConcoction.Stun")
-      --ent:AddNewModifier(ent, nil, "modifier_stunned", {duration = 2.5})
-      --local vel = ent:GetPhysicsVelocity()
-      --ent:AddPhysicsVelocity(vel * (-2/3) + Vector(0,0,600)  + direction * 150)
-      
-      local particle = ParticleManager:CreateParticle("nian_roar_prj_gasexplode_shockwave", PATTACH_POINT, ent)
-      ParticleManager:SetParticleControl(particle, 0, Vector(0,0,0))
-      ParticleManager:SetParticleControl(particle, 1, Vector(50,5,1)) -- radius, thickness, speed
-      ParticleManager:SetParticleControl(particle, 3, ent:GetAbsOrigin()) -- position
-      
-      local ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", shell:GetAbsOrigin(), 450)
-      for k,v in pairs(ents) do
-        if v.AddPhysicsVelocity ~= nil and IsValidEntity(v) then
-          local vel = v:GetPhysicsVelocity()
-          v:AddPhysicsVelocity(vel * (-2/3) + Vector(0,0,600) + direction * 150)
-          v:AddNewModifier(v, nil, "modifier_ember_spirit_searing_chains", {duration = 2.5})
+      if distance.z < 40 then
+        local direction = distance:Normalized()
+        
+        ent:EmitSound("Hero_Alchemist.UnstableConcoction.Stun")
+        --ent:AddNewModifier(ent, nil, "modifier_stunned", {duration = 2.5})
+        --local vel = ent:GetPhysicsVelocity()
+        --ent:AddPhysicsVelocity(vel * (-2/3) + Vector(0,0,600)  + direction * 150)
+        
+        local particle = ParticleManager:CreateParticle("nian_roar_prj_gasexplode_shockwave", PATTACH_POINT, ent)
+        ParticleManager:SetParticleControl(particle, 0, Vector(0,0,0))
+        ParticleManager:SetParticleControl(particle, 1, Vector(50,5,1)) -- radius, thickness, speed
+        ParticleManager:SetParticleControl(particle, 3, ent:GetAbsOrigin()) -- position
+        
+        local ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", shell:GetAbsOrigin(), 450)
+        for k,v in pairs(ents) do
+          if v.AddPhysicsVelocity ~= nil and IsValidEntity(v) then
+            local vel = v:GetPhysicsVelocity()
+            v:AddPhysicsVelocity(vel * (-2/3) + Vector(0,0,600) + direction * 150)
+            v:AddNewModifier(v, nil, "modifier_silence", {duration = 2.5})
+          end
         end
+        
+        DotaDashGameMode:RemoveTimer(timer)
+        shell:StopPhysicsSimulation()
+        shell:Destroy()
       end
-      
-      DotaDashGameMode:RemoveTimer(timer)
-      shell:StopPhysicsSimulation()
-      shell:Destroy()
     end
   end)
   
@@ -108,6 +119,21 @@ function greenTurtleShell(keys)
       shell:Destroy()
     end
   })
+end
+
+function hop(keys)
+  local caster = keys.caster
+  local forward = caster:GetForwardVector()
+  forward.z = 0
+  forward = forward:Normalized() * 100
+  if caster.AddPhysicsVelocity ~=nil then
+    caster:AddPhysicsVelocity(Vector(forward.x,forward.y,325) + caster.vSlideVelocity)
+    DotaDashGameMode.vPlayers[caster:GetPlayerID()].bFlying = true
+    DotaDashGameMode.vPlayers[caster:GetPlayerID()].fLastFriction = caster:GetPhysicsFriction()
+    caster:PreventDI(true)
+    caster:SetPhysicsFriction(0)
+    caster:AddNewModifier(caster, nil, "modifier_pudge_meat_hook", {})
+  end
 end
 
 function redTurtleShell(keys)
@@ -124,13 +150,23 @@ function redTurtleShell(keys)
   --shell:SetBaseMoveSpeed(BASE_MOVESPEED)
   shell:SetNavCollisionType(PHYSICS_NAV_BOUNCE)
   shell:SetPhysicsAcceleration(Vector(0,0,GRAVITY_AMOUNT))
-  shell:SetPhysicsVelocityMax(1200)
+  shell:SetPhysicsVelocityMax(keys.Speed)
   shell:Slide(false)
   shell:SetPhysicsFriction(0)
   
   local timer = DoUniqueString('redshell')
+  local timer2 = DoUniqueString('redactive')
   
   shell:AddPhysicsVelocity(tonumber(keys.Speed) * forward)
+  shell.bAcquire = false
+  
+  DotaDashGameMode:CreateTimer(timer2, {
+    useGameTime = true,
+    endTime = GameRules:GetGameTime() + 0.5,
+    callback = function(reflex, args)
+      shell.bAcquire = true
+    end
+  })
   
   shell:OnPhysicsFrame(function(unit)
     local forward = unit:GetForwardVector()
@@ -157,10 +193,12 @@ function redTurtleShell(keys)
       local distance = ent:GetAbsOrigin() - shell:GetAbsOrigin()
       local direction = distance:Normalized()
       direction.z = 0
-      shell:SetPhysicsAcceleration(direction * 115 + Vector(0,0,GRAVITY_AMOUNT))
+      if unit.bAcquire then 
+        shell:SetPhysicsAcceleration(direction * 115 + Vector(0,0,GRAVITY_AMOUNT))
+      end
       
       -- Stop if reached the unit
-      if distance:Length() < 150 then
+      if distance:Length() < 125 and distance.z < 40 then
         ent:EmitSound("Hero_Alchemist.UnstableConcoction.Stun")
         
         local particle = ParticleManager:CreateParticle("nian_roar_prj_gasexplode_shockwave", PATTACH_POINT, ent)
@@ -174,10 +212,11 @@ function redTurtleShell(keys)
           if v.AddPhysicsVelocity ~= nil and IsValidEntity(v) then
             local vel = v:GetPhysicsVelocity()
             v:AddPhysicsVelocity(vel * (-2/3) + Vector(0,0,600) + direction * 150)
-            v:AddNewModifier(v, nil, "modifier_ember_spirit_searing_chains", {duration = 2.5})
+            v:AddNewModifier(v, nil, "modifier_silence", {duration = 2.5})
           end
         end
         
+        DotaDashGameMode:RemoveTimer(timer2)
         DotaDashGameMode:RemoveTimer(timer)
         shell:StopPhysicsSimulation()
         shell:Destroy()
@@ -233,6 +272,16 @@ function printLine(keys)
 end
 
 function printPoint(keys)
+  local point = keys.target_points[1]
+  local navX = GridNav:WorldToGridPosX(point.x) + #MAP_DATA[GetMapName()].anggrid / 2
+  local navY = GridNav:WorldToGridPosY(point.y) + #MAP_DATA[GetMapName()].anggrid / 2
+  
+  print(MAP_DATA[GetMapName()])
+  print(#MAP_DATA[GetMapName()].anggrid)
+  print(#MAP_DATA[GetMapName()].anggrid[1])
+  print(navX)
+  print(navY)
+  print('X=' .. tostring(navX) .. ", Y=" .. tostring(navY) .. ", ang=" .. tostring(MAP_DATA[GetMapName()].anggrid[navX][navY]))
   print('{origin = Vector(' .. tostring(math.floor(keys.target_points[1].x))
     .. "," .. tostring(math.floor(keys.target_points[1].y)) .. "," .. tostring(math.floor(keys.target_points[1].z)) .. ")},")
 end

@@ -177,7 +177,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"speed"					"1500"
+				"speed"					"1750"
 			}
 		}
 	}

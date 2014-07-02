@@ -32,6 +32,34 @@
     }
 	}
   
+  "dota_dash_hop"
+  {
+    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"MaxLevel"						"1"
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"slark_pounce"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"5.0"
+    "AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+		
+    // Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"OnSpellStart"
+		{
+			"RunScript"
+      {
+        "ScriptFile"			"scripts/vscripts/abilities.lua"
+				"Function"				"hop"
+				"Target"			  	"CASTER"
+      }			
+    }
+  }
+  
   "dota_unstick"
   { 
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
