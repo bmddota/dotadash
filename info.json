@@ -1,16 +1,23 @@
 {
-  "name": "dotadash",
-  "fullname": "Dota Dash",
-  "version": "0.00.01",
+  "_id": "qsoksGALSeHfzJBJu",
   "author": "BMD",
-  "authorimage": "",
-  "thumbnail": "http://i.imgur.com/s9gHtPn.png",
-  "spreadimage": "",
-  "website": "https://github.com/bmddota/dotadash",
-  "subtitle": "Gotta go Fast!",
-  "description": "",
-  "features": ["Zoom Zoom"],
+  "authorimage": null,
+  "bundle": "dash.zip",
+  "description": "Fast-paced Dota 2 racing game.",
+  "features": [
+    "Race with fast-paced sliding controls!",
+    "Use greevil shells to blast your enemy!",
+    "Drop banana peels to send your enemy slipping!",
+    "Beat the opponents and win the race."
+  ],
+  "fullname": "DOTA Dash",
+  "isPublic": true,
+  "name": "dash",
   "playable": true,
-  "spreadvideo": "https://s3-us-west-2.amazonaws.com/d2mpimages/reflex.webm",
-  "isPublic": true
+  "spreadimage": "http://i.imgur.com/OT1SA5u.jpg",
+  "spreadvideo": null,
+  "subtitle": "Fast paced Dota 2 racing game.",
+  "thumbnail": "http://i.imgur.com/7VH5Ecz.png",
+  "version": "0.01.00",
+  "website": "http://steamcommunity.com/groups/dotadash"
 }
