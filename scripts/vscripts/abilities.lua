@@ -175,7 +175,7 @@ function bananaPeel(keys)
     --print('FIND')
     -- Find
     local pos = unit:GetAbsOrigin()
-    local ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", pos, 125)
+    local ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", pos + Vector(0,0,30), 125)
     local ent = nil
     local dist = 1000
     local gt = GameRules:GetGameTime()

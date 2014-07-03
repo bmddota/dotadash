@@ -1,7 +1,7 @@
 print ('[DOTADASH] dotadash.lua' )
 
-USE_LOBBY=true
-DEBUG=false
+USE_LOBBY=false
+DEBUG=true
 THINK_TIME = 0.1
 
 DOTADASH_VERSION = "0.01.00"
@@ -15,7 +15,7 @@ VELOCITY_CLAMP = 10
 TAKEOFF_VELOCITY = 500 / 30
 LAPS_TO_WIN = 3
 
-ROUNDS_TO_WIN = 5
+ROUNDS_TO_WIN = 3
 ROUND_TIME = 60 --240
 PRE_GAME_TIME = 30 -- 30
 PRE_ROUND_TIME = 15 --30
@@ -1083,7 +1083,8 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
               unit:SetPhysicsFriction(FRICTION_MULTIPLIER)
               heroTable.fLastFriction = FRICTION_MULTIPLIER
             else
-              unit:SetPhysicsFriction(heroTable.fLastFriction)
+              unit:SetPhysicsFriction(FRICTION_MULTIPLIER)
+              --unit:SetPhysicsFriction(heroTable.fLastFriction)
             end
             heroTable.bFlying = false
             unit:RemoveModifierByName("modifier_pudge_meat_hook")
@@ -1247,7 +1248,7 @@ function DotaDashGameMode:CompletedRace(unit)
   if self.timers['round_time_out'] == nil then
     local timeoutCount = 13
     self:CreateTimer('round_time_out',{
-    endTime = GameRules:GetGameTime() + ROUND_TIME - 60,
+    endTime = GameRules:GetGameTime() + ROUND_TIME - 45,
     useGameTime = true,
     callback = function(reflex, args)
       timeoutCount = timeoutCount - 1
@@ -1267,8 +1268,8 @@ function DotaDashGameMode:CompletedRace(unit)
 
         return
       elseif timeoutCount == 12 then
-        Say(nil, "1 minute remaining!", false)
-        return GameRules:GetGameTime() + 30
+        Say(nil, "45 seconds remaining!", false)
+        return GameRules:GetGameTime() + 15
       elseif timeoutCount == 11 then
         Say(nil, "30 seconds remaining!", false)
         return GameRules:GetGameTime() + 20
@@ -1481,7 +1482,7 @@ function DotaDashGameMode:InitializeRound()
         ParticleManager:SetParticleControl(particle, 2, Vector(0,0,0)) -- something
         
         --Build rectangle
-        local thickness = waypoint.thickness or 100
+        local thickness = waypoint.thickness or 160
         thickness = thickness / 2
         
         waypoint.middle = waypoint.to
@@ -1530,11 +1531,25 @@ function DotaDashGameMode:InitializeRound()
     
     GameRules:SendCustomMessage("USE <font color='#FF3333'>dota_camera_lock 1</font> FOR THIS GAME", 0, 0)
     Say(nil, "USE dota_camera_lock 1 FOR THIS GAME", false)
+    
+    local times = 10
     local msg = {
       message = "USE dota_camera_lock 1",
       duration = 0.9
     }
-    FireGameEvent("show_center_message",msg)
+    self:CreateTimer('cameraLock', {
+      endTime = GameRules:GetGameTime(),
+      useGameTime = true,
+      callback = function(reflex, args)
+        times = times - 1
+        if times == 0 then
+          return
+        end
+        
+        FireGameEvent("show_center_message",msg)
+        return GameRules:GetGameTime() + 1
+      end
+    })
     
     self:CreateTimer('reflexDetail', {
       endTime = GameRules:GetGameTime() + 5,
