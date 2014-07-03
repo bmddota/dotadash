@@ -59,18 +59,20 @@ function greenTurtleShell(keys)
   shell:AddPhysicsVelocity(tonumber(keys.Speed) * forward)
   
   local timer = DoUniqueString('shell')
+  local startTime = GameRules:GetGameTime() + 1.0
   
   shell:OnPhysicsFrame(function(unit)
     local forward = unit:GetForwardVector()
     
     unit:SetForwardVector(RotatePosition( Vector(0,0,0), QAngle(0, 720 / 30, 0), forward ))
+    local gt = GameRules:GetGameTime()
     
     local pos = unit:GetAbsOrigin()
     local ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", pos, 125)
     local ent = nil
     local dist = 1000
     for k,v in pairs(ents) do
-      if v ~= caster then
+      if gt > startTime or v ~= caster then
         local diff = v:GetAbsOrigin() - pos
         local l = diff:Length()
         if l < dist then
@@ -238,7 +240,7 @@ function bananaPeel(keys)
   
   DotaDashGameMode:CreateTimer(timer, {
     useGameTime = true,
-    endTime = GameRules:GetGameTime() + 100,
+    endTime = GameRules:GetGameTime() + 120,
     callback = function(reflex, args)
       if IsValidEntity(banana) then
         banana:StopPhysicsSimulation()
@@ -368,17 +370,7 @@ function blueTurtleShell(keys)
   
   local timer = DoUniqueString('bluehsell')
   
-  local first = nil
-  local maxPos = -1
-  local points = #MAP_DATA[GetMapName()].waypoints
-  
-  DotaDashGameMode:LoopOverPlayers(function(ply, plyID)
-    local pos = (ply.nLap - 1) * points + (ply.nCurWaypoint - 1)
-    if pos > maxPos then
-      first = ply.hero
-      maxPos = pos
-    end
-  end)
+  local first = DotaDashGameMode.vPositions[1].hero
   
   shell:AddPhysicsVelocity(1000 * forward)
   
@@ -398,6 +390,12 @@ function blueTurtleShell(keys)
       local dist = distance:Length()
       if dist < 2000 or shell:GetAbsOrigin().z >= 700 then
         shell:AddPhysicsVelocity(Vector(0,0,-1 * math.abs(distance.z)))
+        --  Fix Velocity slightly
+        local vel = shell:GetPhysicsVelocity()
+        local newDir = direction + vel:Normalized()
+        --newDir = direction:Normalized()
+        
+        shell:SetPhysicsVelocity(vel:Length() * newDir  * 0.5)
       else
         shell:AddPhysicsVelocity(Vector(0,0,10))
       end
@@ -469,12 +467,12 @@ end
 
 function printPoint(keys)
   local point = keys.target_points[1]
-  local navX = #MAP_DATA[GetMapName()].anggrid - (GridNav:WorldToGridPosX(point.x) + #MAP_DATA[GetMapName()].anggrid / 2)
-  local navY = #MAP_DATA[GetMapName()].anggrid - (GridNav:WorldToGridPosY(point.y) + #MAP_DATA[GetMapName()].anggrid / 2)
+  local navX = #MAP_DATA.anggrid - (GridNav:WorldToGridPosX(point.x) + #MAP_DATA.anggrid / 2)
+  local navY = #MAP_DATA.anggrid - (GridNav:WorldToGridPosY(point.y) + #MAP_DATA.anggrid / 2)
   
   print(navX)
   print(navY)
-  print('X=' .. tostring(navX) .. ", Y=" .. tostring(navY) .. ", ang=" .. tostring(MAP_DATA[GetMapName()].anggrid[navX][navY]))
+  print('X=' .. tostring(navX) .. ", Y=" .. tostring(navY) .. ", ang=" .. tostring(MAP_DATA.anggrid[navX][navY]))
   print('{origin = Vector(' .. tostring(math.floor(keys.target_points[1].x))
     .. "," .. tostring(math.floor(keys.target_points[1].y)) .. "," .. tostring(math.floor(keys.target_points[1].z)) .. ")},")
 end

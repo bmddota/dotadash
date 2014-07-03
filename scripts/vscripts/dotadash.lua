@@ -1,10 +1,10 @@
 print ('[DOTADASH] dotadash.lua' )
 
-USE_LOBBY=false
-DEBUG=true
+USE_LOBBY=true
+DEBUG=false
 THINK_TIME = 0.1
 
-DOTADASH_VERSION = "0.01.00"
+DOTADASH_VERSION = "0.02.00"
 
 GRAVITY_AMOUNT = -15
 SLIDE_MULTIPLIER = 0.20
@@ -13,7 +13,7 @@ BASE_MOVESPEED = 250
 VELOCITY_MAX = 2000
 VELOCITY_CLAMP = 10
 TAKEOFF_VELOCITY = 500 / 30
-LAPS_TO_WIN = 3
+LAPS_TO_WIN = 1
 
 ROUNDS_TO_WIN = 3
 ROUND_TIME = 60 --240
@@ -42,21 +42,45 @@ for i=1,MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = i * 100
 end
 
+POINTS_PER_POSITION = {
+  13,
+  10,
+  8,
+  7,
+  6,
+  5,
+  4,
+  3,
+  2,
+  1
+}
+
+ITEMS_BEHIND = {
+  item_rocket_boots = 2,
+  item_green_turtle_shell = 1,
+  item_red_turtle_shell = 1,
+  item_banana_peel = 1,
+  item_banana_peel3 = 1
+}
+
 ITEMS_TABLE = {
-  "item_rocket_boots",
-  "item_green_turtle_shell",
-  "item_red_turtle_shell",
-  "item_banana_peel"
+  item_rocket_boots = 1,
+  item_green_turtle_shell = 1,
+  item_red_turtle_shell = 1,
+  item_banana_peel = 1,
+  item_banana_peel3 = .5
 }
 
 ITEMS_NOT_FIRST = {
-  "item_blue_turtle_shell"
+  item_blue_turtle_shell = 1
 }
+
+
 
 -- FILL MAP_DATA
 require("map_" .. GetMapName())
-if MAP_DATA[GetMapName()].anggrid then
-  Physics:AngleGrid(MAP_DATA[GetMapName()].anggrid)
+if MAP_DATA.anggrid then
+  Physics:AngleGrid(MAP_DATA.anggrid)
 end
 
 --[[MAP_DATA = {
@@ -148,6 +172,10 @@ end
 function DotaDashGameMode:InitGameMode()
   print('[DOTADASH] Starting to load DotaDash gamemode...')
 
+  ITEMS_BEHIND = scaleTable(ITEMS_BEHIND)
+  ITEMS_TABLE = scaleTable(ITEMS_TABLE)
+  ITEMS_NOT_FIRST = scaleTable(ITEMS_NOT_FIRST)
+  
   -- Setup rules
   GameRules:SetHeroRespawnEnabled( false )
   GameRules:SetUseUniversalShopMode( true )
@@ -405,27 +433,36 @@ function DotaDashGameMode:CaptureGameMode()
                   if IsValidEntity(item) then
                     item:Destroy()
                     
-                    local points = #MAP_DATA[GetMapName()].waypoints
-                    local player = self.vPlayers[unit:GetPlayerID()]
-                    local myPos = (player.nLap -1) * points + (player.nCurWaypoint - 1)
+                    local playerID = unit:GetPlayerID()
                     
                     local position = 1
-                    
-                    
-                    DotaDashGameMode:LoopOverPlayers(function(ply, plyID)
-                      local pos = (ply.nLap - 1) * points + (ply.nCurWaypoint - 1)
-                      if pos > myPos then
-                        position = position + 1
+                    for i=1,#self.vPositions do
+                      if self.vPositions[i].playerID == playerID then
+                        position = i
+                        break
                       end
-                    end)
+                    end
                     
                     EmitSoundOnClient("Item.PickUpGemShop", PlayerResource:GetPlayer(unit:GetPlayerID()))
-                    local blueShellPerc = ((position - 1) * 2) * (10 / #self.vPlayers)
+                    local blueShellPerc = ((position - 1) * 2.5) * (10 / (#self.vPlayers + 1))
+                    local isBehind = (position / (#self.vPlayers + 1)) > .5
+                    local roll = RandomFloat(0.0,100.0)
+                    local index = nil
+                    local rollTable = ITEMS_TABLE
                     if RollPercentage(blueShellPerc) then
-                      item = CreateItem(ITEMS_NOT_FIRST[RandomInt(1,#ITEMS_NOT_FIRST)], unit, unit)
-                    else
-                      item = CreateItem(ITEMS_TABLE[RandomInt(1,#ITEMS_TABLE)], unit, unit)
+                      rollTable = ITEMS_NOT_FIRST
+                    elseif isBehind then
+                      rollTable = ITEMS_BEHIND
                     end
+                    
+                    for k,v in pairs(rollTable) do
+                      index = k
+                      if v >= roll then
+                        break
+                      end
+                    end
+                    
+                    item = CreateItem(index, unit, unit)
                     unit:AddItem(item)
                   end
                 end
@@ -697,7 +734,7 @@ function DotaDashGameMode:PlayerSay(keys)
   end
   
   if DEBUG and string.find(text, "^-waypoints") then
-    local mapdata = MAP_DATA[GetMapName()]
+    local mapdata = MAP_DATA
     if mapdata == nil then
       print('[DOTADASH] ERROR: NO MAP DATA FOR THIS RACE')
     else
@@ -980,6 +1017,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
           nLap = 1,
           nCurWaypoint = 1,
           oNextWayPointEntity = nil,
+          playerID = playerID,
           fLastFriction = FRICTION_MULTIPLIER,
           vAbilities = {
             "reflex_empty1",
@@ -992,8 +1030,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
         }
         print ('[DOTADASH] playerID: ' .. playerID)
         self.vPlayers[playerID] = heroTable
-        self.vPositions[#self.vPositions] = heroTable
-
+        
         print ( "[DOTADASH] setting stuff for player"  .. playerID)
         --heroEntity:__KeyValueFromInt('StatusManaRegen', 100)
         --local dash = CreateItem("item_reflex_dash", heroEntity, heroEntity)
@@ -1024,7 +1061,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
         unit:SetPhysicsFriction(FRICTION_MULTIPLIER)
         unit:SetVelocityClamp(VELOCITY_CLAMP)
         unit:SetPhysicsVelocityMax(VELOCITY_MAX)
-        local mapdata = MAP_DATA[GetMapName()]
+        local mapdata = MAP_DATA
         local waypoints = mapdata.waypoints
         local frameCount = 0
         unit.lastWaypoint = unit:GetAbsOrigin()
@@ -1158,12 +1195,19 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
                 EmitSoundOnClient("Tutorial.TaskCompleted", ply)
                 DotaDashGameMode:CompletedRace(unit)
                 heroTable.nLap = 1
+                table.remove(self.vPositions, 1)
               else
                 GameRules:SendCustomMessage("<font color='#44FF44'>" .. name .. "</font> has completed Lap " .. tostring(heroTable.nLap-1) .. "!", 0, 0)
                 EmitSoundOnClient("ui.npe_badge", ply)
+                
+                -- Update Positions
+                self:UpdatePositions()
               end
             else
               EmitSoundOnClient("Bottle.Cork", ply)
+              
+              -- Update Positions 
+              self:UpdatePositions()
             end
             
             heroTable.oNextWayPointEntity:SetAbsOrigin(waypoints[curWaypoint].middle + Vector(0,0,160))
@@ -1206,16 +1250,52 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
 })
 end
 
+function DotaDashGameMode:UpdatePositions()
+  local waypoints = MAP_DATA.waypoints
+  local points = #waypoints
+  
+  table.sort(self.vPositions, function(a,b)
+    local scoreA = (a.nLap - 1) * points + (a.nCurWaypoint - 1)
+    local scoreB = (b.nLap - 1) * points + (b.nCurWaypoint - 1)
+    local ret = scoreA > scoreB
+    
+    if scoreA == scoreB then
+      local mid = waypoints[a.nCurWaypoint].middle
+      local distA = mid - a.hero:GetAbsOrigin()
+      local distB = mid - b.hero:GetAbsOrigin()
+      
+      distA = distA:Length()
+      distB = distB:Length()
+      
+      ret = distA < distB
+    end
+    
+    return ret
+  end)
+  
+  --[[ Print update
+  local s = "{"
+  for i=1,#self.vPositions do
+    local v = self.vPositions[i]
+    local score = (v.nLap - 1) * points + (v.nCurWaypoint - 1)
+    s = s .. tostring(v.playerID) .. "=" .. tostring(score) .. ","
+  end
+  print(s .. "}")]]
+  
+  -- Send update to clients
+  -- FireGameEvent()
+end
+
 function DotaDashGameMode:CompletedRace(unit)
   local plyID = unit:GetPlayerID()
   local player = self.vPlayers[plyID]
   
-  local score = 5 - self.nFinishLineCrossed
+  self.nFinishLineCrossed = self.nFinishLineCrossed + 1
+  
+  local score = POINTS_PER_POSITION[self.nFinishLineCrossed]--5 - self.nFinishLineCrossed
   if score < 0 then
     score = 0
   end
-  
-  self.nFinishLineCrossed = self.nFinishLineCrossed + 1
   
   local suffix = "th"
   if self.nFinishLineCrossed == 1 then
@@ -1399,7 +1479,9 @@ function DotaDashGameMode:InitializeRound()
   self.nCurrentRound = self.nCurrentRound + 1
   self.nCurrentLap = 1
   self.nFinishLineCrossed = 0
-  local mapdata = MAP_DATA[GetMapName()]
+  local mapdata = MAP_DATA
+  
+  self.vPositions = {}
   
   --cancelTimer = false
   --Init Round (give level ups/points/gold back)
@@ -1427,8 +1509,20 @@ function DotaDashGameMode:InitializeRound()
         player.hero:SetGold(player.nUnspentGold, true)
         player.hero:SetAbilityPoints(player.nUnspentAbilityPoints)
         
+        self.vPositions[#self.vPositions + 1] = player
         player.nLap = 1
         player.nRoundPosition = 0
+        
+        --[[local points = #MAP_DATA.waypoints
+        local s = "{"
+        for i=1,#self.vPositions do
+          local v = self.vPositions[i]
+          local score = (v.nLap - 1) * points + (v.nCurWaypoint - 1)
+          s = s .. tostring(v.playerID) .. "=" .. tostring(score) .. ","
+        end
+        print(s .. "}")]]
+        
+        
         if mapdata == nil then
           print('[DOTADASH] ERROR: NO MAP DATA FOR THIS RACE')
         else
@@ -1482,7 +1576,7 @@ function DotaDashGameMode:InitializeRound()
         ParticleManager:SetParticleControl(particle, 2, Vector(0,0,0)) -- something
         
         --Build rectangle
-        local thickness = waypoint.thickness or 160
+        local thickness = waypoint.thickness or 180
         thickness = thickness / 2
         
         waypoint.middle = waypoint.to
@@ -1529,7 +1623,7 @@ function DotaDashGameMode:InitializeRound()
       end
     end
     
-    GameRules:SendCustomMessage("USE <font color='#FF3333'>dota_camera_lock 1</font> FOR THIS GAME", 0, 0)
+    --[[GameRules:SendCustomMessage("USE <font color='#FF3333'>dota_camera_lock 1</font> FOR THIS GAME", 0, 0)
     Say(nil, "USE dota_camera_lock 1 FOR THIS GAME", false)
     
     local times = 10
@@ -1549,7 +1643,7 @@ function DotaDashGameMode:InitializeRound()
         FireGameEvent("show_center_message",msg)
         return GameRules:GetGameTime() + 1
       end
-    })
+    })]]
     
     self:CreateTimer('reflexDetail', {
       endTime = GameRules:GetGameTime() + 5,
@@ -1559,6 +1653,7 @@ function DotaDashGameMode:InitializeRound()
         GameRules:SendCustomMessage("Version: " .. DOTADASH_VERSION, 0, 0)
         GameRules:SendCustomMessage("Created by <font color='#70EA72'>BMD</font>", 0, 0)
         GameRules:SendCustomMessage("Map by <font color='#70EA72'>Azarak</font>", 0, 0)
+        GameRules:SendCustomMessage("UI by <font color='#70EA72'>Nullscope</font>", 0, 0)
         GameRules:SendCustomMessage("Send feedback to <font color='#70EA72'>bmddota@gmail.com</font>", 0, 0)
       end
     })
@@ -1927,6 +2022,22 @@ function DotaDashGameMode:FindAndRemoveMod(hero, modName)
   end
 end
 
+function scaleTable(tab)
+  local total = 0
+  for k,v in pairs(tab) do
+    total = total + v
+  end
+  
+  local newTab = {}
+  local val = 0
+  for k,v in pairs(tab) do
+    newTab[k] = 100 * (val + v) / total
+    val = val + v 
+  end
+  
+  return newTab
+end
+
 function callModRemover( caster, modName, abilityLevel)
   if abilityLevel == nil then
     abilityLevel = ""
@@ -1964,13 +2075,13 @@ function hasPowerup(unit)
   if unit:HasItemInInventory("item_powerup") then
     return true
   end
-  for i=1,#ITEMS_TABLE do
-    if unit:HasItemInInventory(ITEMS_TABLE[i]) then
+  for k,v in pairs(ITEMS_TABLE) do
+    if unit:HasItemInInventory(k) then
       return true
     end
   end
-  for i=1,#ITEMS_NOT_FIRST do
-    if unit:HasItemInInventory(ITEMS_NOT_FIRST[i]) then
+  for k,v in pairs(ITEMS_NOT_FIRST) do
+    if unit:HasItemInInventory(k) then
       return true
     end
   end
