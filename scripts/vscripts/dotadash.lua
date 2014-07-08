@@ -4,17 +4,19 @@ USE_LOBBY=true
 DEBUG=false
 THINK_TIME = 0.1
 
-DOTADASH_VERSION = "0.02.01"
+DOTADASH_VERSION = "0.03.00"
 
 GRAVITY_AMOUNT = -15
-SLIDE_MULTIPLIER = 0.20
+SLIDE_MULTIPLIER = 0.30
 FRICTION_MULTIPLIER = 0.04
 BASE_MOVESPEED = 250
-VELOCITY_MAX = 2000
+VELOCITY_MAX = 2600
 VELOCITY_CLAMP = 10
 TAKEOFF_VELOCITY = 500 / 30
-LAPS_TO_WIN = 3
+NAV_LOOKAHEAD = 2
+BOUNCE_MULTIPLIER = 0.8
 
+LAPS_TO_WIN = 3
 ROUNDS_TO_WIN = 3
 ROUND_TIME = 60 --240
 PRE_GAME_TIME = 30 -- 30
@@ -55,101 +57,56 @@ POINTS_PER_POSITION = {
   1
 }
 
-ITEMS_BEHIND = {
-  item_rocket_boots = 2,
-  item_green_turtle_shell = 1,
-  item_red_turtle_shell = 1,
-  item_banana_peel = 1,
-  item_banana_peel3 = 1
-}
-
-ITEMS_TABLE = {
-  item_rocket_boots = 1,
-  item_green_turtle_shell = 1,
-  item_red_turtle_shell = 1,
-  item_banana_peel = 1,
-  item_banana_peel3 = .5
-}
-
-ITEMS_NOT_FIRST = {
-  item_blue_turtle_shell = 1
-}
-
-
-
 -- FILL MAP_DATA
 require("map_" .. GetMapName())
 if MAP_DATA.anggrid then
-  Physics:AngleGrid(MAP_DATA.anggrid)
+  Physics:AngleGrid(MAP_DATA.anggrid, MAP_DATA.angoffset)
 end
 
---[[MAP_DATA = {
-  dash = {
-    waypoints = {
-      {from = Vector(-6145,-36,256), to = Vector(-6149,-638,256)},
-      {from = Vector(-2989,572,0), to = Vector(-2664,-178,0)},
-      {from = Vector(-265,708,128), to = Vector(311,692,128)},
-      {from = Vector(-2182,106,55), to = Vector(-2142,-474,55)},
-      {from = Vector(-4400,-3143,0), to = Vector(-3661,-3179,0)},
-      {from = Vector(559,-3968,0), to = Vector(517,-5249,0)},
-      {from = Vector(3086,-1071,0), to = Vector(3995,-1042,0)},
-      {from = Vector(5962,978,256), to = Vector(6149,141,256)},
-      {from = Vector(812,4627,0), to = Vector(856,3642,0)},
-      {from = Vector(-3120,3851,0), to = Vector(-3132,3486,0)},
-      {from = Vector(-6923,2633,0), to = Vector(-6249,2546,0)},
-      {from = Vector(-6995,190,256), to = Vector(-6183,174,256), particle = "ref_dark_seer_wall_of_replica"}
-    },
-    powerups = {
-      {origin = Vector(-5235,-83,0)},
-      {origin = Vector(-5262,-377,0)},
-      {origin = Vector(-5321,-706,0)},
-      {origin = Vector(-118,642,128)},
-      {origin = Vector(102,636,128)},
-      {origin = Vector(-1061,-660,128)},
-      {origin = Vector(-436,-4162,0)},
-      {origin = Vector(470,-4206,0)},
-      {origin = Vector(448,-4464,0)},
-      {origin = Vector(430,-4726,0)},
-      {origin = Vector(410,-4974,0)},
-      {origin = Vector(6391,174,256)},
-      {origin = Vector(6569,255,256)},
-      {origin = Vector(6691,391,256)},
-      {origin = Vector(5304,2049,0)},
-      {origin = Vector(902,4453,0)},
-      {origin = Vector(937,4218,0)},
-      {origin = Vector(968,3971,0)},
-      {origin = Vector(1001,3744,0)},
-      {origin = Vector(-3446,3693,0)},
-      {origin = Vector(-6760,762,128)},
-      {origin = Vector(-6502,765,128)}
-    }
-  },
-  fof = {
-    waypoints = {
-      {from = Vector(0,0,128), to = Vector(0,300,128)},
-      {from = Vector(0,0,128), to = Vector(300,0,128)},
-      {from = Vector(0,0,128), to = Vector(0,-300,128)},
-      {from = Vector(0,0,128), to = Vector(-300,0,128)},--, particle = "ref_dark_seer_wall_of_replica"},
-      {from = Vector(-1000,-500,0), to = Vector(-1000,500,0), particle = "ref_dark_seer_wall_of_replica"}
-    },
-    powerups = {
-      {origin = Vector(0,1000,140)}
-    }
-  },
-  reflex = {
-    waypoints = {
-      {from = Vector(0,0,0), to = Vector(0,0,0)},
-      {from = Vector(0,0,0), to = Vector(0,0,0)},
-      {from = Vector(0,0,0), to = Vector(0,0,0)},
-      {from = Vector(0,0,0), to = Vector(0,0,0)},--, particle = "ref_dark_seer_wall_of_replica"},
-    },
-    powerups = {
-      {origin = Vector(0,1000,140)}
-    }
-  }
-}]]
+-- Adjust globals
+SPAWNS = MAP_DATA.spawns
+GRAVITY_AMOUNT = MAP_DATA.gravity or GRAVITY_AMOUNT
+SLIDE_MULTIPLIER = MAP_DATA.slideMultiplier or SLIDE_MULTIPLIER
+FRICTION_MULTIPLIER = MAP_DATA.friction or FRICTION_MULTIPLIER
+BASE_MOVESPEED = MAP_DATA.baseMovespeed or BASE_MOVESPEED
+VELOCITY_MAX = MAP_DATA.velocityMax or VELOCITY_MAX
+VELOCITY_CLAMP = MAP_DATA.velocityClamp or VELOCITY_CLAMP
+TAKEOFF_VELOCITY = MAP_DATA.takeoffVelocity or TAKEOFF_VELOCITY
+NAV_LOOKAHEAD = MAP_DATA.lookahead or NAV_LOOKAHEAD
+BOUNCE_MULTIPLIER = MAP_DATA.bounceMultiplier or BOUNCE_MULTIPLIER
+
+LAPS_TO_WIN = MAP_DATA.lapsToWin or LAPS_TO_WIN
+ROUNDS_TO_WIN = MAP_DATA.roudsToWin or ROUNDS_TO_WIN
 
 
+ITEMS_BEHIND = {
+  {item_blue_turtle_shell = .5},
+  {item_lightning_bolt = .5},
+  {item_star_power = .75},
+  {item_rocket_boots = 2},
+  {item_green_turtle_shell = 1},
+  {item_red_turtle_shell = 1},
+  {item_banana_peel = 1},
+  {item_banana_peel3 = 1}
+}
+
+ITEMS_TABLE = {
+  {item_blue_turtle_shell = 0.25},
+  {item_lightning_bolt = 0.25},
+  {item_star_power = 0.3},
+  {item_rocket_boots = 1},
+  {item_green_turtle_shell = 1},
+  {item_red_turtle_shell = 1},
+  {item_banana_peel = 1},
+  {item_banana_peel3 = .5}
+}
+
+ITEMS_FIRST = {
+  {item_rocket_boots = .5},
+  {item_green_turtle_shell = 1},
+  {item_red_turtle_shell = 1},
+  {item_banana_peel = 1}
+}
 
 bInPreRound = true
 roundOne = true
@@ -174,7 +131,7 @@ function DotaDashGameMode:InitGameMode()
 
   ITEMS_BEHIND = scaleTable(ITEMS_BEHIND)
   ITEMS_TABLE = scaleTable(ITEMS_TABLE)
-  ITEMS_NOT_FIRST = scaleTable(ITEMS_NOT_FIRST)
+  ITEMS_FIRST = scaleTable(ITEMS_FIRST)
   
   -- Setup rules
   GameRules:SetHeroRespawnEnabled( false )
@@ -186,6 +143,9 @@ function DotaDashGameMode:InitGameMode()
   GameRules:SetTreeRegrowTime( 60.0 )
   GameRules:SetUseCustomHeroXPValues ( true )
   GameRules:SetGoldPerTick(0)
+
+  GameRules:SetRuneSpawnTime(10000)
+  GameRules:SetTreeRegrowTime(10000)
   print('[DOTADASH] Rules set')
 
   InitLogFile( "log/dotadash.txt","")
@@ -202,6 +162,9 @@ function DotaDashGameMode:InitGameMode()
   --ListenToGameEvent('dota_inventory_changed', Dynamic_Wrap(DotaDashGameMode, 'InventoryChanged'), self)
   --ListenToGameEvent('dota_inventory_item_changed', Dynamic_Wrap(DotaDashGameMode, 'InventoryItemChanged'), self)
   --ListenToGameEvent('dota_action_item', Dynamic_Wrap(DotaDashGameMode, 'ActionItem'), self)
+  ListenToGameEvent('dota_rune_spotted', Dynamic_Wrap(DotaDashGameMode, 'RuneSpotted'), self)
+  ListenToGameEvent('dota_rune_pickup', Dynamic_Wrap(DotaDashGameMode, 'RunePickup'), self)
+  ListenToGameEvent('dota_rune_activated_server', Dynamic_Wrap(DotaDashGameMode, 'RuneActivated'), self)
   
   ------
   --ListenToGameEvent('player_info', Dynamic_Wrap(DotaDashGameMode, 'PlayerInfo'), self)
@@ -303,7 +266,7 @@ function DotaDashGameMode:InitGameMode()
   self.nConnected = 0
 
   -- Round stuff
-  self.nCurrentRound = 1
+  self.nCurrentRound = 0
   self.nCurrentLap = 1
   self.nFinishLineCrossed = 0
   self.vPositions = {}
@@ -321,6 +284,8 @@ function DotaDashGameMode:InitGameMode()
   self.vPlayers = {}
   self.vRadiant = {}
   self.vDire = {}
+
+  self.WALLS = {}
 
   -- Active Hero Map
   self.vPlayerHeroData = {}
@@ -345,7 +310,7 @@ function DotaDashGameMode:CaptureGameMode()
     print('[DOTADASH] Capturing game mode...')
     GameMode = GameRules:GetGameModeEntity()		
     GameMode:SetRecommendedItemsDisabled( true )
-    GameMode:SetCameraDistanceOverride( 1504.0 )
+    GameMode:SetCameraDistanceOverride( 1600.0 )
     GameMode:SetCustomBuybackCostEnabled( true )
     GameMode:SetCustomBuybackCooldownEnabled( true )
     GameMode:SetBuybackEnabled( false )
@@ -398,9 +363,41 @@ function DotaDashGameMode:CaptureGameMode()
                 print(tostring(dot) .. " -- " .. tostring(dot2))
                 print(tostring(unit.vVelocity) .. " -- " .. tostring(v.vVelocity))
                 print("-------------------------")]]
-                
-                unit.vVelocity = unit.vVelocity + (dot * neg) - (dot2 * dir)
-                v.vVelocity = v.vVelocity + (dot * dir) - (dot2 * neg)
+                local now = GameRules:GetGameTime()
+                local collide = true
+                if ((unit.bStarPower or unit.bLightningBolt) and (v.nHitTime ~= nil and v.nHitTime + .5 > now)) then
+                  collide = false
+                end
+                if ((v.bStarPower or v.bLightningBolt) and (unit.nHitTime ~= nil and unit.nHitTime + .5 > now)) then
+                  collide = false
+                end
+
+                if collide then
+                  if unit.bStarPower then
+                    local vel = ((dot * dir) - (dot2 * neg)) * 2
+                    v:AddPhysicsVelocity(Vector(vel.x,vel.y,650))
+                    v.nHitTime = now
+                    v:EmitSound("Hero_Spirit_Breaker.GreaterBash")
+                  elseif v.bStarPower then
+                    local vel = ((dot * neg) - (dot2 * dir)) * 2
+                    unit:AddPhysicsVelocity(Vector(vel.x,vel.y,650))
+                    unit.nHitTime = now
+                    unit:EmitSound("Hero_Spirit_Breaker.GreaterBash")
+                  elseif unit.bLightningBolt then
+                    v.vVelocity = Vector(v.vVelocity.x / 5, v.vVelocity.y / 5, v.vVelocity.z)
+                    v:AddNewModifier(v, nil, "modifier_ember_spirit_searing_chains", {duration = 1.5})
+                    v.nHitTime = now
+                    v:EmitSound("DotaDash.LightningHit")
+                  elseif v.bLightningBolt then
+                    unit.vVelocity = Vector(unit.vVelocity.x / 5, unit.vVelocity.y / 5, unit.vVelocity.z)
+                    unit:AddNewModifier(unit, nil, "modifier_ember_spirit_searing_chains", {duration = 1.5})
+                    unit.nHitTime = now
+                    unit:EmitSound("DotaDash.LightningHit")
+                  else
+                    unit.vVelocity = unit.vVelocity + (dot * neg) - (dot2 * dir)
+                    v.vVelocity = v.vVelocity + (dot * dir) - (dot2 * neg)
+                  end
+                end
                 
                 heroes[v:entindex()] = v
                 break
@@ -444,20 +441,24 @@ function DotaDashGameMode:CaptureGameMode()
                     end
                     
                     EmitSoundOnClient("Item.PickUpGemShop", PlayerResource:GetPlayer(unit:GetPlayerID()))
-                    local blueShellPerc = ((position - 1) * 2.5) * (10 / (#self.vPlayers + 1))
+                    --local blueShellPerc = ((position - 1) * 2.5) * (10 / (#self.vPlayers + 1))
                     local isBehind = (position / (#self.vPlayers + 1)) > .5
                     local roll = RandomFloat(0.0,100.0)
                     local index = nil
                     local rollTable = ITEMS_TABLE
-                    if RollPercentage(blueShellPerc) then
-                      rollTable = ITEMS_NOT_FIRST
+                    if position == 1 then
+                      rollTable = ITEMS_FIRST
                     elseif isBehind then
                       rollTable = ITEMS_BEHIND
                     end
                     
-                    for k,v in pairs(rollTable) do
-                      index = k
-                      if v >= roll then
+                    for i=1,#rollTable do
+                      local v2 = nil
+                      for k,v in pairs(rollTable[i]) do
+                        index = k
+                        v2 = v
+                      end
+                      if v2 >= roll then
                         break
                       end
                     end
@@ -512,6 +513,24 @@ function DotaDashGameMode:InventoryChanged(keys)
   print('InventoryChanged')
   PrintTable(keys)
   PrintTable(getmetatable(keys))
+end
+
+--dota_rune_spotted
+function DotaDashGameMode:RuneSpotted(keys)
+  print('RuneSpotted')
+  PrintTable(keys)
+end
+
+--dota_rune_pickup
+function DotaDashGameMode:RunePickup(keys)
+  print('RunePickup')
+  PrintTable(keys)
+end
+
+--dota_rune_activated_server
+function DotaDashGameMode:RuneActivated(keys)
+  print('RuneActivated')
+  PrintTable(keys)
 end
 
 function DotaDashGameMode:CloseServer()
@@ -587,9 +606,288 @@ function DotaDashGameMode:PlayerSay(keys)
       end
     end
   end
+
+  if DEBUG and string.find(text, "^-regrow") then
+    GridNav:RegrowAllTrees()
+  end
+
+  if DEBUG and string.find(text, "^-spider") then
+    local mapGnv = {}
+    local worldMin = Vector(GetWorldMinX(), GetWorldMinY(), 0)
+    local worldMax = Vector(GetWorldMaxX(), GetWorldMaxY(), 0)
+
+    print(worldMin)
+    print(worldMax)
+
+    local boundX1 = GridNav:WorldToGridPosX(worldMin.x)
+    local boundX2 = GridNav:WorldToGridPosX(worldMax.x)
+    local boundY1 = GridNav:WorldToGridPosX(worldMin.y)
+    local boundY2 = GridNav:WorldToGridPosX(worldMax.y)
+
+    print(boundX1 .. " -- " .. boundX2)
+    print(boundY1 .. " -- " .. boundY2)
+
+    print('----------------------')
+
+    InitLogFile("addons/dotadash/spider.txt", "")
+    AppendToLogFile("addons/dotadash/spider.txt", "P1")
+    AppendToLogFile("addons/dotadash/spider.txt", "#spider created pbm")
+    AppendToLogFile("addons/dotadash/spider.txt", tostring(boundX2 - boundX1 + 1) .. " " .. tostring(boundY2 - boundY1 + 1))
+
+    local pseudoGNV = {}
+    local WALLS = self.WALLS
+    for i=1,#WALLS do
+      local from = WALLS[i].from
+      local to = WALLS[i].to
+      local cur = from
+      local dist = to - from
+      dist.z = 0
+      local dir = dist:Normalized()
+      dist = dist:Length()
+      local norm = RotatePosition(Vector(0,0,0), QAngle(0,90,0), dir)
+
+      for j=1,math.floor(dist/30) do
+        local pos = cur + norm * 64
+        local pos2 = cur - norm * 64
+        local x = GridNav:WorldToGridPosX(pos.x)
+        local y = GridNav:WorldToGridPosY(pos.y)
+        if pseudoGNV[x] == nil then
+          pseudoGNV[x] = {}
+        end
+        pseudoGNV[x][y] = true
+
+        x = GridNav:WorldToGridPosX(pos2.x)
+        y = GridNav:WorldToGridPosY(pos2.y)
+        if pseudoGNV[x] == nil then
+          pseudoGNV[x] = {}
+        end
+        pseudoGNV[x][y] = true
+
+        x = GridNav:WorldToGridPosX(cur.x)
+        y = GridNav:WorldToGridPosY(cur.y)
+        if pseudoGNV[x] == nil then
+          pseudoGNV[x] = {}
+        end
+        pseudoGNV[x][y] = true
+
+        cur = from + dir*j*30
+      end
+
+      cur = to
+      local pos = cur + norm * 64
+      local pos2 = cur - norm * 64
+      local blocked = not GridNav:IsTraversable(pos) or GridNav:IsBlocked(pos)
+      if blocked then
+        local x = GridNav:WorldToGridPosX(pos.x)
+        local y = GridNav:WorldToGridPosY(pos.y)
+        if pseudoGNV[x] == nil then
+          pseudoGNV[x] = {}
+        end
+        pseudoGNV[x][y] = true
+      end
+
+      blocked = not GridNav:IsTraversable(pos2) or GridNav:IsBlocked(pos2)
+      if blocked then
+        local x = GridNav:WorldToGridPosX(pos2.x)
+        local y = GridNav:WorldToGridPosY(pos2.y)
+        if pseudoGNV[x] == nil then
+          pseudoGNV[x] = {}
+        end
+        pseudoGNV[x][y] = true
+      end
+
+      blocked = not GridNav:IsTraversable(cur) or GridNav:IsBlocked(cur)
+      if blocked then
+        local x = GridNav:WorldToGridPosX(cur.x)
+        local y = GridNav:WorldToGridPosY(cur.y)
+        if pseudoGNV[x] == nil then
+          pseudoGNV[x] = {}
+        end
+        pseudoGNV[x][y] = true
+      end
+    end
+
+    --PrintTable(pseudoGNV)
+    --print('---------------')
+
+    local s = ""
+
+    for i=boundY2,boundY1,-1 do
+      for j=boundX1,boundX2 do
+        local position = Vector(GridNav:GridPosToWorldCenterX(j), GridNav:GridPosToWorldCenterY(i), 0)
+        local blocked = not GridNav:IsTraversable(position) or GridNav:IsBlocked(position) or (pseudoGNV[j] ~= nil and pseudoGNV[j][i])
+
+        if blocked then
+          s = s .. "1"
+        else
+          s = s .. "0"
+        end
+
+        if j == boundX2 then
+          AppendToLogFile("addons/dotadash/spider.txt", s)
+          s = ""
+        else
+          s = s .. " "
+        end
+      end
+    end
+  end
+
+  if DEBUG and string.find(text, "^-anggrid") then
+    local timestamp = GetSystemDate() .. " " .. GetSystemTime()
+    timestamp = timestamp:gsub(":","_"):gsub(" ","_")
+    local fileName = "log/" .. GetMapName() .. timestamp .. ".txt"
+    print(fileName)
+
+    local anggrid = {}
+    local worldMin = Vector(GetWorldMinX(), GetWorldMinY(), 0)
+    local worldMax = Vector(GetWorldMaxX(), GetWorldMaxY(), 0)
+
+    print(worldMin)
+    print(worldMax)
+
+    local boundX1 = GridNav:WorldToGridPosX(worldMin.x)
+    local boundX2 = GridNav:WorldToGridPosX(worldMax.x)
+    local boundY1 = GridNav:WorldToGridPosX(worldMin.y)
+    local boundY2 = GridNav:WorldToGridPosX(worldMax.y)
+    local offsetX = boundX1 * -1 + 1
+    local offsetY = boundY1 * -1 + 1
+
+    print(boundX1 .. " -- " .. boundX2)
+    print(boundY1 .. " -- " .. boundY2)
+    print(offsetX)
+    print(offsetY)
+
+    local vecs = {
+      {vec = Vector(0,1,0):Normalized(), x=0,y=1},-- N
+      {vec = Vector(1,1,0):Normalized(), x=1,y=1}, -- NE
+      {vec = Vector(1,0,0):Normalized(), x=1,y=0}, -- E
+      {vec = Vector(1,-1,0):Normalized(), x=1,y=-1}, -- SE
+      {vec = Vector(0,-1,0):Normalized(), x=0,y=-1}, -- S
+      {vec = Vector(-1,-1,0):Normalized(), x=-1,y=-1}, -- SW
+      {vec = Vector(-1,0,0):Normalized(), x=-1,y=0}, -- W
+      {vec = Vector(-1,1,0):Normalized(), x=-1,y=1} -- NW
+    }
+
+    print('----------------------')
+
+    anggrid[1] = {}
+    for j=boundY1,boundY2 do
+      anggrid[1][j + offsetY] = -1
+    end
+    anggrid[1][boundY2 + offsetY] = -1
+
+    for i=boundX1+1,boundX2-1 do
+      anggrid[i+offsetX] = {}
+      anggrid[i+offsetX][1] = -1
+      for j=(boundY1+1),boundY2-1 do
+        local position = Vector(GridNav:GridPosToWorldCenterX(i), GridNav:GridPosToWorldCenterY(j), 0)
+        local blocked = not GridNav:IsTraversable(position) or GridNav:IsBlocked(position) --or (pseudoGNV[i] ~= nil and pseudoGNV[i][j])
+        local seg = 0
+        local sum = Vector(0,0,0)
+        local count = 0
+        local inseg = false
+
+        if blocked then
+          for k=1,#vecs do
+            local vec = vecs[k].vec
+            local xoff = vecs[k].x
+            local yoff = vecs[k].y
+            local pos = Vector(GridNav:GridPosToWorldCenterX(i+xoff), GridNav:GridPosToWorldCenterY(j+yoff), 0)
+            local blo = not GridNav:IsTraversable(pos) or GridNav:IsBlocked(pos) --or (pseudoGNV[i+xoff] ~= nil and pseudoGNV[i+xoff][j+yoff])
+
+            if not blo then
+              count = count + 1
+              inseg = true
+              sum = sum + vec
+            else
+              if inseg then
+                inseg = false
+                seg = seg + 1
+              end
+            end
+          end
+
+          if seg > 1 then
+            print ('OVERSEG x=' .. i .. ' y=' .. j)
+            anggrid[i+offsetX][j+offsetY] = -1
+          elseif count > 5 then
+            print ('PROTRUDE x=' .. i .. ' y=' .. j)
+            anggrid[i+offsetX][j+offsetY] = -1
+          elseif count == 0 then
+            anggrid[i+offsetX][j+offsetY] = -1
+          else
+            local sum = sum:Normalized()
+            local angle = math.floor((math.acos(Vector(1,0,0):Dot(sum:Normalized()))/ math.pi * 180))
+            if sum.y < 0 then
+              angle = -1 * angle
+            end
+            anggrid[i+offsetX][j+offsetY] = angle
+          end
+        else
+          anggrid[i+offsetX][j+offsetY] = -1
+        end
+      end
+      anggrid[i+offsetX][boundY2+offsetY] = -1
+    end
+
+    anggrid[boundX2+offsetX] = {}
+    for j=boundY1,boundY2 do
+      anggrid[boundX2+offsetX][j+offsetY] = -1
+    end
+    anggrid[boundX2+offsetX][boundY2+offsetY] = -1
+
+    print('--------------')
+    print(#anggrid)
+    print(#anggrid[1])
+    print(#anggrid[2])
+    print(#anggrid[3])
+
+    MAP_DATA.anggrid = anggrid
+    Physics:AngleGrid(anggrid)
+  end
   
   local ap = abilPoints
-  
+
+  local fname = string.match(text, "^-angsave%s+(.+)")
+  if DEBUG and fname ~= nil then
+    -- Process map
+    local addString = function (stack, s)
+        table.insert(stack, s)    -- push 's' into the the stack
+        for i=table.getn(stack)-1, 1, -1 do
+          if string.len(stack[i]) > string.len(stack[i+1]) then
+            break
+          end
+          stack[i] = stack[i] .. table.remove(stack)
+        end
+      end
+
+    local s = {""}
+    addString(s, "{")
+    local anggrid = Physics.anggrid
+    for x=1,#anggrid do
+      addString(s, "{")
+      for y=1,#anggrid[x] do
+        addString(s, tostring(anggrid[x][y]))
+        if y < #anggrid[x] then
+          addString(s, ",")
+        end
+      end
+      addString(s, "}")
+      if x < #anggrid then
+        addString(s, ",")
+      end
+    end
+    addString(s, "}")
+
+    s = table.concat(s)
+    print('------------')
+    print(fname)
+    print(s)
+
+    InitLogFile("addons/dotadash/" .. fname .. ".txt", s)
+  end
+
   if DEBUG and string.find(text, "^-points") then
     for k,v in pairs(HeroList:GetAllHeroes()) do
       if ap then
@@ -960,7 +1258,17 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
   if self.vPlayers[playerID] ~= nil then
     --self.vUserIds[playerID] = nil
     self.vUserIds[keys.userid] = ply
+
+    --Player is reconnecting, redraw stuff
+    self:DrawBarriersForPlayer(ply)
+    self:DrawWaypointsForPlayer(ply)
     return
+  end
+
+  if not roundOne then
+    -- This player is conencting after the intial drawings, redraw
+    self:DrawBarriersForPlayer(ply)
+    self:DrawWaypointsForPlayer(ply)
   end
   
   if not USE_LOBBY and playerID == -1 then
@@ -1016,9 +1324,11 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
           nRoundPosition = 0,
           nLap = 1,
           nCurWaypoint = 1,
+          bCompletedRace = false,
           oNextWayPointEntity = nil,
           playerID = playerID,
           fLastFriction = FRICTION_MULTIPLIER,
+          spawn = nil,
           vAbilities = {
             "reflex_empty1",
             "reflex_empty2",
@@ -1061,6 +1371,9 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
         unit:SetPhysicsFriction(FRICTION_MULTIPLIER)
         unit:SetVelocityClamp(VELOCITY_CLAMP)
         unit:SetPhysicsVelocityMax(VELOCITY_MAX)
+        unit:SetBounceMultiplier(BOUNCE_MULTIPLIER)
+        unit:SetNavGridLookahead(NAV_LOOKAHEAD)
+
         local mapdata = MAP_DATA
         local waypoints = mapdata.waypoints
         local frameCount = 0
@@ -1184,6 +1497,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
                 })
               end
               
+              --FireGameEvent("dd_lap_update", {playerID = heroTable.pleyerID, lap = heroTable.nLap})
               curWaypoint = 1
               heroTable.nCurWaypoint = 1
               --print('hit last waypoint, New Lap: ' .. tostring(heroTable.nLap))
@@ -1195,6 +1509,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
                 EmitSoundOnClient("Tutorial.TaskCompleted", ply)
                 DotaDashGameMode:CompletedRace(unit)
                 heroTable.nLap = 1
+                heroTable.bCompletedRace = true
                 table.remove(self.vPositions, 1)
               else
                 GameRules:SendCustomMessage("<font color='#44FF44'>" .. name .. "</font> has completed Lap " .. tostring(heroTable.nLap-1) .. "!", 0, 0)
@@ -1217,12 +1532,26 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
         end)
           
 
-        if GameRules:State_Get() > DOTA_GAMERULES_STATE_PRE_GAME then
-
+        if not bInPreRound then
           if heroTable.bRoundInit == false then
             print ( '[DOTADASH] Initializing player ' .. playerID)
             heroTable.bRoundInit = true
             heroTable.hero:SkipSlide(30)
+            print ('[DOTADASH] post-pre-game init')
+            local spawn = nil
+            if self.spawns ~= nil then
+              local index = RandomInt(1,#self.spawns)
+              spawn = self.spawns[index]
+              heroTable.spawn = spawn
+              table.remove(self.spawns, index)
+
+              --print(heroTable.spawn.origin)
+              heroTable.hero:SetRespawnPosition(spawn.origin)
+              heroTable.hero:SetAbsOrigin(spawn.origin)
+              if spawn.forward ~= nil then
+                heroTable.hero:SetForwardVector(spawn.forward)
+              end
+            end
             heroTable.hero:RespawnHero(false, false, false)
             --heroTable.hero:RespawnUnit()
             heroTable.nKillsThisRound = 0
@@ -1253,6 +1582,11 @@ end
 function DotaDashGameMode:UpdatePositions()
   local waypoints = MAP_DATA.waypoints
   local points = #waypoints
+  local lastPositions = {}
+
+  for i=1,#self.vPositions do
+    lastPositions[i] = self.vPositions[i]
+  end
   
   table.sort(self.vPositions, function(a,b)
     local scoreA = (a.nLap - 1) * points + (a.nCurWaypoint - 1)
@@ -1282,8 +1616,23 @@ function DotaDashGameMode:UpdatePositions()
   end
   print(s .. "}")]]
   
-  -- Send update to clients
-  -- FireGameEvent()
+  -- Send update to clients if the positions have changed
+  local equal = true
+  local vPositions = self.vPositions
+  local s = tostring(vPositions[1].playerID)
+  if lastPositions[1].playerID ~= vPositions[1].playerID then
+    equal = false
+  end
+  for i=2,#lastPositions do
+    if lastPositions[i].playerID ~= vPositions[i].playerID then
+      equal = false
+    end
+    s = s .. "," .. tostring(vPositions[i].playerID)
+  end
+
+  if not equal then
+    --FireGameEvent("dd_position_update", {positions = s})
+  end
 end
 
 function DotaDashGameMode:CompletedRace(unit)
@@ -1479,7 +1828,18 @@ function DotaDashGameMode:InitializeRound()
   self.nCurrentRound = self.nCurrentRound + 1
   self.nCurrentLap = 1
   self.nFinishLineCrossed = 0
+
+  --FireGameEvent("dd_start_race", {maxLaps = LAPS_TO_WIN})
+
   local mapdata = MAP_DATA
+  local spawnsOrig = mapdata.spawns
+  self.spawns = nil
+  if spawnsOrig ~= nil and #spawnsOrig >= 10 then
+    self.spawns = {}
+    for i=1,#spawnsOrig do
+      self.spawns[i] = spawnsOrig[i]
+    end
+  end
   
   self.vPositions = {}
   
@@ -1497,6 +1857,21 @@ function DotaDashGameMode:InitializeRound()
         print ( '[DOTADASH] Initializing player ' .. plyID)
         player.bRoundInit = true
         player.hero:SkipSlide(30)
+        local spawn = nil
+        if self.spawns ~= nil then
+          local index = RandomInt(1,#self.spawns)
+          spawn = self.spawns[index]
+          player.spawn = spawn
+          table.remove(self.spawns, index)
+
+          --print(player.spawn.origin)
+          player.hero:SetRespawnPosition(spawn.origin)
+          player.hero:SetAbsOrigin(spawn.origin)
+          if spawn.forward ~= nil then
+            player.hero:SetForwardVector(spawn.forward)
+          end
+        end
+
         player.hero:RespawnHero(false, false, false)
         --SendToConsole("dota_camera_lock 1")
         player.hero:SetPhysicsVelocity(Vector(0,0,0))
@@ -1511,7 +1886,9 @@ function DotaDashGameMode:InitializeRound()
         
         self.vPositions[#self.vPositions + 1] = player
         player.nLap = 1
+        --FireGameEvent("dd_lap_update", {playerID = player.pleyerID, lap = 1})
         player.nRoundPosition = 0
+        player.bCompletedRace = false
         
         --[[local points = #MAP_DATA.waypoints
         local s = "{"
@@ -1568,6 +1945,8 @@ function DotaDashGameMode:InitializeRound()
         unit:AddNewModifier(unit, nil, "modifier_phased", {})
         local ability = unit:FindAbilityByName("reflex_dummy_unit")
         ability:SetLevel(1)
+
+        waypoint.unit = unit
         
         local particleName = waypoint.particle or "dark_seer_wall_of_replica"
         local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, unit)
@@ -1621,6 +2000,165 @@ function DotaDashGameMode:InitializeRound()
         
         unit.bBlockActive = true
       end
+
+      --Create Barriers
+      local barriers = mapdata.barriers
+      if barriers ~= nil then
+        for i=1,#barriers do
+          local barrier = barriers[i]
+
+          local particle = ParticleManager:CreateParticle("dd_earthshaker_fissure", PATTACH_WORLDORIGIN, nil)
+          ParticleManager:SetParticleControl(particle, 0, barrier.from)
+          ParticleManager:SetParticleControl(particle, 1, barrier.to) -- radius, thickness, speed
+          ParticleManager:SetParticleControl(particle, 2, Vector(10000,0,0)) -- duration
+
+          ParticleManager:ReleaseParticleIndex(particle)
+        end
+      end
+
+      -- spawn vision dummies
+      local vision = mapdata.vision
+      if vision ~= nil then
+        local i=1
+        self:CreateTimer('vision', {
+          useGameTime = true,
+          endTime = GameRules:GetGameTime() + .1,
+          callback = function(reflex, args)
+            if i > #vision then
+              return
+            end
+            local vis = vision[i]
+            --print("vis: " .. tostring(i) .. " -- " .. tostring(vis.origin))
+
+            local dummy = CreateUnitByName("npc_vision_dummy", vis.origin, false, nil, nil, DOTA_TEAM_GOODGUYS)
+            dummy:AddNewModifier(unit, nil, "modifier_invulnerable", {})
+            dummy:AddNewModifier(unit, nil, "modifier_phased", {})
+            local ab = dummy:FindAbilityByName("reflex_dummy_unit")
+            ab:SetLevel(1)
+
+            dummy = CreateUnitByName("npc_vision_dummy", vis.origin, false, nil, nil, DOTA_TEAM_BADGUYS)
+            dummy:AddNewModifier(unit, nil, "modifier_invulnerable", {})
+            dummy:AddNewModifier(unit, nil, "modifier_phased", {})
+            ab = dummy:FindAbilityByName("reflex_dummy_unit")
+            ab:SetLevel(1)
+
+            i = i+1
+            return GameRules:GetGameTime() + .2
+          end
+          })
+      end
+
+
+      --Vacuum trees
+      local vacuums = mapdata.vacuums
+      if vacuums ~= nil then
+        for i=1,#vacuums do
+          --print('vac' .. i)
+          local vacuum = vacuums[i]
+          local unit = CreateUnitByName('npc_vacuum_dummy', vacuum.origin, false, nil, nil, DOTA_TEAM_NOTEAM)
+          local ability = unit:FindAbilityByName("dotadash_vacuum")
+          vacuum.unit = unit
+          vacuum.ability = ability
+          if vacuum.size == nil then
+            ability:SetLevel(5)
+          else
+            ability:SetLevel(vacuum.size)
+          end
+        end
+
+        local rerun = 2
+        DotaDashGameMode:CreateTimer('vacuums', {
+          useGameTime = true,
+          endTime = GameRules:GetGameTime() + 1.0,
+          callback = function(reflex, args)
+            if rerun == 0 then
+              for i=1,#vacuums do
+                local vacuum = vacuums[i]
+                local unit = vacuum.unit
+                unit:Destroy()
+              end
+              return
+            else
+              for i=1,#vacuums do
+                local vacuum = vacuums[i]
+                local ability = vacuum.ability
+                local unit = vacuum.unit
+                unit:CastAbilityOnPosition(unit:GetAbsOrigin(), ability, 0)
+              end
+              rerun = rerun - 1
+              return GameRules:GetGameTime() + 2.0
+            end
+          end
+          })
+
+        if GetMapName() == "dota_dash" then
+          DotaDashGameMode:CreateTimer('entityDelete', {
+            useGameTime = true,
+            endTime = GameRules:GetGameTime(),
+            callback = function(reflex, args)
+              local delete = {
+                "npc_dota_creep_lane",
+                "npc_dota_creep_siege",
+                "npc_dota_creep_neutral"
+              }
+              for j=1,#delete do
+                local ents = Entities:FindAllByClassname(delete[j])
+                local curTime = GameRules:GetGameTime()
+                for i=1,#ents do
+                  local ent = ents[i]
+                  if ent:GetCreationTime() + 60 < curTime then
+                    ent:Destroy()
+                  end
+                end
+              end
+
+              return GameRules:GetGameTime() + 20
+            end
+            })
+
+          DotaDashGameMode:CreateTimer('runeDelete', {
+            useGameTime = true,
+            endTime = GameRules:GetGameTime(),
+            callback = function(reflex, args)
+              local ents = Entities:FindAllByClassname("dota_item_rune")
+              for i=1,#ents do
+                print('deleting rune')
+                local ent = ents[i]
+                ent:Destroy()
+                return
+              end
+
+              return GameRules:GetGameTime() + .1
+            end
+            })
+          local ents = Entities:FindAllByClassname("npc_dota_spawner_good_mid")
+          for i=1,#ents do
+            print('deleting mid')
+            local ent = ents[i]
+            ent:Destroy()
+          end
+          
+          ents = Entities:FindAllByClassname("npc_dota_spawner_bad_mid")
+          for i=1,#ents do
+            print('deleting mid')
+            local ent = ents[i]
+            ent:Destroy()
+          end
+
+          ents = Entities:FindAllByClassname("npc_dota_neutral_spawner")
+          for i=1,#ents do
+            local ent = ents[i]
+            ent:Destroy()
+          end
+
+          ents = Entities:FindAllByClassname("npc_dota_tower")
+          for i=1,#ents do
+            local ent = ents[i]
+            ent:__KeyValueFromInt("ProjectileSpeed", 2000)
+          end
+        end
+      end
+
     end
     
     --[[GameRules:SendCustomMessage("USE <font color='#FF3333'>dota_camera_lock 1</font> FOR THIS GAME", 0, 0)
@@ -1652,9 +2190,16 @@ function DotaDashGameMode:InitializeRound()
         GameRules:SendCustomMessage("Welcome to <font color='#70EA72'>Dota Dash!</font>", 0, 0)
         GameRules:SendCustomMessage("Version: " .. DOTADASH_VERSION, 0, 0)
         GameRules:SendCustomMessage("Created by <font color='#70EA72'>BMD</font>", 0, 0)
-        GameRules:SendCustomMessage("Map by <font color='#70EA72'>Azarak</font>", 0, 0)
+        GameRules:SendCustomMessage("Map by <font color='#70EA72'>" .. (MAP_DATA.author or "Unknown") .. "</font>", 0, 0)
         GameRules:SendCustomMessage("UI by <font color='#70EA72'>Nullscope</font>", 0, 0)
         GameRules:SendCustomMessage("Send feedback to <font color='#70EA72'>bmddota@gmail.com</font>", 0, 0)
+
+        local ents = Entities:FindAllByClassname("npc_dota_roshan")
+        for i=1,#ents do
+          print ('roshan')
+          local ent = ents[i]
+          ent:__KeyValueFromFloat("AttackAnimationPoint", 0.0)
+        end
       end
     })
   end
@@ -1753,17 +2298,19 @@ function DotaDashGameMode:RoundComplete(timedOut)
     return a.nTotalScore > b.nTotalScore
   end)
 
-  local s = "{"
+  local s = ""
   for i=1,#scores do
     s = s.. tostring(scores[i].nTotalScore) .. ","
   end
-  print(s .. "}")
+  print("{" .. s .. "}")
   
   
   if #scores > 1 then
     GameMode:SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, scores[2].nTotalScore )
   end
   GameMode:SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, scores[1].nTotalScore )
+
+  --FireGameEvent("dd_scoreboard", {scores = s})
 
   for i=1,5 do
     local b = scores[i+5]
@@ -1990,17 +2537,17 @@ function DotaDashGameMode:_WatConsoleCommand()
 end
 
 function DotaDashGameMode:OnPlayerKilled(keys)
-  print('[DOTADASH] OnPlayerKilled')
+  --[[print('[DOTADASH] OnPlayerKilled')
   PrintTable(keys)
   PrintTable(getmetatable(keys))
-  print('-----------------------')
+  print('-----------------------')]]
 end
 
 function DotaDashGameMode:OnEntityKilled( keys )
-  print('[DOTADASH] OnEntityKilled')
+  --[[print('[DOTADASH] OnEntityKilled')
   PrintTable(keys)
   PrintTable(getmetatable(keys))
-  print('-----------------------')
+  print('-----------------------')]]
 end
 
 function DotaDashGameMode:FindAndRemove(hero, abilityName)
@@ -2022,20 +2569,72 @@ function DotaDashGameMode:FindAndRemoveMod(hero, modName)
   end
 end
 
+function DotaDashGameMode:DrawBarriersForPlayer(player)
+  --Create Barriers
+  if roundOne then
+    return
+  end
+  self:CreateTimer(DoUniqueString('waypoints'), {
+    useGameTime = true,
+    endTime = GameRules:GetGameTime() + 3,
+    callback = function(reflex, args)
+      local barriers = MAP_DATA.barriers
+      if barriers ~= nil then
+        for i=1,#barriers do
+          local barrier = barriers[i]
+
+          local particle = ParticleManager:CreateParticleForPlayer("dd_earthshaker_fissure", PATTACH_WORLDORIGIN, nil, player)
+          ParticleManager:SetParticleControl(particle, 0, barrier.from)
+          ParticleManager:SetParticleControl(particle, 1, barrier.to) -- radius, thickness, speed
+          ParticleManager:SetParticleControl(particle, 2, Vector(10000,0,0)) -- duration
+
+          ParticleManager:ReleaseParticleIndex(particle)
+        end
+      end
+    end
+    })
+end
+
+function DotaDashGameMode:DrawWaypointsForPlayer(player)
+  if roundOne then
+    return
+  end
+  self:CreateTimer(DoUniqueString('waypoints'), {
+    useGameTime = true,
+    endTime = GameRules:GetGameTime() + 3,
+    callback = function(reflex, args)
+      local waypoints = MAP_DATA.waypoints
+      for i=1,#waypoints do
+        local waypoint = waypoints[i]
+        local unit = waypoint.unit
+        
+        local particleName = waypoint.particle or "dark_seer_wall_of_replica"
+        local particle = ParticleManager:CreateParticleForPlayer(particleName, PATTACH_ABSORIGIN_FOLLOW, unit, player)
+        ParticleManager:SetParticleControl(particle, 0, Vector(0,0,0)) -- something
+        ParticleManager:SetParticleControl(particle, 1, waypoint.to) -- endpoint
+        ParticleManager:SetParticleControl(particle, 2, Vector(0,0,0)) -- something
+      end
+    end
+    })
+end
+
 function scaleTable(tab)
   local total = 0
-  for k,v in pairs(tab) do
-    total = total + v
+  for i=1,#tab do
+    for k,v in pairs(tab[i]) do
+      total = total + v
+    end
   end
   
-  local newTab = {}
   local val = 0
-  for k,v in pairs(tab) do
-    newTab[k] = 100 * (val + v) / total
-    val = val + v 
+  for i=1,#tab do
+    for k,v in pairs(tab[i]) do
+      tab[i][k] = 100 * (val + v) / total
+      val = val + v 
+    end
   end
   
-  return newTab
+  return tab
 end
 
 function callModRemover( caster, modName, abilityLevel)
@@ -2075,16 +2674,18 @@ function hasPowerup(unit)
   if unit:HasItemInInventory("item_powerup") then
     return true
   end
-  for k,v in pairs(ITEMS_TABLE) do
+  for i=1,#ITEMS_TABLE do
+    for k,v in pairs(ITEMS_TABLE[i]) do
+      if unit:HasItemInInventory(k) then
+        return true
+      end
+    end
+  end
+  --[[for k,v in pairs(ITEM_FIRST) do
     if unit:HasItemInInventory(k) then
       return true
     end
-  end
-  for k,v in pairs(ITEMS_NOT_FIRST) do
-    if unit:HasItemInInventory(k) then
-      return true
-    end
-  end
+  end]]
   
   return false
 end

@@ -27,6 +27,8 @@ function Physics:start()
   self.blockGroups = {}
   self.projectiles = {}
   self.anggrid = nil
+  self.offsetX = nil
+  self.offsetY = nil
   
   local wspawn = Entities:FindByClassname(nil, 'worldspawn')
   wspawn:SetContextThink("PhysicsThink", Dynamic_Wrap( Physics, 'Think' ), PHYSICS_THINK )
@@ -146,9 +148,24 @@ end
       "TBD"
 ]]
 
-function Physics:AngleGrid( anggrid )
+function Physics:AngleGrid( anggrid, angoffsets )
   self.anggrid = anggrid
   print('[PHYSICS] Angle Grid Set')
+  local worldMin = Vector(GetWorldMinX(), GetWorldMinY(), 0)
+  local worldMax = Vector(GetWorldMaxX(), GetWorldMaxY(), 0)
+  local boundX1 = GridNav:WorldToGridPosX(worldMin.x)
+  local boundX2 = GridNav:WorldToGridPosX(worldMax.x)
+  local boundY1 = GridNav:WorldToGridPosX(worldMin.y)
+  local boundY2 = GridNav:WorldToGridPosX(worldMax.y)
+  local offsetX = boundX1 * -1 + 1
+  local offsetY = boundY1 * -1 + 1
+  self.offsetX = offsetX
+  self.offsetY = offsetY
+
+  if angoffsets ~= nil then
+    self.offsetX = math.abs(angoffsets.x) + 1
+    self.offsetY = math.abs(angoffsets.y) + 1
+  end
 end
 
 function Physics:Unit(unit)
@@ -372,6 +389,13 @@ function Physics:Unit(unit)
   function unit:GetAutoUnstuck ()
     return unit.bAutoUnstuck
   end
+
+  function unit:SetBounceMultiplier (bounce)
+    unit.fBounceMultiplier = bounce
+  end
+  function unit:GetBounceMultiplier ()
+    return unit.fBounceMultiplier
+  end
   
   unit.PhysicsTimerName = DoUniqueString('phys')
   Physics:CreateTimer(unit.PhysicsTimerName, {
@@ -529,15 +553,19 @@ function Physics:Unit(unit)
             
             local normal = nil
             local anggrid = self.anggrid
+            local offX = self.offsetX
+            local offY = self.offsetY
             if anggrid then
               local angSize = #anggrid
-              local angX = #anggrid / 2 - navX
-              local angY = #anggrid / 2 - navY
+              local angX = navX + offX
+              local angY = navY + offY
+
+              --print(offX .. ' -- ' .. angX .. ' == ' .. angY .. ' -- ' .. offY)
               
               local angle = anggrid[angX][angY]
               if angle ~= -1 then
-                angle = angle + 90
-                normal = RotatePosition(Vector(0,0,0), QAngle(0,angle,0), Vector(0,-1,0))
+                angle = angle
+                normal = RotatePosition(Vector(0,0,0), QAngle(0,angle,0), Vector(1,0,0))
                 --print(normal)
                 --print('----------')
               end
@@ -569,14 +597,14 @@ function Physics:Unit(unit)
                     navPos2 = navPos + Vector(0,-64,0)
                     navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
                     if navConnect2 then
-                      normal = diff * -1
+                      normal = Vector(diff.x * -1, diff.y * -1, diff.z)
                     end
                   else
                     normal = Vector(0,-1,0)
                     navPos2 = navPos + Vector(0,64,0)
                     navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
                     if navConnect2 then
-                      normal = diff * -1
+                      normal = Vector(diff.x * -1, diff.y * -1, diff.z)
                     end
                   end
                 end
@@ -590,14 +618,14 @@ function Physics:Unit(unit)
                     navPos2 = navPos + Vector(0,-64,0)
                     navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
                     if navConnect2 then
-                      normal = diff * -1
+                      normal = Vector(diff.x * -1, diff.y * -1, diff.z)
                     end
                   else
                     normal = Vector(0,-1,0)
                     navPos2 = navPos + Vector(0,64,0)
                     navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
                     if navConnect2 then
-                      normal = diff * -1
+                      normal = Vector(diff.x * -1, diff.y * -1, diff.z)
                     end
                   end
                 end
@@ -611,14 +639,14 @@ function Physics:Unit(unit)
                     navPos2 = navPos + Vector(-64,0,0)
                     navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
                     if navConnect2 then
-                      normal = diff * -1
+                      normal = Vector(diff.x * -1, diff.y * -1, diff.z)
                     end
                   else
                     normal = Vector(-1,0,0)
                     navPos2 = navPos + Vector(64,0,0)
                     navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
                     if navConnect2 then
-                      normal = diff * -1
+                      normal = Vector(diff.x * -1, diff.y * -1, diff.z)
                     end
                   end
                 end
@@ -632,14 +660,14 @@ function Physics:Unit(unit)
                     navPos2 = navPos + Vector(-64,0,0)
                     navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
                     if navConnect2 then
-                      normal = diff * -1
+                      normal = Vector(diff.x * -1, diff.y * -1, diff.z)
                     end
                   else
                     normal = Vector(0,-1,0)
                     navPos2 = navPos + Vector(64,0,0)
                     navConnect2 = not GridNav:IsTraversable(navPos2) or GridNav:IsBlocked(navPos2)
                     if navConnect2 then
-                      normal = diff * -1
+                      normal = Vector(diff.x * -1, diff.y * -1, diff.z)
                     end
                   end
                 end
@@ -647,7 +675,7 @@ function Physics:Unit(unit)
               --FindClearSpaceForUnit(unit, newPos, true)
               --print(tostring(unit:GetAbsOrigin()) .. " -- " .. tostring(navPos))
             end
-            newVelocity = (-2 * newVelocity:Dot(normal) * normal) + newVelocity
+            newVelocity = ((-2 * newVelocity:Dot(normal) * normal) + newVelocity) * unit.fBounceMultiplier
           end
         else
           unit:SetAbsOrigin(newPos)
@@ -667,7 +695,33 @@ function Physics:Unit(unit)
       if unit.bAutoUnstuck and unit.nStuckFrames >= unit.nStuckTimeout then
         unit.nStuckFrames = 0
         unit.nSkipSlide = 1
-        unit:SetAbsOrigin(unit.vLastGoodPosition)
+
+        local navX = GridNav:WorldToGridPosX(position.x)
+        local navY = GridNav:WorldToGridPosY(position.y)
+
+        local anggrid = self.anggrid
+        local offX = self.offsetX
+        local offY = self.offsetY
+        if anggrid then
+          local angSize = #anggrid
+          local angX = navX + offX
+          local angY = navY + offY
+
+          --print(offX .. ' -- ' .. angX .. ' == ' .. angY .. ' -- ' .. offY)
+          
+          local angle = anggrid[angX][angY]
+          if angle ~= -1 then
+            local normal = RotatePosition(Vector(0,0,0), QAngle(0,angle,0), Vector(1,0,0))
+            --print(normal)
+            --print('----------')
+
+            unit:SetAbsOrigin(position + normal * 64)
+          else
+            unit:SetAbsOrigin(unit.vLastGoodPosition)
+          end
+        else
+          unit:SetAbsOrigin(unit.vLastGoodPosition)
+        end
       end
       
       return curTime
@@ -702,6 +756,7 @@ function Physics:Unit(unit)
   unit.bAutoUnstuck = true
   unit.nStuckTimeout = 5
   unit.nStuckFrames = 0
+  unit.fBounceMultiplier = 1.0
 end
 
 Physics:start()

@@ -39,6 +39,69 @@ function unstick(keys)
   FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
 end
 
+function lightningBolt(keys)
+  local caster = keys.caster
+
+  -- Shrink other heroes and make them slow
+  DotaDashGameMode:LoopOverPlayers(function (player, plyID)
+    if player.hero ~= caster and not player.hero.bStarPower then
+      player.hero:SetModelScale(0.5, 0.5)
+      player.hero:SetSlideMultiplier(.05)
+      player.hero:SetPhysicsVelocityMax(1200)
+
+      player.hero:EmitSound("Hero_Zuus.GodsWrath.Target")
+      local particle = ParticleManager:CreateParticle("zuus_lightning_bolt", PATTACH_ABSORIGIN_FOLLOW, player.hero)
+      --ParticleManager:SetParticleControl(particle, 0, Vector(0,0,0))
+      --ParticleManager:SetParticleControl(particle, 1, Vector(50,5,1)) -- radius, thickness, speed
+      --ParticleManager:SetParticleControl(particle, 3, ent:GetAbsOrigin()) -- position
+    end
+  end)
+
+  caster.bLightningBolt = true
+
+  DotaDashGameMode:CreateTimer(DoUniqueString('lightningBolt'), {
+    useGameTime = true,
+    endTime = GameRules:GetGameTime() + 6,
+    callback = function(reflex, args)
+      caster.bLightningBolt = false
+      DotaDashGameMode:LoopOverPlayers(function (player, plyID)
+        if player.hero ~= caster then
+          player.hero:SetModelScale(1.0, 0.5)
+          player.hero:SetSlideMultiplier(SLIDE_MULTIPLIER)
+          player.hero:SetPhysicsVelocityMax(VELOCITY_MAX)
+        end
+      end)
+    end
+    })
+end
+
+function starPower(keys)
+  local caster = keys.caster
+
+  -- Boost Caster move speed and Friction for control
+
+  caster:SetPhysicsFriction(.11)
+  caster:SetBaseMoveSpeed(522)
+  caster.bStarPower = true
+  caster:AddPhysicsAcceleration(Vector(0,0,-20))
+  caster:SetModelScale(1.0, 0.5)
+  caster:SetSlideMultiplier(SLIDE_MULTIPLIER)
+  caster:SetPhysicsVelocityMax(VELOCITY_MAX)
+  caster:RemoveModifierByName("modifier_silence")
+  caster:RemoveModifierByName("modifier_ember_spirit_searing_chains")
+
+  DotaDashGameMode:CreateTimer(DoUniqueString('starPower'), {
+    useGameTime = true,
+    endTime = GameRules:GetGameTime() + 8,
+    callback = function(reflex, args)
+      caster.bStarPower = false
+      caster:SetPhysicsFriction(FRICTION_MULTIPLIER)
+      caster:SetBaseMoveSpeed(BASE_MOVESPEED)
+      caster:AddPhysicsAcceleration(Vector(0,0,20))
+    end
+    })
+end
+
 function greenTurtleShell(keys)
   local caster = keys.caster
   local forward = caster:GetForwardVector()
@@ -99,7 +162,7 @@ function greenTurtleShell(keys)
         
         local ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", shell:GetAbsOrigin(), 450)
         for k,v in pairs(ents) do
-          if v.AddPhysicsVelocity ~= nil and IsValidEntity(v) then
+          if v.AddPhysicsVelocity ~= nil and IsValidEntity(v) and not v.bStarPower then
             local vel = v:GetPhysicsVelocity()
             v:AddPhysicsVelocity(vel * (-2/3) + Vector(0,0,600) + direction * 150)
             v:AddNewModifier(v, nil, "modifier_silence", {duration = 2.5})
@@ -205,32 +268,33 @@ function bananaPeel(keys)
         ParticleManager:SetParticleControl(particle, 1, Vector(50,5,1)) -- radius, thickness, speed
         ParticleManager:SetParticleControl(particle, 3, ent:GetAbsOrigin()) -- position]]
         
-        
-        ent:PreventDI(true)
-        ent:AddNewModifier(ent, nil, "modifier_silence", {duration = 2.0})
-        ent:AddNewModifier(ent, nil, "modifier_pudge_meat_hook", {duration = 2.0})
-        ent:AddPhysicsVelocity(ent:GetPhysicsVelocity() * (-1/3))
-        local fric = ent:GetPhysicsFriction()
-        DotaDashGameMode.fLastFriction = fric
-        ent:SetPhysicsFriction(.01)
-        
-        local done = GameRules:GetGameTime() + 2.0
-        DotaDashGameMode:CreateTimer(timer2, {
-          useGameTime = true,
-          endTime = GameRules:GetGameTime() + .1,
-          callback = function(reflex, args)
-            if GameRules:GetGameTime() > done then
-              ent:PreventDI(false)
-              ent:SetPhysicsFriction(FRICTION_MULTIPLIER)
-              return
+        if ent.bStarPower == nil or ent.bStarPower == false then
+          ent:PreventDI(true)
+          ent:AddNewModifier(ent, nil, "modifier_silence", {duration = 2.0})
+          ent:AddNewModifier(ent, nil, "modifier_pudge_meat_hook", {duration = 2.0})
+          ent:AddPhysicsVelocity(ent:GetPhysicsVelocity() * (-1/3))
+          local fric = ent:GetPhysicsFriction()
+          DotaDashGameMode.fLastFriction = fric
+          ent:SetPhysicsFriction(.01)
+          
+          local done = GameRules:GetGameTime() + 2.0
+          DotaDashGameMode:CreateTimer(timer2, {
+            useGameTime = true,
+            endTime = GameRules:GetGameTime() + .1,
+            callback = function(reflex, args)
+              if GameRules:GetGameTime() > done then
+                ent:PreventDI(false)
+                ent:SetPhysicsFriction(FRICTION_MULTIPLIER)
+                return
+              end
+              if IsValidEntity(banana) then
+                ent:PreventDI(true)
+              end
+              return GameRules:GetGameTime() + .1
             end
-            if IsValidEntity(banana) then
-              ent:PreventDI(true)
-            end
-            return GameRules:GetGameTime() + .1
-          end
-        })
-        
+          })
+        end
+          
         DotaDashGameMode:RemoveTimer(timer)
         banana:StopPhysicsSimulation()
         banana:Destroy()
@@ -323,7 +387,7 @@ function redTurtleShell(keys)
         
         ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", shell:GetAbsOrigin(), 450)
         for k,v in pairs(ents) do
-          if v.AddPhysicsVelocity ~= nil and IsValidEntity(v) then
+          if v.AddPhysicsVelocity ~= nil and IsValidEntity(v) and not v.bStarPower then
             local vel = v:GetPhysicsVelocity()
             v:AddPhysicsVelocity(vel * (-2/3) + Vector(0,0,600) + direction * 150)
             v:AddNewModifier(v, nil, "modifier_silence", {duration = 2.5})
@@ -364,7 +428,7 @@ function blueTurtleShell(keys)
   shell:SetAutoUnstuck(false)
   shell:SetNavCollisionType(PHYSICS_NAV_NOTHING)
   shell:SetPhysicsAcceleration(Vector(0,0,0))
-  shell:SetPhysicsVelocityMax(2000)
+  shell:SetPhysicsVelocityMax(2500)
   shell:Slide(false)
   shell:SetPhysicsFriction(0)
   
@@ -412,7 +476,7 @@ function blueTurtleShell(keys)
         
         ents = Entities:FindAllByClassnameWithin("npc_dota_hero*", shell:GetAbsOrigin(), 450)
         for k,v in pairs(ents) do
-          if v.AddPhysicsVelocity ~= nil and IsValidEntity(v) then
+          if v.AddPhysicsVelocity ~= nil and IsValidEntity(v) and not v.bStarPower then
             local vel = v:GetPhysicsVelocity()
             v:AddPhysicsVelocity(vel * (-2/3) + Vector(0,0,600) + direction * 150)
             v:AddNewModifier(v, nil, "modifier_silence", {duration = 2.5})
@@ -448,6 +512,34 @@ end
 local line = 0
 local vec = Vector(0,0,0)
 
+function undoAction(keys)
+  local caster = keys.caster
+
+  ParticleManager:SetParticleControl(DotaDashGameMode.WALLS[#DotaDashGameMode.WALLS].particle, 2, Vector(0,0,0))
+  DotaDashGameMode.WALLS[#DotaDashGameMode.WALLS] = nil
+  print("UNDO")
+end
+
+function placeVision(keys)
+  local caster = keys.caster
+  local point = keys.target_points[1]
+
+  local dummy = CreateUnitByName("npc_vision_dummy", point, false, nil, nil, DOTA_TEAM_GOODGUYS)
+  dummy:AddNewModifier(unit, nil, "modifier_invulnerable", {})
+  dummy:AddNewModifier(unit, nil, "modifier_phased", {})
+  local ab = dummy:FindAbilityByName("reflex_dummy_unit")
+  ab:SetLevel(1)
+
+  dummy = CreateUnitByName("npc_vision_dummy", point, false, nil, nil, DOTA_TEAM_BADGUYS)
+  dummy:AddNewModifier(unit, nil, "modifier_invulnerable", {})
+  dummy:AddNewModifier(unit, nil, "modifier_phased", {})
+  ab = dummy:FindAbilityByName("reflex_dummy_unit")
+  ab:SetLevel(1)
+
+  
+  printPoint(keys)
+end
+
 function printLine(keys)
   if line == 0 then
     line = 1
@@ -462,17 +554,42 @@ function printLine(keys)
       .. "," .. tostring(math.floor(vec2.y)) 
       .. "," .. tostring(math.floor(vec2.z))
       .. ")},")
+
+    local particle = ParticleManager:CreateParticle("dd_earthshaker_fissure", PATTACH_WORLDORIGIN, nil)
+    ParticleManager:SetParticleControl(particle, 0, vec)
+    ParticleManager:SetParticleControl(particle, 1, vec2) -- radius, thickness, speed
+    ParticleManager:SetParticleControl(particle, 2, Vector(10000,0,0)) -- duration
+
+    --ParticleManager:ReleaseParticleIndex(particle)
+
+    DotaDashGameMode.WALLS[#DotaDashGameMode.WALLS+1] = {from = vec, to = vec2, particle = particle}
+
   end
 end
 
 function printPoint(keys)
   local point = keys.target_points[1]
-  local navX = #MAP_DATA.anggrid - (GridNav:WorldToGridPosX(point.x) + #MAP_DATA.anggrid / 2)
-  local navY = #MAP_DATA.anggrid - (GridNav:WorldToGridPosY(point.y) + #MAP_DATA.anggrid / 2)
-  
-  print(navX)
-  print(navY)
-  print('X=' .. tostring(navX) .. ", Y=" .. tostring(navY) .. ", ang=" .. tostring(MAP_DATA.anggrid[navX][navY]))
+  print('{origin = Vector(' .. tostring(math.floor(keys.target_points[1].x))
+    .. "," .. tostring(math.floor(keys.target_points[1].y)) .. "," .. tostring(math.floor(keys.target_points[1].z)) .. ")},")
+end
+
+function printAngle(keys)
+  local point = keys.target_points[1]
+  if #MAP_DATA.anggrid then
+    --local navX = #MAP_DATA.anggrid - (GridNav:WorldToGridPosX(point.x) + #MAP_DATA.anggrid / 2)
+    --local navY = #MAP_DATA.anggrid - (GridNav:WorldToGridPosY(point.y) + #MAP_DATA.anggrid / 2)
+
+    local gridX = GridNav:WorldToGridPosX(point.x)
+    local gridY = GridNav:WorldToGridPosY(point.y)
+    local navX = gridX + Physics.offsetX
+    local navY = gridY + Physics.offsetY
+    
+    print(gridX)
+    print(gridY)
+    print(#MAP_DATA.anggrid)
+    print(#MAP_DATA.anggrid[1])
+    print('X=' .. tostring(navX) .. ", Y=" .. tostring(navY) .. ", ang=" .. tostring(MAP_DATA.anggrid[navX][navY]))
+  end
   print('{origin = Vector(' .. tostring(math.floor(keys.target_points[1].x))
     .. "," .. tostring(math.floor(keys.target_points[1].y)) .. "," .. tostring(math.floor(keys.target_points[1].z)) .. ")},")
 end

@@ -1,462 +1,623 @@
-"DOTAAbilities"
-{
-
-	"item_rocket_boots"
+	"DOTAAbilities"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1701"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		//"Model"							"models/props_gameplay/salve_blue.mdl"
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_rocket_boots"
-		"ItemKillable"					"0"
-		"ItemSellable"					"0"
-		"ItemDroppable"					"0"
 
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"5000"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"1.0" // "6"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-		"ItemCost"						"0"
-		"ItemShopTags"					"consumable"
-		"ItemQuality"					"consumable"
-    "ItemPermanent"					"0"
-		"ItemInitialCharges"			"1"
-		"ItemDisplayCharges"			"1"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"				"0"
-		"SecretShop"						"1"
-
-		"OnSpellStart"
+		"item_rocket_boots"
 		{
-      "SpendCharge"
-      {}
-			"RunScript"
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"ID"							"1701"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+			//"Model"							"models/props_gameplay/salve_blue.mdl"
+			"BaseClass"						"item_datadriven"
+			"AbilityTextureName"			"item_rocket_boots"
+			"ItemKillable"					"0"
+			"ItemSellable"					"0"
+			"ItemDroppable"					"0"
+
+			// Stats
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"5000"
+			"AbilityCastPoint"				"0.0"
+			"AbilityCooldown"				"1.0" // "6"
+			"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+
+			// Item Info
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"0"
+			"ItemCost"						"0"
+			"ItemShopTags"					"consumable"
+			"ItemQuality"					"consumable"
+	    "ItemPermanent"					"0"
+			"ItemInitialCharges"			"1"
+			"ItemDisplayCharges"			"1"
+			"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+			"ItemPurchasable"				"0"
+			"SecretShop"						"1"
+
+			"OnSpellStart"
 			{
-				"ScriptFile"			"scripts/vscripts/abilities.lua"
-				"Function"				"rocketBoots"
-        "SpeedBoost"      "%speed_boost"
+	      "SpendCharge"
+	      {}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities.lua"
+					"Function"				"rocketBoots"
+	        "SpeedBoost"      "%speed_boost"
+				}
+	      "FireSound"
+	      {
+	        "EffectName"      "Hero_Phoenix.SunRay.Cast"
+	        "Target"          "CASTER"
+	      }
+	      "ApplyModifier"
+	      {
+	        "Target" 				"CASTER"
+	        "Duration"      "3"
+	        "ModifierName"			"modifier_flame_guard"			
+	      }
+	    }
+			
+			"Modifiers"
+			{
+				"modifier_flame_guard"
+				{
+	        "IsHidden" "1"
+					"EffectName"		"ember_spirit_flameGuard"
+					"EffectAttachType"	"follow_origin"
+					"Target"			"CASTER"
+				}
 			}
-      "FireSound"
-      {
-        "EffectName"      "Hero_Phoenix.SunRay.Cast"
-        "Target"          "CASTER"
-      }
-      "ApplyModifier"
-      {
-        "Target" 				"CASTER"
-        "Duration"      "3"
-        "ModifierName"			"modifier_flame_guard"			
-      }
-    }
-		
-		"Modifiers"
-		{
-			"modifier_flame_guard"
+
+			// Special	
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
 			{
-        "IsHidden" "1"
-				"EffectName"		"ember_spirit_flameGuard"
-				"EffectAttachType"	"follow_origin"
-				"Target"			"CASTER"
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"speed_boost"			"1000"
+				}
+			}
+		}
+	  
+	  "item_powerup"
+		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"ID"							"1702"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			//"Model"							"models/props_gameplay/salve_blue.mdl"
+			"BaseClass"						"item_datadriven"
+			"AbilityTextureName"			"item_powerup"
+			"ItemKillable"					"0"
+			"ItemSellable"					"0"
+			"ItemDroppable"					"0"
+
+			// Stats
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"5000"
+			"AbilityCastPoint"				"0.0"
+			"AbilityCooldown"				"1.0" // "6"
+			"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+
+			// Item Info
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"0"
+			"ItemCost"						"0"
+			"ItemShopTags"					"consumable"
+			"ItemQuality"					"consumable"
+	    "ItemPermanent"					"0"
+			"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+			"ItemPurchasable"				"0"
+			"SecretShop"						"1"
+		}
+	  
+		"item_green_turtle_shell"
+		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"ID"							"1704"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+			//"Model"							"models/props_gameplay/salve_blue.mdl"
+			"BaseClass"						"item_datadriven"
+			"AbilityTextureName"			"item_green_turtle_shell"
+			"ItemKillable"					"0"
+			"ItemSellable"					"0"
+			"ItemDroppable"					"0"
+
+			// Stats
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"1000"
+			"AbilityCastPoint"				"0.0"
+			"AbilityCooldown"				"1.0"
+			"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+			"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+			
+			"precache"
+			{
+				"particlefile"				"particles/frostivus_gameplay.pcf"
+				//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
+				"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
+			}
+
+			// Item Info
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"0"
+			"ItemCost"						"100"
+			"ItemShopTags"					"consumable"
+			"ItemQuality"					"consumable"
+			"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+			"ItemPurchasable"				"0"
+	    "ItemPermanent"					"0"
+			"ItemInitialCharges"			"1"
+			"ItemDisplayCharges"			"1"
+			"SecretShop"						"1"
+
+			"OnSpellStart"
+			{
+	      "SpendCharge"
+	      {}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities.lua"
+					"Function"				"greenTurtleShell"
+	        "Speed"           "%speed"
+				}
+	      "FireSound"
+	      {
+	        "EffectName"      "Hero_NagaSiren.Ensnare.Cast"
+	        "Target"          "CASTER"
+	      }
+	    }
+
+			// Special	
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"speed"					"2450"
+				}
 			}
 		}
 
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"item_star_power"
 		{
-			"01"
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"ID"							"1709"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+			//"Model"							"models/props_gameplay/salve_blue.mdl"
+			"BaseClass"						"item_datadriven"
+			"AbilityTextureName"			"item_star_power"
+			"ItemKillable"					"0"
+			"ItemSellable"					"0"
+			"ItemDroppable"					"0"
+
+			// Stats
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"1000"
+			"AbilityCastPoint"				"0.0"
+			"AbilityCooldown"				"1.0"
+			"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+			"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+			
+			"precache"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"speed_boost"			"1000"
+				"particlefile"				"particles/test_particle.pcf"
+			}
+
+			// Item Info
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"0"
+			"ItemCost"						"100"
+			"ItemShopTags"					"consumable"
+			"ItemQuality"					"consumable"
+			"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+			"ItemPurchasable"				"0"
+	    "ItemPermanent"					"0"
+			"ItemInitialCharges"			"1"
+			"ItemDisplayCharges"			"1"
+			"SecretShop"						"1"
+
+			"OnSpellStart"
+			{
+		    "SpendCharge"
+		    {}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities.lua"
+					"Function"				"starPower"
+					"Duration" "%duration"
+				}
+	      "FireSound"
+	      {
+	        "EffectName"      "DOTA_Item.BlackKingBar.Activate"
+	        "Target"          "CASTER"
+	      }
+	      "ApplyModifier"
+	      {
+	      	"Target"					"CASTER"
+	      	"ModifierName"		"modifier_star_power"
+	      }
+	    }
+
+	    "Modifiers"
+	    {
+	    	"modifier_star_power"
+				{
+					"EffectName"		"damage_immunity"
+					"EffectAttachType"	"follow_origin"
+					"Target"			"CASTER"
+					
+					"Duration" "%duration"
+					"TextureName" "abaddon_aphotic_shield"
+				}
+	    }
+
+			// Special	
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"duration"					"8"
+				}
+			}
+		}
+	  
+	  "item_lightning_bolt"
+		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"ID"							"1710"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+			//"Model"							"models/props_gameplay/salve_blue.mdl"
+			"BaseClass"						"item_datadriven"
+			"AbilityTextureName"			"item_lightning_bolt"
+			"ItemKillable"					"0"
+			"ItemSellable"					"0"
+			"ItemDroppable"					"0"
+
+			// Stats
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"1000"
+			"AbilityCastPoint"				"0.0"
+			"AbilityCooldown"				"1.0"
+			"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+			"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+			
+			"precache"
+			{
+				"particlefile"				"particles/frostivus_gameplay.pcf"
+				//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
+				"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
+			}
+
+			// Item Info
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"0"
+			"ItemCost"						"100"
+			"ItemShopTags"					"consumable"
+			"ItemQuality"					"consumable"
+			"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+			"ItemPurchasable"				"0"
+	    "ItemPermanent"					"0"
+			"ItemInitialCharges"			"1"
+			"ItemDisplayCharges"			"1"
+			"SecretShop"						"1"
+
+			"OnSpellStart"
+			{
+		    "SpendCharge"
+		    {}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities.lua"
+					"Function"				"lightningBolt"
+				}
+	      "FireSound"
+	      {
+	        "EffectName"      "Hero_Zuus.GodsWrath"
+	        "Target"          "CASTER"
+	      }
+	      "AttachEffect"
+	      {
+	      	"EffectName"			"zuus_thundergods_wrath"
+	      	"EffectAttachType"	"follow_origin"
+	      	"Target"					"CASTER"
+	      }
+	    }
+
+			// Special	
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"speed"					"2450"
+				}
+			}
+		}
+
+	  "item_red_turtle_shell"
+		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"ID"							"1705"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+			//"Model"							"models/props_gameplay/salve_blue.mdl"
+			"BaseClass"						"item_datadriven"
+			"AbilityTextureName"			"item_red_turtle_shell"
+			"ItemKillable"					"0"
+			"ItemSellable"					"0"
+			"ItemDroppable"					"0"
+
+			// Stats
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"1000"
+			"AbilityCastPoint"				"0.0"
+			"AbilityCooldown"				"1.0"
+			"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+			"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+			
+			"precache"
+			{
+				"particlefile"				"particles/frostivus_gameplay.pcf"
+				//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
+				"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
+			}
+
+			// Item Info
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"0"
+			"ItemCost"						"100"
+			"ItemShopTags"					"consumable"
+			"ItemQuality"					"consumable"
+			"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+			"ItemPurchasable"				"0"
+	    "ItemPermanent"					"0"
+			"ItemInitialCharges"			"1"
+			"ItemDisplayCharges"			"1"
+			"SecretShop"						"1"
+
+			"OnSpellStart"
+			{
+	      "SpendCharge"
+	      {}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities.lua"
+					"Function"				"redTurtleShell"
+	        "Speed"           "%speed"
+				}
+	      "FireSound"
+	      {
+	        "EffectName"      "Hero_NagaSiren.Ensnare.Cast"
+	        "Target"          "CASTER"
+	      }
+			}
+
+			// Special	
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"speed"					"2100"
+				}
+			}
+		}
+	  
+	  "item_banana_peel"
+		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"ID"							"1707"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+			//"Model"							"models/props_gameplay/salve_blue.mdl"
+			"BaseClass"						"item_datadriven"
+			"AbilityTextureName"			"item_banana_peel"
+			"ItemKillable"					"0"
+			"ItemSellable"					"0"
+			"ItemDroppable"					"0"
+
+			// Stats
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"1000"
+			"AbilityCastPoint"				"0.0"
+			"AbilityCooldown"				"0.4"
+			"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+			"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+			
+			"precache"
+			{
+				"particlefile"				"particles/frostivus_gameplay.pcf"
+				//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
+				"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
+			}
+
+			// Item Info
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"0"
+			"ItemCost"						"100"
+			"ItemShopTags"					"consumable"
+			"ItemQuality"					"consumable"
+			"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+			"ItemPurchasable"				"0"
+	    "ItemPermanent"					"0"
+			"ItemInitialCharges"			"1"
+			"ItemDisplayCharges"			"1"
+			"SecretShop"						"1"
+
+			"OnSpellStart"
+			{
+	      "SpendCharge"
+	      {}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities.lua"
+					"Function"				"bananaPeel"
+				}
+	      "FireSound"
+	      {
+	        "EffectName"      "DotaDash.Banana"
+	        "Target"          "CASTER"
+	      }
+			}
+
+			// Special	
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"speed"					"1500"
+				}
+			}
+		}
+	  
+	  "item_banana_peel3"
+		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"ID"							"1708"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+			//"Model"							"models/props_gameplay/salve_blue.mdl"
+			"BaseClass"						"item_datadriven"
+			"AbilityTextureName"			"item_banana_peel"
+			"ItemKillable"					"0"
+			"ItemSellable"					"0"
+			"ItemDroppable"					"0"
+
+			// Stats
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"1000"
+			"AbilityCastPoint"				"0.0"
+			"AbilityCooldown"				"0.4"
+			"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+			"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+			
+			"precache"
+			{
+				"particlefile"				"particles/frostivus_gameplay.pcf"
+				//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
+				"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
+			}
+
+			// Item Info
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"0"
+			"ItemCost"						"100"
+			"ItemShopTags"					"consumable"
+			"ItemQuality"					"consumable"
+			"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+			"ItemPurchasable"				"0"
+	    "ItemPermanent"					"0"
+			"ItemInitialCharges"			"3"
+			"ItemDisplayCharges"			"1"
+			"SecretShop"						"1"
+
+			"OnSpellStart"
+			{
+	      "SpendCharge"
+	      {}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities.lua"
+					"Function"				"bananaPeel"
+				}
+	      "FireSound"
+	      {
+	        "EffectName"      "DotaDash.Banana"
+	        "Target"          "CASTER"
+	      }
+			}
+
+			// Special	
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"speed"					"1500"
+				}
+			}
+		}
+	  
+	  "item_blue_turtle_shell"
+		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"ID"							"1706"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+			//"Model"							"models/props_gameplay/salve_blue.mdl"
+			"BaseClass"						"item_datadriven"
+			"AbilityTextureName"			"item_blue_turtle_shell"
+			"ItemKillable"					"0"
+			"ItemSellable"					"0"
+			"ItemDroppable"					"0"
+
+			// Stats
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"1000"
+			"AbilityCastPoint"				"0.0"
+			"AbilityCooldown"				"1.0"
+			"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+			"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+			
+			"precache"
+			{
+				"particlefile"				"particles/frostivus_gameplay.pcf"
+				//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
+				"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
+			}
+
+			// Item Info
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"0"
+			"ItemCost"						"100"
+			"ItemShopTags"					"consumable"
+			"ItemQuality"					"consumable"
+			"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+			"ItemPurchasable"				"0"
+	    "ItemPermanent"					"0"
+			"ItemInitialCharges"			"1"
+			"ItemDisplayCharges"			"1"
+			"SecretShop"						"1"
+
+			"OnSpellStart"
+			{
+	      "SpendCharge"
+	      {}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities.lua"
+					"Function"				"blueTurtleShell"
+				}
+	      "FireSound"
+	      {
+	        "EffectName"      "Hero_NagaSiren.Ensnare.Cast"
+	        "Target"          "CASTER"
+	      }
+			}
+
+			// Special	
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"speed"					"1800"
+				}
 			}
 		}
 	}
-  
-  "item_powerup"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1702"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		//"Model"							"models/props_gameplay/salve_blue.mdl"
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_powerup"
-		"ItemKillable"					"0"
-		"ItemSellable"					"0"
-		"ItemDroppable"					"0"
-
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"5000"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"1.0" // "6"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-		"ItemCost"						"0"
-		"ItemShopTags"					"consumable"
-		"ItemQuality"					"consumable"
-    "ItemPermanent"					"0"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"				"0"
-		"SecretShop"						"1"
-	}
-  
-	"item_green_turtle_shell"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1704"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		//"Model"							"models/props_gameplay/salve_blue.mdl"
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_green_turtle_shell"
-		"ItemKillable"					"0"
-		"ItemSellable"					"0"
-		"ItemDroppable"					"0"
-
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"1000"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"1.0"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-		
-		"precache"
-		{
-			"particlefile"				"particles/frostivus_gameplay.pcf"
-			//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
-			"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
-		}
-
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-		"ItemCost"						"100"
-		"ItemShopTags"					"consumable"
-		"ItemQuality"					"consumable"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"				"0"
-    "ItemPermanent"					"0"
-		"ItemInitialCharges"			"1"
-		"ItemDisplayCharges"			"1"
-		"SecretShop"						"1"
-
-		"OnSpellStart"
-		{
-      "SpendCharge"
-      {}
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/abilities.lua"
-				"Function"				"greenTurtleShell"
-        "Speed"           "%speed"
-			}
-      "FireSound"
-      {
-        "EffectName"      "Hero_NagaSiren.Ensnare.Cast"
-        "Target"          "CASTER"
-      }
-    }
-
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"speed"					"1750"
-			}
-		}
-	}
-  
-  "item_red_turtle_shell"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1705"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		//"Model"							"models/props_gameplay/salve_blue.mdl"
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_red_turtle_shell"
-		"ItemKillable"					"0"
-		"ItemSellable"					"0"
-		"ItemDroppable"					"0"
-
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"1000"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"1.0"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-		
-		"precache"
-		{
-			"particlefile"				"particles/frostivus_gameplay.pcf"
-			//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
-			"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
-		}
-
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-		"ItemCost"						"100"
-		"ItemShopTags"					"consumable"
-		"ItemQuality"					"consumable"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"				"0"
-    "ItemPermanent"					"0"
-		"ItemInitialCharges"			"1"
-		"ItemDisplayCharges"			"1"
-		"SecretShop"						"1"
-
-		"OnSpellStart"
-		{
-      "SpendCharge"
-      {}
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/abilities.lua"
-				"Function"				"redTurtleShell"
-        "Speed"           "%speed"
-			}
-      "FireSound"
-      {
-        "EffectName"      "Hero_NagaSiren.Ensnare.Cast"
-        "Target"          "CASTER"
-      }
-		}
-
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"speed"					"1500"
-			}
-		}
-	}
-  
-  "item_banana_peel"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1707"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		//"Model"							"models/props_gameplay/salve_blue.mdl"
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_banana_peel"
-		"ItemKillable"					"0"
-		"ItemSellable"					"0"
-		"ItemDroppable"					"0"
-
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"1000"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"0.4"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-		
-		"precache"
-		{
-			"particlefile"				"particles/frostivus_gameplay.pcf"
-			//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
-			"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
-		}
-
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-		"ItemCost"						"100"
-		"ItemShopTags"					"consumable"
-		"ItemQuality"					"consumable"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"				"0"
-    "ItemPermanent"					"0"
-		"ItemInitialCharges"			"1"
-		"ItemDisplayCharges"			"1"
-		"SecretShop"						"1"
-
-		"OnSpellStart"
-		{
-      "SpendCharge"
-      {}
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/abilities.lua"
-				"Function"				"bananaPeel"
-			}
-      "FireSound"
-      {
-        "EffectName"      "DotaDash.Banana"
-        "Target"          "CASTER"
-      }
-		}
-
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"speed"					"1500"
-			}
-		}
-	}
-  
-  "item_banana_peel3"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1708"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		//"Model"							"models/props_gameplay/salve_blue.mdl"
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_banana_peel"
-		"ItemKillable"					"0"
-		"ItemSellable"					"0"
-		"ItemDroppable"					"0"
-
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"1000"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"0.4"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-		
-		"precache"
-		{
-			"particlefile"				"particles/frostivus_gameplay.pcf"
-			//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
-			"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
-		}
-
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-		"ItemCost"						"100"
-		"ItemShopTags"					"consumable"
-		"ItemQuality"					"consumable"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"				"0"
-    "ItemPermanent"					"0"
-		"ItemInitialCharges"			"3"
-		"ItemDisplayCharges"			"1"
-		"SecretShop"						"1"
-
-		"OnSpellStart"
-		{
-      "SpendCharge"
-      {}
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/abilities.lua"
-				"Function"				"bananaPeel"
-			}
-      "FireSound"
-      {
-        "EffectName"      "DotaDash.Banana"
-        "Target"          "CASTER"
-      }
-		}
-
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"speed"					"1500"
-			}
-		}
-	}
-  
-  "item_blue_turtle_shell"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1706"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		//"Model"							"models/props_gameplay/salve_blue.mdl"
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_blue_turtle_shell"
-		"ItemKillable"					"0"
-		"ItemSellable"					"0"
-		"ItemDroppable"					"0"
-
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"1000"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"1.0"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-		
-		"precache"
-		{
-			"particlefile"				"particles/frostivus_gameplay.pcf"
-			//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
-			"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
-		}
-
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-		"ItemCost"						"100"
-		"ItemShopTags"					"consumable"
-		"ItemQuality"					"consumable"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"				"0"
-    "ItemPermanent"					"0"
-		"ItemInitialCharges"			"1"
-		"ItemDisplayCharges"			"1"
-		"SecretShop"						"1"
-
-		"OnSpellStart"
-		{
-      "SpendCharge"
-      {}
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/abilities.lua"
-				"Function"				"blueTurtleShell"
-			}
-      "FireSound"
-      {
-        "EffectName"      "Hero_NagaSiren.Ensnare.Cast"
-        "Target"          "CASTER"
-      }
-		}
-
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"speed"					"1500"
-			}
-		}
-	}
-}
-//"ID"							"1858"
+	//"ID"							"1858"

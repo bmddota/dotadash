@@ -1,0 +1,48 @@
+// No spaces in event names, max length 32
+// All strings are case sensitive
+//
+// valid data key types are:
+//   string : a zero terminated string
+//   bool   : unsigned int, 1 bit
+//   byte   : unsigned int, 8 bit
+//   short  : signed int, 16 bit
+//   long   : signed int, 32 bit
+//   float  : float, 32 bit
+//   uint64 : unsigned int 64 bit
+//   local  : any data, but not networked to clients
+//
+// following key names are reserved:
+//   local      : if set to 1, event is not networked to clients
+//   unreliable : networked, but unreliable
+//   suppress   : never fire this event
+//   time	: firing server time
+//   eventid	: holds the event ID
+
+"CustomEvents"
+{
+	// CSV of all player IDs in order from first to last
+	"dd_position_update"
+	{
+		"positions"			"string"
+	}
+
+	// PlayerID and the lap they're now on
+	"dd_lap_update"
+	{
+		"playerID"			"short"
+		"lap"				"short"
+	}
+
+	// CSV of all player scores in order 0,1,2,...,9
+	"dd_scoreboard"
+	{
+		"scores"			"string"
+	}
+
+	// Event to signal the start of a new race and the max laps
+	"dd_start_race"
+	{
+		"maxLaps"			"short"
+	}
+}
+

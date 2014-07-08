@@ -30,6 +30,135 @@
 	}
 }
 
+"DOTA_Item.BlackKingBar.Activate"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"			"1"
+	"soundlevel"  	"SNDLVL_87dB"
+	"pitch"			"95, 105"
+	"wave"			")items\black_king_bar.wav"
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"import_stack" "dota_update_default"
+			"mixer"
+			{
+				"mixgroup" "Weapons"
+			}
+			"speakers_spatialize"
+			{
+				"input_radius"  "600"
+			}
+		}
+	}
+}
+
+
+"Hero_Zuus.GodsWrath"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"1.0"
+	"soundlevel"  	"SNDLVL_81dB"
+	"pitch"			"95, 105"
+	"wave"			")weapons/hero/zuus/gods_wrath_cast.wav"
+	
+	"soundentry_version" "2"
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"import_stack" "dota_update_default"
+			"volume_falloff_linear"
+			{
+			"input_max" "30000.0"
+			}
+			"mixer"
+			{
+				"mixgroup" "Ultimates"
+			}
+			"speakers_spatialize"
+			{
+				"input_radius"  "3000"
+			}
+		}
+	}
+}
+
+"Hero_Zuus.GodsWrath.Target"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"1.0"
+	"soundlevel"  	"SNDLVL_120dB"
+	"pitch"			"90, 110"
+	"wave"			"weapons/hero/zuus/gods_wrath_target.wav"
+	
+	"soundentry_version" "2"
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"import_stack" "dota_update_default"
+			"volume_falloff_linear"
+			{
+			"input_max" "6000.0"
+			}
+			"mixer"
+			{
+				"mixgroup" "Weapons"
+			}
+			"speakers_spatialize"
+			{
+				"input_radius"  "300"
+			}
+		}
+	}
+}
+
+
+"Hero_Spirit_Breaker.GreaterBash"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"1"
+	"soundlevel"  	"SNDLVL_81dB"
+	"pitch"			"95, 105"
+	"wave"			")weapons/hero/spirit_breaker/greater_bash.wav"
+	"soundentry_version" "2"
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"import_stack" "dota_update_default"
+			"mixer"
+			{
+				"mixgroup" "Weapons"
+			}
+			"speakers_spatialize"
+			{
+				"input_radius"  "300"
+			}
+		}
+	}
+}
+
+"DotaDash.LightningHit"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"0.8"
+	"pitch"			"PITCH_NORM"
+	"soundlevel"	"SNDLVL_NONE"
+	"wave"			"ui/debuff_alert.wav" 
+}
+
+"DotaDash.Star"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		".8"
+	"soundlevel"	"SNDLVL_85dB"
+	"pitch"			"95, 105"
+	"wave"			"ui/levelup.wav"
+}
+
 "DotaDash.Banana"
 {
 	"channel"		"CHAN_STATIC"
@@ -247,7 +376,7 @@
 	"channel"		"CHAN_STATIC"
 	"volume"		".8"
 	"soundlevel"	"SNDLVL_85dB"
-	"pitch"		"50"
+	"pitch"			"95, 105"
 	"wave"			"ui/tutorial_fanfare.wav"
 }
 

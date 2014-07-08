@@ -5,9 +5,15 @@
 		"AbilityLayout" 		"6"
 		"override_hero"			"npc_dota_hero_ancient_apparition"
 		"SoundSet"					"0"	
+		//"Ability1"				"dota_dash_hop" //"reflex_small_dagger"
+		//"Ability2"				"debug_point"//"reflex_empty2" //  //"reflex_meat_hook"
+		//"Ability3"				"debug_line" //"reflex_empty3" // "reflex_wraith_blast"
+		//"Ability4"				"dotadash_place_vision"//"reflex_empty4"
+		//"Ability5"				"dev_undo_action" // dota_unstick"
+		//"Ability6"				"dotadash_vacuum"//"dota_dash_back_to_waypoint"
 		"Ability1"				"dota_dash_hop" //"reflex_small_dagger"
-		"Ability2"				"reflex_empty2" // "debug_point"// //"reflex_meat_hook"
-		"Ability3"				"reflex_empty3" // "debug_line" //"reflex_wraith_blast"
+		"Ability2"				"reflex_empty2" //"reflex_meat_hook"
+		"Ability3"				"reflex_empty3" //"reflex_wraith_blast"
 		"Ability4"				"reflex_empty4"
 		"Ability5"				"dota_unstick"
 		"Ability6"				"dota_dash_back_to_waypoint"
@@ -22,8 +28,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -48,8 +54,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -78,8 +84,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -104,8 +110,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -134,8 +140,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -160,8 +166,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -190,8 +196,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -216,8 +222,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -246,8 +252,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -272,8 +278,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -302,8 +308,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -328,8 +334,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -358,8 +364,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -384,8 +390,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -414,8 +420,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -440,8 +446,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -470,8 +476,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -496,8 +502,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -526,8 +532,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -552,8 +558,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -582,8 +588,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -608,8 +614,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -638,8 +644,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -664,8 +670,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -694,8 +700,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -720,8 +726,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -750,8 +756,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -776,8 +782,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -806,8 +812,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -832,8 +838,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -862,8 +868,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -888,8 +894,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -918,8 +924,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -944,8 +950,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -974,8 +980,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1000,8 +1006,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1030,8 +1036,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1056,8 +1062,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1086,8 +1092,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1112,8 +1118,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1142,8 +1148,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1168,8 +1174,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1198,8 +1204,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1224,8 +1230,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1254,8 +1260,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1280,8 +1286,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1310,8 +1316,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1336,8 +1342,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1366,8 +1372,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1392,8 +1398,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1422,8 +1428,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1448,8 +1454,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1478,8 +1484,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1504,8 +1510,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1534,8 +1540,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1560,8 +1566,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1590,8 +1596,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1616,8 +1622,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1646,8 +1652,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1672,8 +1678,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1703,8 +1709,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1729,8 +1735,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1759,8 +1765,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1785,8 +1791,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1815,8 +1821,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1841,8 +1847,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1871,8 +1877,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1897,8 +1903,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1927,8 +1933,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -1953,8 +1959,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -1983,8 +1989,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2009,8 +2015,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2039,8 +2045,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2065,8 +2071,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2095,8 +2101,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2121,8 +2127,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2151,8 +2157,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2177,8 +2183,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2207,8 +2213,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2233,8 +2239,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2263,8 +2269,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2289,8 +2295,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2319,8 +2325,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2345,8 +2351,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2375,8 +2381,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2401,8 +2407,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2431,8 +2437,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2457,8 +2463,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2487,8 +2493,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2513,8 +2519,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2543,8 +2549,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2569,8 +2575,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2599,8 +2605,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2625,8 +2631,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2655,8 +2661,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2681,8 +2687,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2711,8 +2717,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2737,8 +2743,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2767,8 +2773,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2793,8 +2799,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2823,8 +2829,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2849,8 +2855,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2879,8 +2885,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2905,8 +2911,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2935,8 +2941,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -2961,8 +2967,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -2991,8 +2997,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3017,8 +3023,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3047,8 +3053,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3073,8 +3079,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3103,8 +3109,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3129,8 +3135,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3159,8 +3165,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3185,8 +3191,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3215,8 +3221,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3241,8 +3247,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3271,8 +3277,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3297,8 +3303,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3327,8 +3333,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3353,8 +3359,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3384,8 +3390,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3410,8 +3416,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3440,8 +3446,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3466,8 +3472,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3496,8 +3502,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3522,8 +3528,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3552,8 +3558,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3578,8 +3584,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3608,8 +3614,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3634,8 +3640,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3664,8 +3670,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3690,8 +3696,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3720,8 +3726,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3746,8 +3752,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3776,8 +3782,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3802,8 +3808,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3832,8 +3838,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3858,8 +3864,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3888,8 +3894,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3914,8 +3920,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -3944,8 +3950,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -3970,8 +3976,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4000,8 +4006,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4026,8 +4032,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4056,8 +4062,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4082,8 +4088,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4112,8 +4118,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4138,8 +4144,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4168,8 +4174,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4194,8 +4200,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4224,8 +4230,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4250,8 +4256,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4280,8 +4286,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4306,8 +4312,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4336,8 +4342,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4362,8 +4368,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4392,8 +4398,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4418,8 +4424,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4448,8 +4454,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4474,8 +4480,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4504,8 +4510,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4530,8 +4536,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4560,8 +4566,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4586,8 +4592,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4616,8 +4622,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4642,8 +4648,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4672,8 +4678,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4698,8 +4704,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4728,8 +4734,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4754,8 +4760,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4784,8 +4790,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4810,8 +4816,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4840,8 +4846,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4866,8 +4872,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4896,8 +4902,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4922,8 +4928,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -4952,8 +4958,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -4978,8 +4984,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5008,8 +5014,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5034,8 +5040,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5064,8 +5070,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5090,8 +5096,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5120,8 +5126,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5146,8 +5152,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5176,8 +5182,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5202,8 +5208,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5232,8 +5238,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5258,8 +5264,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5288,8 +5294,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5314,8 +5320,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5344,8 +5350,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5370,8 +5376,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5400,8 +5406,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5426,8 +5432,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5456,8 +5462,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5482,8 +5488,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5512,8 +5518,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5538,8 +5544,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5568,8 +5574,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5594,8 +5600,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5624,8 +5630,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5650,8 +5656,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5680,8 +5686,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5706,8 +5712,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5736,8 +5742,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5762,8 +5768,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5792,8 +5798,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5818,8 +5824,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5848,8 +5854,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5874,8 +5880,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5904,8 +5910,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5930,8 +5936,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
@@ -5960,8 +5966,8 @@
     "Ability15"				""
     "Ability16"				""
 
-		"ArmorPhysical"				"0"									// Physical protection.
-		"MagicalResistance"				"0"									// Magical protection (percentage).
+		"ArmorPhysical"				"90"									// Physical protection.
+		"MagicalResistance"				"90"									// Magical protection (percentage).
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"			"1"										// Damage range min.
@@ -5986,8 +5992,8 @@
 		"MovementSpeed"				"250"									// Speed.
 		"MovementTurnRate"			"1.0"									// Turning rate.
 
-		"StatusHealth"				"981"									// Base health.
-		"StatusHealthRegen"			"0.0"									// Health regeneration rate.
+		"StatusHealth"				"2981"									// Base health.
+		"StatusHealthRegen"			"500.0"									// Health regeneration rate.
 		"StatusMana"				"387"										// Base mana.
 		"StatusManaRegen"			"99.96"									// Mana regeneration rate.
 
