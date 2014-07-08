@@ -2091,7 +2091,7 @@ function DotaDashGameMode:InitializeRound()
           end
           })
 
-        if GetMapName() == "dota_dash" then
+        if GetMapName() == "dash" then
           DotaDashGameMode:CreateTimer('entityDelete', {
             useGameTime = true,
             endTime = GameRules:GetGameTime(),
