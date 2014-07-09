@@ -1,10 +1,10 @@
 print ('[DOTADASH] dotadash.lua' )
 
-USE_LOBBY=true
-DEBUG=false
+USE_LOBBY=false
+DEBUG=true
 THINK_TIME = 0.1
 
-DOTADASH_VERSION = "0.03.00"
+DOTADASH_VERSION = "0.03.03"
 
 GRAVITY_AMOUNT = -15
 SLIDE_MULTIPLIER = 0.30
@@ -140,7 +140,6 @@ function DotaDashGameMode:InitGameMode()
   GameRules:SetHeroSelectionTime( 30.0 )
   GameRules:SetPreGameTime( PRE_ROUND_TIME + PRE_GAME_TIME)
   GameRules:SetPostGameTime( 60.0 )
-  GameRules:SetTreeRegrowTime( 60.0 )
   GameRules:SetUseCustomHeroXPValues ( true )
   GameRules:SetGoldPerTick(0)
 
