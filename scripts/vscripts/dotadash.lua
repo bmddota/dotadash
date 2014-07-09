@@ -1496,7 +1496,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
                 })
               end
               
-              --FireGameEvent("dd_lap_update", {playerID = heroTable.pleyerID, lap = heroTable.nLap})
+              FireGameEvent("dd_lap_update", {playerID = heroTable.pleyerID, lap = heroTable.nLap})
               curWaypoint = 1
               heroTable.nCurWaypoint = 1
               --print('hit last waypoint, New Lap: ' .. tostring(heroTable.nLap))
@@ -1630,7 +1630,7 @@ function DotaDashGameMode:UpdatePositions()
   end
 
   if not equal then
-    --FireGameEvent("dd_position_update", {positions = s})
+    FireGameEvent("dd_position_update", {positions = s})
   end
 end
 
@@ -1828,7 +1828,7 @@ function DotaDashGameMode:InitializeRound()
   self.nCurrentLap = 1
   self.nFinishLineCrossed = 0
 
-  --FireGameEvent("dd_start_race", {maxLaps = LAPS_TO_WIN})
+  FireGameEvent("dd_start_race", {maxLaps = LAPS_TO_WIN})
 
   local mapdata = MAP_DATA
   local spawnsOrig = mapdata.spawns
@@ -1885,7 +1885,7 @@ function DotaDashGameMode:InitializeRound()
         
         self.vPositions[#self.vPositions + 1] = player
         player.nLap = 1
-        --FireGameEvent("dd_lap_update", {playerID = player.pleyerID, lap = 1})
+        FireGameEvent("dd_lap_update", {playerID = player.pleyerID, lap = 1})
         player.nRoundPosition = 0
         player.bCompletedRace = false
         
