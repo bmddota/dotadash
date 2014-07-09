@@ -6,11 +6,11 @@
 		"Depth"		"100"
 	}
 
-	"2"
-	{
-		"File"		"DDplayerprogress"
-		"Depth"		"99"
-	}
+	//"2"
+	//{
+	//	"File"		"DDplayerprogress"
+	//	"Depth"		"99"
+	//}
 }
 
 // =============================================

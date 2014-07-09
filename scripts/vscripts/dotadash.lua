@@ -81,8 +81,8 @@ ROUNDS_TO_WIN = MAP_DATA.roudsToWin or ROUNDS_TO_WIN
 
 ITEMS_BEHIND = {
   {item_blue_turtle_shell = .5},
-  {item_lightning_bolt = .5},
-  {item_star_power = .75},
+  {item_lightning_bolt = .35},
+  {item_star_power = .70},
   {item_rocket_boots = 2},
   {item_green_turtle_shell = 1},
   {item_red_turtle_shell = 1},
@@ -92,7 +92,7 @@ ITEMS_BEHIND = {
 
 ITEMS_TABLE = {
   {item_blue_turtle_shell = 0.25},
-  {item_lightning_bolt = 0.25},
+  {item_lightning_bolt = 0.20},
   {item_star_power = 0.3},
   {item_rocket_boots = 1},
   {item_green_turtle_shell = 1},
@@ -1276,10 +1276,10 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
     end
 
     local positions = self:UpdatePositions(true)
-    print('dd_full_udpate')
+    print('dd_full_update')
     local eventTable = {playerID = playerID, positions = positions, currentLaps = curLaps, maxLaps = LAPS_TO_WIN}
-    PrintTable(eventTable)
-    FireGameEvent("dd_full_update", eventTable)
+    --PrintTable(eventTable)
+    --FireGameEvent("dd_full_update", eventTable)
     return
   end
 
@@ -1515,8 +1515,8 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
                 })
               end
               
-              print('dd_lap_update: playerID: ' .. tostring(heroTable.playerID) .. ' -- nLap: ' .. tostring(heroTable.nLap))
-              FireGameEvent("dd_lap_update", {playerID = heroTable.playerID, lap = heroTable.nLap})
+              --print('dd_lap_update: playerID: ' .. tostring(heroTable.playerID) .. ' -- nLap: ' .. tostring(heroTable.nLap))
+              --FireGameEvent("dd_lap_update", {playerID = heroTable.playerID, lap = heroTable.nLap})
               curWaypoint = 1
               heroTable.nCurWaypoint = 1
               --print('hit last waypoint, New Lap: ' .. tostring(heroTable.nLap))
@@ -1650,8 +1650,8 @@ function DotaDashGameMode:UpdatePositions(retString)
   end
 
   if not equal then
-    print('dd_position_update: positions: ' .. s)
-    FireGameEvent("dd_position_update", {positions = s})
+    --print('dd_position_update: positions: ' .. s)
+    --FireGameEvent("dd_position_update", {positions = s})
   end
 
   if retString then
@@ -1853,8 +1853,8 @@ function DotaDashGameMode:InitializeRound()
   self.nCurrentLap = 1
   self.nFinishLineCrossed = 0
 
-  print('dd_start_race: maxLaps: ' .. tostring(LAPS_TO_WIN))
-  FireGameEvent("dd_start_race", {maxLaps = LAPS_TO_WIN})
+  --print('dd_start_race: maxLaps: ' .. tostring(LAPS_TO_WIN))
+  --FireGameEvent("dd_start_race", {maxLaps = LAPS_TO_WIN})
 
   local mapdata = MAP_DATA
   local spawnsOrig = mapdata.spawns
@@ -1911,8 +1911,8 @@ function DotaDashGameMode:InitializeRound()
         
         self.vPositions[#self.vPositions + 1] = player
         player.nLap = 1
-        print('dd_lap_update: playerID: ' .. tostring(player.playerID) .. ' -- nLap: 1')
-        FireGameEvent("dd_lap_update", {playerID = player.playerID, lap = 1})
+        --print('dd_lap_update: playerID: ' .. tostring(player.playerID) .. ' -- nLap: 1')
+        --FireGameEvent("dd_lap_update", {playerID = player.playerID, lap = 1})
         player.nRoundPosition = 0
         player.bCompletedRace = false
         
@@ -2389,7 +2389,7 @@ function DotaDashGameMode:RoundComplete(timedOut)
 
   -- Check if at max round
   -- Complete game entirely and declare an overall victor
-  if self.nCurrentRound > ROUNDS_TO_WIN then
+  if  self.nCurrentRound>= ROUNDS_TO_WIN then
     EmitGlobalSound("crowd.lv_04")
     Say(nil, scores[1].name .. " WINS!!  Well Played!", false) 
     GameRules:SetSafeToLeave( true )
