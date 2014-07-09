@@ -24,6 +24,13 @@
 		
 		public function OnStartRace(keyValues:Object):void
 		{
+			for(var k:Number = 0; k < this.playerPositions.length; k++)
+			{
+				removeChild(this.playerPositions[k]);
+			}
+			
+			this.playerPositions = null;
+			
 			var newPosition:playerPosition;
 			for(var i:Number = 0; i < 10; i++)
 			{
@@ -40,11 +47,9 @@
 		
 		public function OnPositionUpdate(keyValues:Object):void
 		{
-			trace( keyValues.positions );
 			var positions:Array = keyValues.positions.split(",");
 			for (var i:Number = 0; i<positions.length; i++) {
-				trace(positions[i]);
-				GetPlayerPositionById(i).position = positions[i];
+				GetPlayerPositionById(i).position = i+1;
 			}
 		}
 		
