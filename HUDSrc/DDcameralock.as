@@ -26,13 +26,11 @@
 			this.warning_mc.warningConfirmationBtn.addEventListener(ButtonEvent.CLICK, this.lockCamera);
 			this.warning_mc.warningDenialBtn.addEventListener(ButtonEvent.CLICK, this.denyCameraLock);
 			this.gameAPI.SubscribeToGameEvent("hero_picker_hidden", this.OnHeroPickerHidden);
-			
+			this.gameAPI.OnUnload = OnUnload;
 		}
 		
         public function OnUnload():void {
-            trace('\n\nFixing the hud...');
-
-            trace('Done fixing the hud!\n\n');
+           Globals.instance.GameInterface.SetConvar("dota_camera_lock", "0");
         }
 		
 		public function cameraLockToggle():void

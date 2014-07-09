@@ -29,13 +29,14 @@
 				removeChild(this.playerPositions[k]);
 			}
 			
-			this.playerPositions = null;
+			this.playerPositions = new Vector.<playerPosition>(); 
 			
 			var newPosition:playerPosition;
 			for(var i:Number = 0; i < 10; i++)
 			{
 				if(this.globals.Players.IsValidPlayer(i))
 				{
+					trace("COLOR FOR PLAYER "+i+": "+this.globals.Players.GetPlayerColor(i));
 					newPosition = new playerPosition(this.globals.Players.GetPlayerSelectedHero(i), i, i+1, 0, keyValues.maxLaps);
 					this.playerPositions.push(newPosition);
 					addChild(newPosition);
