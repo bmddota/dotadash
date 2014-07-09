@@ -29,8 +29,9 @@
 			this.gameAPI.OnUnload = OnUnload;
 		}
 		
-        public function OnUnload():void {
+        public function OnUnload():Boolean {
            Globals.instance.GameInterface.SetConvar("dota_camera_lock", "0");
+		   return true;
         }
 		
 		public function cameraLockToggle():void
