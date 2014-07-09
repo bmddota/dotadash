@@ -24,11 +24,19 @@
 		
 		public function OnStartRace(keyValues:Object):void
 		{
+			for(var k:Number = 0; k < this.playerPositions.length; k++)
+			{
+				removeChild(this.playerPositions[k]);
+			}
+			
+			this.playerPositions = new Vector.<playerPosition>(); 
+			
 			var newPosition:playerPosition;
 			for(var i:Number = 0; i < 10; i++)
 			{
 				if(this.globals.Players.IsValidPlayer(i))
 				{
+					trace("COLOR FOR PLAYER "+i+": "+this.globals.Players.GetPlayerColor(i));
 					newPosition = new playerPosition(this.globals.Players.GetPlayerSelectedHero(i), i, i+1, 0, keyValues.maxLaps);
 					this.playerPositions.push(newPosition);
 					addChild(newPosition);
@@ -40,11 +48,9 @@
 		
 		public function OnPositionUpdate(keyValues:Object):void
 		{
-			trace( keyValues.positions );
 			var positions:Array = keyValues.positions.split(",");
 			for (var i:Number = 0; i<positions.length; i++) {
-				trace(positions[i]);
-				GetPlayerPositionById(i).position = positions[i];
+				GetPlayerPositionById(i).position = i+1;
 			}
 		}
 		

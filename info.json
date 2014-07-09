@@ -18,6 +18,10 @@
   "spreadvideo": null,
   "subtitle": "Fast paced Dota 2 racing game.",
   "thumbnail": "http://i.imgur.com/7VH5Ecz.png",
+<<<<<<< HEAD
   "version": "0.04.00",
+=======
+  "version": "0.03.05",
+>>>>>>> c747c814b9855e879a251b684e0beaab071d3374
   "website": "http://steamcommunity.com/groups/dotadash"
 }

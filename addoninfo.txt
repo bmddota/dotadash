@@ -2,5 +2,9 @@
 {
      addonSteamAppID         816
      addontitle              "Dota Dash"
+<<<<<<< HEAD
      addonversion            0.04.00
+=======
+     addonversion            0.03.05
+>>>>>>> c747c814b9855e879a251b684e0beaab071d3374
 }
