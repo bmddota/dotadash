@@ -5,6 +5,12 @@
 		"File"		"DDcameralock"
 		"Depth"		"100"
 	}
+
+	"2"
+	{
+		"File"		"DDplayerprogress"
+		"Depth"		"99"
+	}
 }
 
 // =============================================

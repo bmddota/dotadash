@@ -29,6 +29,12 @@
 			
 		}
 		
+        public function OnUnload():void {
+            trace('\n\nFixing the hud...');
+
+            trace('Done fixing the hud!\n\n');
+        }
+		
 		public function cameraLockToggle():void
 		{
 			if(cameraLocked)
