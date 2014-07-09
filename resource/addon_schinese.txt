@@ -1,0 +1,169 @@
+��"lang"
+
+{
+
+	"Language"		"Schinese"
+
+	"Tokens"
+
+	{		
+
+		"game_mode_15"				"Dota Dash"
+
+		"addon_game_name"			"Dota Dash"
+
+		
+
+		//--------------
+
+		// Abilities
+
+		//--------------
+
+    "DOTA_Tooltip_ability_dota_dash_back_to_waypoint"										"回"
+
+		"DOTA_Tooltip_ability_dota_dash_back_to_waypoint_Description"							"使用这个技能能够让你回到你最后经过的那道检查点，建议在被卡住的时候使用这个技能。"
+
+		"DOTA_Tooltip_ability_dota_dash_back_to_waypoint_Lore"								""
+
+    
+
+    "DOTA_Tooltip_ability_dota_unstick"										"分"
+
+		"DOTA_Tooltip_ability_dota_unstick_Description"			              "使用这个技能，能够在你和其他玩家卡住的时候与他分开。"
+
+		"DOTA_Tooltip_ability_dota_unstick_Lore"						      	""
+
+    
+
+    	"DOTA_Tooltip_ability_dota_dash_hop"										"蹦"
+
+		"DOTA_Tooltip_ability_dota_dash_hop_Description"			    "使用这个技能，能够让你跳向空中，以此避开地上的龟壳或其他道具。"
+
+		"DOTA_Tooltip_ability_dota_dash_hop_Lore"						      	""
+
+		
+
+		//------------------------
+
+		// Items
+
+		//------------------------
+
+		"DOTA_Tooltip_ability_item_rocket_boots"						    "火箭靴"
+
+		"DOTA_Tooltip_ability_item_rocket_boots_Description"		"能够将你往你所面向的方向疾驰，持续三秒，小心，使用火箭靴的时候你将很难控制。"
+
+		"DOTA_Tooltip_ability_item_rocket_boots_Lore"				""
+
+		"DOTA_Tooltip_ability_item_rocket_boots_Note0"				""
+
+    
+
+    "DOTA_Tooltip_ability_item_powerup"						    "增强道具"
+
+		"DOTA_Tooltip_ability_item_powerup_Description"		"你拾取了一个增强道具，这次又是什么呢？！"
+
+		"DOTA_Tooltip_ability_item_powerup_Lore"				""
+
+		"DOTA_Tooltip_ability_item_powerup_Note0"				""
+
+    
+
+    "DOTA_Tooltip_ability_item_green_turtle_shell"						    "绿贪魔之壳"
+
+		"DOTA_Tooltip_ability_item_green_turtle_shell_Description"		"使用这个道具后，他将会往你所面对的方向飞出，碰到第一个单位之后，他将会爆炸，眩晕并减速周围的英雄（包括你自己）。"
+
+		"DOTA_Tooltip_ability_item_green_turtle_shell_Lore"				""
+
+		"DOTA_Tooltip_ability_item_green_turtle_shell_Note0"				""
+
+    
+
+    "DOTA_Tooltip_ability_item_red_turtle_shell"						    "红贪魔之壳"
+
+		"DOTA_Tooltip_ability_item_red_turtle_shell_Description"		"使用这个道具后，他将会往你所面对的方向飞出，自动瞄准前面的第一个单位，碰到第一个单位之后，他将会爆炸，眩晕并减速周围的英雄（包括你自己）。"
+
+		"DOTA_Tooltip_ability_item_red_turtle_shell_Lore"				""
+
+		"DOTA_Tooltip_ability_item_red_turtle_shell_Note0"				""
+
+    
+
+    "DOTA_Tooltip_ability_item_blue_turtle_shell"						    "蓝贪魔之壳"
+
+		"DOTA_Tooltip_ability_item_blue_turtle_shell_Description"		"释放这个蓝贪魔之壳，将会锁定当前处于第一位置的那位玩家，直到击中他。"
+
+		"DOTA_Tooltip_ability_item_blue_turtle_shell_Lore"				"小心第一名的玩家会狂暴哟。"
+
+		"DOTA_Tooltip_ability_item_blue_turtle_shell_Note0"				""
+
+    
+
+    "DOTA_Tooltip_ability_item_banana_peel"						    "香蕉皮"
+
+		"DOTA_Tooltip_ability_item_banana_peel_Description"		"在你的身后丢下一个香蕉皮，踩到香蕉皮的玩家将会失控，失控时间2秒，小心不要踩到自己放下的香蕉皮！"
+
+		"DOTA_Tooltip_ability_item_banana_peel_Lore"				""
+
+		"DOTA_Tooltip_ability_item_banana_peel_Note0"				""
+
+    
+
+    "DOTA_Tooltip_ability_item_banana_peel3"						    "香蕉皮"
+
+		"DOTA_Tooltip_ability_item_banana_peel3_Description"		"在你的身后丢下一个香蕉皮，踩到香蕉皮的玩家将会失控，失控时间2秒，小心不要踩到自己放下的香蕉皮！"
+
+		"DOTA_Tooltip_ability_item_banana_peel3_Lore"				""
+
+		"DOTA_Tooltip_ability_item_banana_peel3_Note0"				""
+
+
+
+		"DOTA_Tooltip_ability_item_lightning_bolt"					"闪电"
+
+		"DOTA_Tooltip_ability_item_lightning_bolt_Description"		"闪电道具能够影响所有其他玩家，虚弱他们并减缓他们的速度，持续5秒。\n如果你碾过一个正在被闪电打击的玩家，那么他将会被压扁并失去移动能力，持续1.5秒。"
+
+		"DOTA_Tooltip_ability_item_lightning_bolt_Lore"				""
+
+
+
+		"DOTA_Tooltip_ability_item_star_power"					"星星"
+
+		"DOTA_Tooltip_ability_item_star_power_Description"		"使用一颗星星之力，能够给你提供无尽的力量，速度和恢复能力，让你能够无视一切香蕉皮，龟壳，甚至是其他玩家。\n在星星之力的持续时间内，你的速度将会提升。\n持续8秒。"
+
+		"DOTA_Tooltip_ability_item_star_power_Lore"				""
+
+		
+
+		
+
+		//---------------------------
+
+		// Recharge Modifiers
+
+		//---------------------------
+
+		"DOTA_Tooltip_modifier_star_power"							"星星"
+
+		"DOTA_Tooltip_modifier_star_power"				"你拥有了星星之力！"
+
+    
+
+    	"DD_camera_lock_warning_title"									"你想要锁定你的英雄视角么？（推荐锁定）"
+
+		"DD_camera_warning_confirmation"									"锁定"
+
+		"DD_camera_warning_denial"											"取消"
+
+		"dd_camera_lock_off"													"锁定镜头"
+
+		"dd_camera_lock_on"													"取消锁定"
+
+
+
+		"DD_lap"																	"圈"
+
+	}
+
+}
