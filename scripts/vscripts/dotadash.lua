@@ -1,10 +1,10 @@
 print ('[DOTADASH] dotadash.lua' )
 
-USE_LOBBY=false
-DEBUG=true
+USE_LOBBY=true
+DEBUG=false
 THINK_TIME = 0.1
 
-DOTADASH_VERSION = "0.03.03"
+DOTADASH_VERSION = "0.04.00"
 
 GRAVITY_AMOUNT = -15
 SLIDE_MULTIPLIER = 0.30
@@ -307,7 +307,7 @@ GameMode = nil
 function DotaDashGameMode:CaptureGameMode()
   if GameMode == nil then
     print('[DOTADASH] Capturing game mode...')
-    GameMode = GameRules:GetGameModeEntity()		
+    GameMode = GameRules:GetGameModeEntity()    
     GameMode:SetRecommendedItemsDisabled( true )
     GameMode:SetCameraDistanceOverride( 1600.0 )
     GameMode:SetCustomBuybackCostEnabled( true )
@@ -1261,6 +1261,25 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
     --Player is reconnecting, redraw stuff
     self:DrawBarriersForPlayer(ply)
     self:DrawWaypointsForPlayer(ply)
+
+    --Fire off full-update message to reconnecting player
+    local player = self.vPlayers[playerID]
+    local curLaps = ""
+
+    for i=0,#self.vPlayers do
+      local p = self.vPlayers[i]
+      if i == #self.vPlayers then
+        curLaps = curLaps .. tostring(p.nLap)
+      else
+        curLaps = curLaps .. tostring(p.nLap) .. ","
+      end
+    end
+
+    local positions = self:UpdatePositions(true)
+    print('dd_full_udpate')
+    local eventTable = {playerID = playerID, positions = positions, currentLaps = curLaps, maxLaps = LAPS_TO_WIN}
+    PrintTable(eventTable)
+    FireGameEvent("dd_full_update", eventTable)
     return
   end
 
@@ -1496,7 +1515,8 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
                 })
               end
               
-              FireGameEvent("dd_lap_update", {playerID = heroTable.pleyerID, lap = heroTable.nLap})
+              print('dd_lap_update: playerID: ' .. tostring(heroTable.playerID) .. ' -- nLap: ' .. tostring(heroTable.nLap))
+              FireGameEvent("dd_lap_update", {playerID = heroTable.playerID, lap = heroTable.nLap})
               curWaypoint = 1
               heroTable.nCurWaypoint = 1
               --print('hit last waypoint, New Lap: ' .. tostring(heroTable.nLap))
@@ -1578,7 +1598,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
 })
 end
 
-function DotaDashGameMode:UpdatePositions()
+function DotaDashGameMode:UpdatePositions(retString)
   local waypoints = MAP_DATA.waypoints
   local points = #waypoints
   local lastPositions = {}
@@ -1630,7 +1650,12 @@ function DotaDashGameMode:UpdatePositions()
   end
 
   if not equal then
+    print('dd_position_update: positions: ' .. s)
     FireGameEvent("dd_position_update", {positions = s})
+  end
+
+  if retString then
+    return s
   end
 end
 
@@ -1781,7 +1806,7 @@ end
 
 function DotaDashGameMode:getItemByName( hero, name )
   --if not hero:HasItemInInventory ( name ) then
-  --	return nil
+  --  return nil
   --end
 
   --print ( '[DOTADASH] find item in inventory' )
@@ -1828,6 +1853,7 @@ function DotaDashGameMode:InitializeRound()
   self.nCurrentLap = 1
   self.nFinishLineCrossed = 0
 
+  print('dd_start_race: maxLaps: ' .. tostring(LAPS_TO_WIN))
   FireGameEvent("dd_start_race", {maxLaps = LAPS_TO_WIN})
 
   local mapdata = MAP_DATA
@@ -1885,7 +1911,8 @@ function DotaDashGameMode:InitializeRound()
         
         self.vPositions[#self.vPositions + 1] = player
         player.nLap = 1
-        FireGameEvent("dd_lap_update", {playerID = player.pleyerID, lap = 1})
+        print('dd_lap_update: playerID: ' .. tostring(player.playerID) .. ' -- nLap: 1')
+        FireGameEvent("dd_lap_update", {playerID = player.playerID, lap = 1})
         player.nRoundPosition = 0
         player.bCompletedRace = false
         
@@ -2047,6 +2074,8 @@ function DotaDashGameMode:InitializeRound()
           })
       end
 
+      GameRules:SetRuneSpawnTime(10000)
+      GameRules:SetTreeRegrowTime(10000)
 
       --Vacuum trees
       local vacuums = mapdata.vacuums
@@ -2250,30 +2279,30 @@ function DotaDashGameMode:InitializeRound()
 
       bInPreRound = false;
       local msg = {
-			  message = "RACE!",
-				duration = 0.9
-			}
-			FireGameEvent("show_center_message",msg)
+        message = "RACE!",
+        duration = 0.9
+      }
+      FireGameEvent("show_center_message",msg)
       return
     elseif startCount == 4 then
       Say(nil, "10 seconds remaining!", false)
       return GameRules:GetGameTime() + 7
     elseif startCount == 3 then
       local msg = {
-			  message = tostring(startCount),
-			  duration = 0.9
-			}
+        message = tostring(startCount),
+        duration = 0.9
+      }
       print('SOUND')
-			FireGameEvent("show_center_message",msg)
+      FireGameEvent("show_center_message",msg)
       --HeroList:GetAllHeroes()[1]:EmitSound("DotaDash.RaceStart")
       EmitGlobalSound("DotaDash.RaceStart")
       return GameRules:GetGameTime() + 1
     else
-			local msg = {
-			  message = tostring(startCount),
-			  duration = 0.9
-			}
-			FireGameEvent("show_center_message",msg)
+      local msg = {
+        message = tostring(startCount),
+        duration = 0.9
+      }
+      FireGameEvent("show_center_message",msg)
       return GameRules:GetGameTime() + 1
     end
   end})

@@ -44,5 +44,14 @@
 	{
 		"maxLaps"			"short"
 	}
+
+	// Event to be sent when someone reconnects
+	"dd_full_update"
+	{
+		"playerID"			"short"
+		"positions"			"string"
+		"currentLaps"		"string"
+		"maxLaps"			"short"
+	}
 }
 
