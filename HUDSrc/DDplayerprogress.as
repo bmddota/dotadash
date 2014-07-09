@@ -36,8 +36,7 @@
 			{
 				if(this.globals.Players.IsValidPlayer(i))
 				{
-					trace("COLOR FOR PLAYER "+i+": "+this.globals.Players.GetPlayerColor(i));
-					newPosition = new playerPosition(this.globals.Players.GetPlayerSelectedHero(i), i, i+1, 0, keyValues.maxLaps);
+					newPosition = new playerPosition(this.globals.Players.GetPlayerSelectedHero(i), i, i+1, 1, keyValues.maxLaps);
 					this.playerPositions.push(newPosition);
 					addChild(newPosition);
 				}else{
@@ -49,8 +48,18 @@
 		public function OnPositionUpdate(keyValues:Object):void
 		{
 			var positions:Array = keyValues.positions.split(",");
+			var totalFinished:Number = 0;
+			
+			for (var k:Number = 0; k < this.playerPositions.length; k++)
+			{
+				if(this.playerPositions[k].lap > this.playerPositions[k].maxLaps)
+				{
+					totalFinished++;
+				}
+			}
+			
 			for (var i:Number = 0; i<positions.length; i++) {
-				GetPlayerPositionById(i).position = i+1;
+				GetPlayerPositionById(positions[i]).position = i+totalFinished+1;
 			}
 		}
 		

@@ -29,15 +29,12 @@
 			position = newPosition;
 			maxLaps = newMaxLaps;
 			lap = newLap;
-			
-			this.background_mc.gotoAndPlay(playerID+1);
 		}
 		
 		public function set heroName(value:String):void
 		{
 			_heroName = value;
 			Globals.instance.LoadHeroImage(value.replace('npc_dota_hero_', ''), this.heroPortrait_mc);
-			trace("HERO PORTRAIT SCALES: SCALEX: "+this.heroPortrait_mc.scaleX+" SCALEY: "+this.heroPortrait_mc.scaleY+" WIDTH: "+this.heroPortrait_mc.width+" HEIGHT: "+this.heroPortrait_mc.height);
 			this.heroPortrait_mc.scaleX = 64/this.heroPortrait_mc.width;
 			this.heroPortrait_mc.scaleY = 36/this.heroPortrait_mc.height;
 			this.dispatchEvent(new Event("heroNameSet"));
@@ -51,6 +48,7 @@
 		public function set playerID(value:Number):void{
 			_playerID = value;
 			this.playerName_txt.htmlText = Globals.instance.Players.GetPlayerName(value);
+			this.background_mc.gotoAndPlay("Color: "+Globals.instance.Players.GetPlayerColor(value));
 			this.dispatchEvent(new Event("playerIDSet"));
 		}
 		
@@ -59,8 +57,13 @@
 		}
 		
 		public function set lap(value:Number):void{
-			_lap = value; 
-			this.lap_txt.text = Globals.instance.GameInterface.Translate("#DD_lap")+": "+value+"/"+this.maxLaps;
+			_lap = value;
+			if( _lap > _maxLaps )
+			{
+				this.lap_txt.text = Globals.instance.GameInterface.Translate("#DD_finished");
+			}else{
+				this.lap_txt.text = Globals.instance.GameInterface.Translate("#DD_lap")+": "+value+"/"+this.maxLaps;
+			}
 			this.dispatchEvent(new Event("lapSet"));
 		}
 		
