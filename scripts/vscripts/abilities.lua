@@ -39,8 +39,70 @@ function unstick(keys)
   FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
 end
 
+function rocketRob(keys)
+  local caster = keys.caster
+  caster.bRocketRob = true
+  caster:SkipSlide(10 * 30 + 6)
+  caster:GetGroundBehavior(PHYSICS_GROUND_NOTHING)
+  caster:SetNavCollisionType(PHYSICS_NAV_NOTHING)
+  caster:SetAutoUnstuck(false)
+
+  EmitSoundOn("Hero_Gyrocopter.HomingMissile", caster)
+
+  local rocket = CreateUnitByName("npc_firefly_dummy", caster:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
+  rocket:AddNewModifier(rocket, nil, "modifier_invulnerable", {})
+  rocket:AddNewModifier(rocket, nil, "modifier_phased", {})
+  local ability = rocket:FindAbilityByName("reflex_dummy_unit")
+  ability:SetLevel(1)
+
+  rocket:SetModel("models/heroes/gyro/gyro_missile.mdl")
+  rocket:SetOriginalModel("models/heroes/gyro/gyro_missile.mdl")
+  rocket:SetModelScale(1.5,0.0)
+
+  local pos = caster:GetAbsOrigin() + caster:GetForwardVector() * 1000
+
+  Physics:Unit(rocket)
+  rocket:FollowNavMesh(false)
+  rocket:SetAutoUnstuck(false)
+  rocket:SetNavCollisionType(PHYSICS_NAV_NOTHING)
+  rocket:SetPhysicsAcceleration(Vector(0,0,GRAVITY_AMOUNT * 2))
+  rocket:Slide(false)
+  rocket:SetPhysicsFriction(0)
+
+  rocket:AddPhysicsVelocity(caster:GetForwardVector() * 1500)
+  rocket:SetForwardVector(caster:GetForwardVector())
+
+  rocket:OnPhysicsFrame(function(unit)
+    caster:SetAbsOrigin(GetGroundPosition(unit:GetAbsOrigin(), caster) + Vector(0,0,-2000))
+  end)
+
+  DotaDashGameMode:CreateTimer(DoUniqueString("rocket"), {
+    useGameTime = true,
+    endTime = GameRules:GetGameTime() + 10,
+    callback = function(reflex, args)
+      caster.bRocketRob = false
+      caster:GetGroundBehavior(PHYSICS_GROUND_ABOVE)
+      caster:SetNavCollisionType(PHYSICS_NAV_BOUNCE)
+      caster:SetAutoUnstuck(true)
+      caster:SkipSlide(2)
+      caster:SetAbsOrigin(GetGroundPosition(rocket:GetAbsOrigin(), caster))
+
+      EmitSoundOn("Hero_Gyrocopter.HomingMissile.Destroy", caster)
+      StopSoundOn("Hero_Gyrocopter.HomingMissile", caster)
+      rocket:Destroy()
+    end
+  })
+end
+
 function lightningBolt(keys)
   local caster = keys.caster
+  local origin = caster:GetAbsOrigin()
+
+  local particle = ParticleManager:CreateParticle("zuus_thundergods_wrath", PATTACH_ABSORIGIN_FOLLOW, caster)
+  --ParticleManager:SetParticleControl(particle, 0, (dist * 300) + Vector(0,0,2200)) -- Bolt height
+  ParticleManager:SetParticleControl(particle, 1, origin + Vector(0,0,2000)) -- position to bolt
+
+  ParticleManager:ReleaseParticleIndex(particle)
 
   -- Shrink other heroes and make them slow
   DotaDashGameMode:LoopOverPlayers(function (player, plyID)
@@ -50,9 +112,15 @@ function lightningBolt(keys)
       player.hero:SetPhysicsVelocityMax(1200)
 
       player.hero:EmitSound("Hero_Zuus.GodsWrath.Target")
+      local pos = player.hero:GetAbsOrigin()
+      local dist = origin - pos
+      dist.z = 0
+      dist = dist:Normalized()
       local particle = ParticleManager:CreateParticle("zuus_lightning_bolt", PATTACH_ABSORIGIN_FOLLOW, player.hero)
-      --ParticleManager:SetParticleControl(particle, 0, Vector(0,0,0))
-      --ParticleManager:SetParticleControl(particle, 1, Vector(50,5,1)) -- radius, thickness, speed
+      --ParticleManager:SetParticleControl(particle, 0, (dist * 300) + Vector(0,0,2200)) -- Bolt height
+      ParticleManager:SetParticleControl(particle, 1, pos + dist * 300 + Vector(0,0,2000)) -- position to bolt
+
+      ParticleManager:ReleaseParticleIndex(particle)
       --ParticleManager:SetParticleControl(particle, 3, ent:GetAbsOrigin()) -- position
     end
   end)

@@ -1127,7 +1127,7 @@
 			"model"			"models/heroes/nightstalker/nightstalker.mdl"
 			//"model"			"models/heroes/broodmother/spiderling.mdl"
 			//"model"			"models/heroes/weaver/weaver_bug.mdl"
-			//"model"			"models/heroes/gyro/gyro_missile.mdl"
+			"model"			"models/heroes/gyro/gyro_missile.mdl"
 			//"model"			"models/heroes/invoker/forge_spirit.mdl"
 			"model"			"models/heroes/lycan/lycan_wolf.mdl"
 			//"model"			"models/heroes/lone_druid/true_form.mdl"

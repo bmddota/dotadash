@@ -1,7 +1,7 @@
 print ('[DOTADASH] dotadash.lua' )
 
-USE_LOBBY=false
-DEBUG=true
+USE_LOBBY=true
+DEBUG=false
 THINK_TIME = 0.1
 
 DOTADASH_VERSION = "0.04.00"
@@ -1435,41 +1435,43 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
           
           --PlayerResource:SetCameraTarget(playerID, unit)
           -- No DI during flight
-          local pos = unit:GetAbsOrigin()
-          local groundPos = GetGroundPosition(pos, unit)
-          -- print(tostring(pos) .. " -- " .. tostring(groundPos))
-          if not heroTable.bFlying and pos.z > groundPos.z and unit.vVelocity:Length() > TAKEOFF_VELOCITY then
-            unit:PreventDI(true)
-            unit:AddPhysicsVelocity(unit.vSlideVelocity)
-            heroTable.fLastFriction = unit:GetPhysicsFriction()
-            unit:SetPhysicsFriction(0)
-            unit:AddNewModifier(unit, nil, "modifier_pudge_meat_hook", {})
-            heroTable.bFlying = true
-          elseif heroTable.bFlying and pos.z <= groundPos.z then
-            unit:PreventDI(false)
-            if heroTable.fLastFriction == 0 then
-              unit:SetPhysicsFriction(FRICTION_MULTIPLIER)
-              heroTable.fLastFriction = FRICTION_MULTIPLIER
-            else
-              unit:SetPhysicsFriction(FRICTION_MULTIPLIER)
-              --unit:SetPhysicsFriction(heroTable.fLastFriction)
+          if unit.bRocketRob ~= nil and unit.bRocketRob == true then
+            local pos = unit:GetAbsOrigin()
+            local groundPos = GetGroundPosition(pos, unit)
+            -- print(tostring(pos) .. " -- " .. tostring(groundPos))
+            if not heroTable.bFlying and pos.z > groundPos.z and unit.vVelocity:Length() > TAKEOFF_VELOCITY then
+              unit:PreventDI(true)
+              unit:AddPhysicsVelocity(unit.vSlideVelocity)
+              heroTable.fLastFriction = unit:GetPhysicsFriction()
+              unit:SetPhysicsFriction(0)
+              unit:AddNewModifier(unit, nil, "modifier_pudge_meat_hook", {})
+              heroTable.bFlying = true
+            elseif heroTable.bFlying and pos.z <= groundPos.z then
+              unit:PreventDI(false)
+              if heroTable.fLastFriction == 0 then
+                unit:SetPhysicsFriction(FRICTION_MULTIPLIER)
+                heroTable.fLastFriction = FRICTION_MULTIPLIER
+              else
+                unit:SetPhysicsFriction(FRICTION_MULTIPLIER)
+                --unit:SetPhysicsFriction(heroTable.fLastFriction)
+              end
+              heroTable.bFlying = false
+              unit:RemoveModifierByName("modifier_pudge_meat_hook")
             end
-            heroTable.bFlying = false
-            unit:RemoveModifierByName("modifier_pudge_meat_hook")
-          end
-          
-          local curWaypoint = heroTable.nCurWaypoint
-          -- Collision for waypoints
-          local waypoint = waypoints[curWaypoint]
-          pos.z = 0
-          
-          local am = pos - waypoint.a
-          local amDotAb = am:Dot(waypoint.ab)
-          local inside = false
-          if amDotAb > 0 and amDotAb < waypoint.ab2 then
-            local amDotAd = am:Dot(waypoint.ad)
-            if amDotAd > 0 and amDotAd < waypoint.ad2 then
-              inside = true
+            
+            local curWaypoint = heroTable.nCurWaypoint
+            -- Collision for waypoints
+            local waypoint = waypoints[curWaypoint]
+            pos.z = 0
+            
+            local am = pos - waypoint.a
+            local amDotAb = am:Dot(waypoint.ab)
+            local inside = false
+            if amDotAb > 0 and amDotAb < waypoint.ab2 then
+              local amDotAd = am:Dot(waypoint.ad)
+              if amDotAd > 0 and amDotAd < waypoint.ad2 then
+                inside = true
+              end
             end
           end
           
@@ -1580,6 +1582,13 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
             heroTable.hero:SetGold(0, true)
             heroTable.nUnspentAbilityPoints = heroTable.hero:GetAbilityPoints()
             heroTable.hero:SetAbilityPoints(0)
+
+            self.vPositions[#self.vPositions + 1] = heroTable
+            heroTable.nLap = 1
+            print('dd_lap_update: playerID: ' .. tostring(heroTable.playerID) .. ' -- nLap: 1')
+            FireGameEvent("dd_lap_update", {playerID = heroTable.playerID, lap = 1})
+            heroTable.nRoundPosition = 0
+            heroTable.bCompletedRace = false
 
             --if has modifier remove it
             if heroTable.hero:HasModifier("modifier_stunned") then

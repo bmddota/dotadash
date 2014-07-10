@@ -267,6 +267,92 @@
 				}
 			}
 		}
+
+		"item_rocket_rob"
+		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"ID"							"1711"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+			//"Model"							"models/props_gameplay/salve_blue.mdl"
+			"BaseClass"						"item_datadriven"
+			"AbilityTextureName"			"item_bottle"
+			"ItemKillable"					"0"
+			"ItemSellable"					"0"
+			"ItemDroppable"					"0"
+
+			// Stats
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"1000"
+			"AbilityCastPoint"				"0.0"
+			"AbilityCooldown"				"1.0"
+			"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+			"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+			
+			"precache"
+			{
+				"particlefile"				"particles/frostivus_gameplay.pcf"
+				//"soundfile"					"scripts/game_sounds_heroes/game_sounds_skeletonking.txt"
+				"soundfile"					"scripts/game_sounds_heroes/game_sounds_sniper.txt"
+			}
+
+			// Item Info
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"0"
+			"ItemCost"						"100"
+			"ItemShopTags"					"consumable"
+			"ItemQuality"					"consumable"
+			"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+			"ItemPurchasable"				"0"
+	    "ItemPermanent"					"0"
+			"ItemInitialCharges"			"1"
+			"ItemDisplayCharges"			"1"
+			"SecretShop"						"1"
+
+			"OnSpellStart"
+			{
+		    "SpendCharge"
+		    {}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities.lua"
+					"Function"				"rocketRob"
+				}
+	      "ApplyModifier"
+	      {
+	      	"ModifierName"		"modifier_rocket_rob"
+	      	"Target"					"CASTER"
+	      }
+	    }
+
+	    "Modifiers"
+	    {
+	    	"modifier_rocket_rob"
+	    	{
+	    		//"IsHidden" "1"
+	    		"Duration"	"10"
+
+	    		"States"
+	    		{
+	    			"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+	    			"MODIFIER_STATE_MUTED"				"MODIFIER_STATE_VALUE_ENABLED"
+	    			"MODIFIER_STATE_ROOTED"				"MODIFIER_STATE_VALUE_ENABLED"
+	    			"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
+	    		}
+	    	}
+	    }
+
+			// Special	
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"speed"					"2450"
+				}
+			}
+		}
 	  
 	  "item_lightning_bolt"
 		{
@@ -322,12 +408,6 @@
 	      {
 	        "EffectName"      "Hero_Zuus.GodsWrath"
 	        "Target"          "CASTER"
-	      }
-	      "AttachEffect"
-	      {
-	      	"EffectName"			"zuus_thundergods_wrath"
-	      	"EffectAttachType"	"follow_origin"
-	      	"Target"					"CASTER"
 	      }
 	    }
 
