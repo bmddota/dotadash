@@ -1435,7 +1435,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
           
           --PlayerResource:SetCameraTarget(playerID, unit)
           -- No DI during flight
-          if unit.bRocketRob ~= nil and unit.bRocketRob == true then
+          --if unit.bRocketRob ~= nil and unit.bRocketRob == true then
             local pos = unit:GetAbsOrigin()
             local groundPos = GetGroundPosition(pos, unit)
             -- print(tostring(pos) .. " -- " .. tostring(groundPos))
@@ -1473,7 +1473,7 @@ function DotaDashGameMode:AutoAssignPlayer(keys)
                 inside = true
               end
             end
-          end
+          --end
           
           if inside then
             print('hit waypoint: ' .. curWaypoint)
